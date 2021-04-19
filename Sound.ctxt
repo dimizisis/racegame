@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Sound
+comment0.text=\r\n\ Sound\ setting\ class\ using\ singleton\ pattern.\r\n\ \r\n\ @author\ Dimitrios\ Zisis\r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=Sound()
+comment1.text=1\ for\ on,\ 0\ for\ off
+comment2.params=
+comment2.target=Sound\ getInstance()
+comment3.params=
+comment3.target=boolean\ isSoundOn()
+comment4.params=
+comment4.target=void\ changeSoundSetting()
+numComments=5

@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Score
+comment0.text=\r\n\ Score\ class\ using\ singleton\ pattern.\r\n\ \r\n\ @author\ Dimitrios\ Zisis\ \r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=Score()
+comment2.params=
+comment2.target=Score\ getInstance()
+comment3.params=level
+comment3.target=int\ getScore(java.lang.String)
+comment4.params=level
+comment4.target=void\ incrementLevelScore(java.lang.String)
+comment5.params=
+comment5.target=java.util.Map\ getScoresFromFile()
+comment5.text=\r\n\ Get\ saved\ scores\ from\ file.\r\n
+comment6.params=levelScores
+comment6.target=void\ flushScoreToFile(java.util.Map)
+comment6.text=\r\n\ Save\ scores\ to\ file.\r\n
+numComments=7
