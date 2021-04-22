@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Lives
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Lives\ here.\r\n\ \r\n\ @author\ Dimitrios\ Zisis\ \r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=Lives()
+comment2.params=
+comment2.target=Lives\ getInstance()
+comment3.params=
+comment3.target=int\ reduceLives()
+comment4.params=
+comment4.target=void\ resetLives()
+numComments=5

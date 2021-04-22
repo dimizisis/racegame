@@ -19,56 +19,90 @@
         {
             move(speed);
             Actor cone = getOneIntersectingObject(Cone.class);
+            Actor pedestrian = getOneIntersectingObject(Pedestrian.class);
             Crossing crossing = (Crossing) getOneIntersectingObject(Crossing.class);
             
-            if (Greenfoot.isKeyDown("h"))
+            if (Greenfoot.isKeyDown("h") && Sound.getInstance().isSoundOn())
                 Greenfoot.playSound("horn.wav");
                 
             if (isTouching(Oil.class))
                 twist();
                 
-            if (collides(cone))
-                respawn();
+            if (collidesWith(cone) || collidesWith(pedestrian))
+            {
+                if (Lives.getInstance().reduceLives() > 0)
+                    respawn();
+                else
+                {
+                    end();
+                }
+            }
         
-            if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0)
+            if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0 && Sound.getInstance().isSoundOn())
                 Greenfoot.playSound("wrong-move.wav");
         
             if (Greenfoot.isKeyDown("up"))
-            {
-                if (canGoUp())
-                    setLocation(getX(), getY() - 2);
-            }
+                goUp();
+            
             if (Greenfoot.isKeyDown("down"))
-            {
-                if (canGoDown())
-                    setLocation(getX(), getY() + 2);
-            }
+                goDown();
+            
             if (Greenfoot.isKeyDown("right"))
-            {
-                if (speed >= 0)
-                {
-                    ++speed;   
-                    if (speed > SPEED_LIMIT) speed = SPEED_LIMIT;
-                }
-                if (speed <= 0)
-                    speed = 0;
-            }
+                accelerate();
         
             if (Greenfoot.isKeyDown("left"))
-            {
-                if (speed > 1)
-                    --speed;
-                if (speed == 0)
-                {
-                    --speed;
-                    if (Math.abs(speed) >= SPEED_LIMIT) speed = -SPEED_LIMIT;
-                }
-            }
+                reverse();
         
             if (Greenfoot.isKeyDown("b"))
-            {
-                speed = 0;
-            }
+                stop();
+    }
+    
+    private void end()
+    {
+        stop();
+        setImage(new GreenfootImage("explode.gif"));
+        ((MyWorld) getWorld()).gameOver();
+    }
+    
+    private void goUp()
+    {
+       if (canGoUp())
+            setLocation(getX(), getY() - 2); 
+    }
+    
+    private void goDown()
+    {
+        if (canGoDown())
+            setLocation(getX(), getY() + 2);
+    }
+    
+    private void stop()
+    {
+        speed = 0;
+        if (Objects.nonNull(getOneObjectAtOffset(getImage().getWidth()/2+1, 0, Crossing.class)) && Sound.getInstance().isSoundOn())
+            Greenfoot.playSound("horn.wav");
+    }
+    
+    private void reverse()
+    {
+        if (speed > 1)
+            --speed;
+        if (speed == 0)
+        {
+            --speed;
+            if (Math.abs(speed) >= SPEED_LIMIT) speed = -SPEED_LIMIT;
+        }
+    }
+    
+    private void accelerate()
+    {
+        if (speed >= 0)
+        {
+            ++speed;   
+            if (speed > SPEED_LIMIT) speed = SPEED_LIMIT;
+        }
+        if (speed <= 0)
+            speed = 0;
     }
     
     private boolean canGoUp()
@@ -85,7 +119,7 @@
         return false;
     }
     
-    private boolean collides(Actor a)
+    private boolean collidesWith(Actor a)
     {
         if(a == null || (a != null && getX() > a.getX()))
             return false;
@@ -94,19 +128,23 @@
     
     private void twist()
     {
-        speed = 0;
-        Greenfoot.playSound("screech.mp3");
+        if (Sound.getInstance().isSoundOn())
+            Greenfoot.playSound("screech.mp3");
         for (int i=0; i<5; ++i)
         {
             setRotation(90*i);
             Greenfoot.delay(50);
-            setLocation(getX() + 30, getY());
+            if (speed <= 0)
+                setLocation(getX() - 30, getY());
+            else
+                setLocation(getX() + 30, getY());
         }
     }
     
     private void respawn()
     {
-        Greenfoot.playSound("break.wav");
+        if (Sound.getInstance().isSoundOn())
+            Greenfoot.playSound("break.wav");
         setLocation(getX() + 150, getY());
         for (int i=0; i<2; ++i)
         {

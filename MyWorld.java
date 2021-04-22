@@ -45,6 +45,9 @@ public class MyWorld extends SWorld
         mainActor.setLocation(-3000, 510);
         setScrollingBackground(new GreenfootImage("track.png"));
         
+        if (Sound.getInstance().isSoundOn())
+            Greenfoot.playSound("spyhunter.wav");
+        
         generateRandomCones(5);
         generateRandomOils(5);
         generateRandomCrossings(2, true);
@@ -81,11 +84,16 @@ public class MyWorld extends SWorld
         for (int i=0; i < count; ++i)
         {
             x = ThreadLocalRandom.current().nextInt(-1900 + prevX, 2500);
-            Crossing crossing = new Crossing();
+            Crossing crossing = new Crossing(1);
             addObject(crossing, x, 420);
             crossing.addTrafficLight();
-            addObject(new Pedestrian(), crossing.getX(), 700);
             prevX = x;
         }
+    }
+    
+    public void gameOver() 
+    {
+        setPaintOrder(ScoreBoard.class);
+        addObject(new ScoreBoard(Score.getInstance().getScore("level" + level)), getWidth()/2, getHeight()/2);
     }
 }
