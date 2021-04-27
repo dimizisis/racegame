@@ -13,6 +13,7 @@ public class ScoreBoard extends Actor
     public static final float FONT_SIZE = 38.0f;
     public static final int WIDTH = 400;
     public static final int HEIGHT = 300;
+    public boolean inGameScore = false;
     
     int score;
     
@@ -25,10 +26,11 @@ public class ScoreBoard extends Actor
         makeImage("Game Over", "Score: ", score);
     }
     
-    public ScoreBoard(String title,int score)
+    public ScoreBoard(String title, int score)
     {
         this.score = score;
-        makeImage(title, "Score: ", score);
+        this.inGameScore = true;
+        makeImage(title, score);
     }
 
     /**
@@ -52,11 +54,31 @@ public class ScoreBoard extends Actor
         setImage(image);
     }
     
+    /**
+     * Make the score board image.
+     */
+    private void makeImage(String prefix, int score)
+    {
+        GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
+
+        image.setColor(new Color(255, 255, 255, 128));
+        image.fillRect(0, 0, WIDTH-80, HEIGHT-80);
+        image.setColor(new Color(0, 0, 0, 128));
+        image.fillRect(5, 5, WIDTH-80, HEIGHT-80);
+        Font font = image.getFont();
+        font = font.deriveFont(FONT_SIZE);
+        image.setFont(font);
+        image.setColor(Color.WHITE);
+        image.drawString(prefix + score, 160, 190);
+        setImage(image);
+    }
+    
     public void act(){
         if (Greenfoot.mousePressed(this))
         {
             //((MyWorld) getWorld()).backgroundSound.stop();  // stop music
-            Greenfoot.setWorld(new MainMenu(score));   // go to UI
+            if (!inGameScore)
+                Greenfoot.setWorld(new MainMenu(score));   // go to UI
         }
     }
 }

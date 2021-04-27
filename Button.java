@@ -30,14 +30,8 @@ public class Button extends Actor
             {
                 getWorld().addObject(new InfoMessage("Accelerate Key: Right Arrow\nBackwards Move Key: Left Arrow\nBreak Key: B"), getWorld().getWidth()/2, getWorld().getHeight()/2);
             }
-            else if (button.equals("level1"))
-                Greenfoot.setWorld(new MyWorld(1));
-            else if (button.equals("level2"))
-                Greenfoot.setWorld(new MyWorld(2));
-            else if (button.equals("level3"))
-                Greenfoot.setWorld(new MyWorld(3));
-            else if (button.equals("level4"))
-                Greenfoot.setWorld(new MyWorld(4));
+            else
+                Greenfoot.setWorld(new MyWorld(Integer.parseInt(button.substring(button.length()-1))));
          }
     }    
 }

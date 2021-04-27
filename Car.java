@@ -4,13 +4,14 @@
     /**
      * Write a description of class Car here.
      * 
-     * @author (your name) 
-     * @version (a version number or a date)
+     * @author Dimitrios Zisis 
+     * @version 1.0
      */
     public class Car extends Actor
     {
+        private boolean broke = false;
         private int speed = 1;
-        private final static int SPEED_LIMIT = 2;
+        private final static int SPEED_LIMIT = 10;
         /**
          * Act - do whatever the Car wants to do. This method is called whenever
          * the 'Act' or 'Run' button gets pressed in the environment.
@@ -22,15 +23,15 @@
             Actor pedestrian = getOneIntersectingObject(Pedestrian.class);
             Crossing crossing = (Crossing) getOneIntersectingObject(Crossing.class);
             
-            if (Greenfoot.isKeyDown("h") && Sound.getInstance().isSoundOn())
-                Greenfoot.playSound("horn.wav");
+            if (Greenfoot.isKeyDown("h"))
+                Sound.getInstance().playHorn();
                 
             if (isTouching(Oil.class))
                 twist();
                 
             if (collidesWith(cone) || collidesWith(pedestrian))
             {
-                if (Lives.getInstance().reduceLives() > 0)
+                if (Lives.getInstance().reduceLives() > 0 && !this.broke)
                     respawn();
                 else
                 {
@@ -38,8 +39,8 @@
                 }
             }
         
-            if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0 && Sound.getInstance().isSoundOn())
-                Greenfoot.playSound("wrong-move.wav");
+            if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0)
+                Sound.getInstance().playWrongMove();
         
             if (Greenfoot.isKeyDown("up"))
                 goUp();
@@ -59,6 +60,7 @@
     
     private void end()
     {
+        this.broke = true;
         stop();
         setImage(new GreenfootImage("explode.gif"));
         ((MyWorld) getWorld()).gameOver();
@@ -79,8 +81,6 @@
     private void stop()
     {
         speed = 0;
-        if (Objects.nonNull(getOneObjectAtOffset(getImage().getWidth()/2+1, 0, Crossing.class)) && Sound.getInstance().isSoundOn())
-            Greenfoot.playSound("horn.wav");
     }
     
     private void reverse()
@@ -128,8 +128,7 @@
     
     private void twist()
     {
-        if (Sound.getInstance().isSoundOn())
-            Greenfoot.playSound("screech.mp3");
+        Sound.getInstance().playScreech();
         for (int i=0; i<5; ++i)
         {
             setRotation(90*i);
@@ -143,8 +142,7 @@
     
     private void respawn()
     {
-        if (Sound.getInstance().isSoundOn())
-            Greenfoot.playSound("break.wav");
+        Sound.getInstance().playBreaking();
         setLocation(getX() + 150, getY());
         for (int i=0; i<2; ++i)
         {

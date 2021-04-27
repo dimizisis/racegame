@@ -43,13 +43,13 @@ public class Score
     public void increaseLevelScore(String level)
     {
         levelScores.put(level, levelScores.get(level) + ADDING_POINTS);
-        flushScoreToFile(levelScores);
+        flushScoreToFile();
     }
     
     public void reduceLevelScore(String level)
     {
         levelScores.put(level, levelScores.get(level) - ADDING_POINTS);
-        flushScoreToFile(levelScores);
+        flushScoreToFile();
     }
     
     /**
@@ -65,7 +65,7 @@ public class Score
             Map<String, Integer> levelScores = (HashMap<String, Integer>) oi.readObject();
             return levelScores;
         }  catch (IOException | ClassNotFoundException ex) {
-            flushScoreToFile(levelScores);
+            flushScoreToFile();
         }
         return null;
     }
@@ -73,7 +73,7 @@ public class Score
     /**
      * Save scores to file.
      */
-    public void flushScoreToFile(Map<?, ?> levelScores) 
+    public void flushScoreToFile() 
     {
         try {
             FileOutputStream f = new FileOutputStream(new File("scores.dat"));

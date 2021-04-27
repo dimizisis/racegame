@@ -12,7 +12,7 @@ public class Lives
     
     private Lives() 
     {
-        lives = 2;
+        this.lives = 2;
     }
   
     public static Lives getInstance()

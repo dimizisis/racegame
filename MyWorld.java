@@ -19,6 +19,7 @@ public class MyWorld extends SWorld
     public MyWorld(int level)
     {
         super(600, 840, 1, 5000);
+        this.level = level;
         prepare();
     }
 
@@ -39,25 +40,31 @@ public class MyWorld extends SWorld
      */
     private void prepare()
     {
-        //Greenfoot.playSound("start.wav");
-        //Greenfoot.playSound("spyhunter.wav");
         setMainActor(new Car(), 50, 500);      
         mainActor.setLocation(-3000, 510);
         setScrollingBackground(new GreenfootImage("track.png"));
         
-        if (Sound.getInstance().isSoundOn())
-            Greenfoot.playSound("spyhunter.wav");
+        setPaintOrder(ScoreBoard.class);
+        addObject(new ScoreBoard("Score: ", Score.getInstance().getScore("level" + level)), 50, 20, false);
         
-        generateRandomCones(5);
-        generateRandomOils(5);
-        generateRandomCrossings(2, true);
+        Sound.getInstance().playLevelMusic();
+        
+        generateObjects();
         
         setPaintOrder(Oil.class, Cone.class);
         setPaintOrder(Cone.class, Car.class);
     }
     
-    private void generateRandomCones(int count)
+    private void generateObjects()
     {
+        generateRandomCrossings();
+        generateRandomCones();
+        generateRandomOils();
+    }
+    
+    private void generateRandomCones()
+    {
+        int count = this.level * 5; /* generate according to the level */
         int x, prevX = 0;
         for (int i=0; i < count; ++i)
         {  
@@ -67,8 +74,9 @@ public class MyWorld extends SWorld
         }
     }
     
-    private void generateRandomOils(int count)
+    private void generateRandomOils()
     {
+        int count = this.level * 5; /* generate according to the level */
         int x, prevX = 0;
         for (int i=0; i < count; ++i)
         {
@@ -78,13 +86,15 @@ public class MyWorld extends SWorld
         }
     }
     
-    private void generateRandomCrossings(int count, boolean withPedestrians)
+    private void generateRandomCrossings()
     {
+        int count = this.level; /* generate according to the level */
+        boolean hasPedestrians = this.level > 1 ? true : false;
         int x, prevX = 0;
         for (int i=0; i < count; ++i)
         {
             x = ThreadLocalRandom.current().nextInt(-1900 + prevX, 2500);
-            Crossing crossing = new Crossing(1);
+            Crossing crossing = new Crossing(hasPedestrians);
             addObject(crossing, x, 420);
             crossing.addTrafficLight();
             prevX = x;
@@ -94,6 +104,9 @@ public class MyWorld extends SWorld
     public void gameOver() 
     {
         setPaintOrder(ScoreBoard.class);
-        addObject(new ScoreBoard(Score.getInstance().getScore("level" + level)), getWidth()/2, getHeight()/2);
+        addObject(new ScoreBoard(Score.getInstance().getScore("level" + level)), getWidth()/2, getHeight()/2, false);
+        Sound.getInstance().stopLevelMusic();
+        Lives.getInstance().resetLives();
+        Score.getInstance().flushScoreToFile();
     }
 }

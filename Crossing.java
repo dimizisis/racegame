@@ -12,28 +12,18 @@ public class Crossing extends Actor
 {
     private TrafficLight trafficLight;
     private long lastPassed;
-    private int level;
-    
+    private boolean hasPedestrians;
+
     public Crossing()
     {
-        trafficLight = null;
-        lastPassed = 0;
+        this.trafficLight = null;
+        this.lastPassed = 0;
+        this.hasPedestrians = true; /* has pedestrians by default */
     }
     
-    public Crossing(TrafficLight t)
+    public Crossing(boolean hasPedestrians)
     {
-        this.trafficLight = t;
-    }
-    
-    public Crossing(int level)
-    {
-        this.level = level;
-    }
-    
-    public Crossing(TrafficLight t, int level)
-    {
-        this.trafficLight = t;
-        this.level = level;
+        this.hasPedestrians = hasPedestrians;
     }
     
     /**
@@ -42,9 +32,8 @@ public class Crossing extends Actor
      */
     public void act() 
     {
-        if (Objects.nonNull(trafficLight))
-        {
-            if (level == 1)
+        if (this.hasPedestrians)
+            if (Objects.nonNull(trafficLight))
             {
                 long currTime  = System.currentTimeMillis();
                 if (currTime >= lastPassed + ThreadLocalRandom.current().nextInt(2000, 4000+1) && trafficLight.getState() == 0)
@@ -53,10 +42,6 @@ public class Crossing extends Actor
                     lastPassed  = currTime;
                 }
             }
-            else
-            {
-            }
-        }
     }
     
     private void pedestrianPass(int pedestrianNum)
