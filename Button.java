@@ -30,6 +30,9 @@ public class Button extends Actor
             {
                 getWorld().addObject(new InfoMessage("Accelerate Key: Right Arrow\nBackwards Move Key: Left Arrow\nBreak Key: B"), getWorld().getWidth()/2, getWorld().getHeight()/2);
             }
+            //else if (button.equals("settings"))
+            //{
+            //}
             else
                 Greenfoot.setWorld(new MyWorld(Integer.parseInt(button.substring(button.length()-1))));
          }

@@ -9,9 +9,8 @@
      */
     public class Car extends Actor
     {
-        private boolean broke = false;
         private int speed = 1;
-        private final static int SPEED_LIMIT = 10;
+        private final static int SPEED_LIMIT = 5;
         /**
          * Act - do whatever the Car wants to do. This method is called whenever
          * the 'Act' or 'Run' button gets pressed in the environment.
@@ -21,7 +20,11 @@
             move(speed);
             Actor cone = getOneIntersectingObject(Cone.class);
             Actor pedestrian = getOneIntersectingObject(Pedestrian.class);
+            Actor otherCar = getOneIntersectingObject(OtherCar.class);
             Crossing crossing = (Crossing) getOneIntersectingObject(Crossing.class);
+            
+            if (reachedEnd())
+                end(true);
             
             if (Greenfoot.isKeyDown("h"))
                 Sound.getInstance().playHorn();
@@ -29,18 +32,23 @@
             if (isTouching(Oil.class))
                 twist();
                 
-            if (collidesWith(cone) || collidesWith(pedestrian))
+            if (collidesWith(cone) || collidesWith(pedestrian) || collidesWith(otherCar))
             {
-                if (Lives.getInstance().reduceLives() > 0 && !this.broke)
+                Score.getInstance().reduceLevelScore("level" + ((MyWorld) getWorld()).getLevel());
+                if (Lives.getInstance().reduceLives() > 0)
                     respawn();
                 else
                 {
-                    end();
+                    end(false);
                 }
             }
         
             if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0)
+            {
                 Sound.getInstance().playWrongMove();
+                if (Lives.getInstance().reduceLives() <= 0)
+                    end(false);
+            }
         
             if (Greenfoot.isKeyDown("up"))
                 goUp();
@@ -58,12 +66,17 @@
                 stop();
     }
     
-    private void end()
+    private boolean reachedEnd()
     {
-        this.broke = true;
+        return this.getX() >= 520 ? true : false;
+    }
+    
+    private void end(boolean success)
+    {
         stop();
-        setImage(new GreenfootImage("explode.gif"));
-        ((MyWorld) getWorld()).gameOver();
+        if (!success)
+            setImage(new GreenfootImage("explode.gif"));
+        ((MyWorld) getWorld()).gameEnd(success);
     }
     
     private void goUp()
@@ -132,11 +145,11 @@
         for (int i=0; i<5; ++i)
         {
             setRotation(90*i);
-            Greenfoot.delay(50);
+            Greenfoot.delay(20);
             if (speed <= 0)
-                setLocation(getX() - 30, getY());
+                setLocation(getX() - 40, getY());
             else
-                setLocation(getX() + 30, getY());
+                setLocation(getX() + 40, getY());
         }
     }
     

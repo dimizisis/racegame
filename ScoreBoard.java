@@ -10,33 +10,35 @@ import java.util.Calendar;
  */
 public class ScoreBoard extends Actor
 {
-    public static final float FONT_SIZE = 38.0f;
+    public static final float FONT_SIZE = 24.0f;
     public static final int WIDTH = 400;
     public static final int HEIGHT = 300;
     public boolean inGameScore = false;
     
-    int score;
+    private String prefix;
+    private String title;
+    private int level;
     
-    /**
-     * Create a score board for the final result.
-     */
-    public ScoreBoard(int score)
+    public ScoreBoard(String title, String prefix, int level)
     {
-        this.score = score;
-        makeImage("Game Over", "Score: ", score);
+        this.title = title;
+        this.prefix = prefix;
+        this.level = level;
+        makeEndImage();
     }
     
-    public ScoreBoard(String title, int score)
+    public ScoreBoard(String prefix, int level)
     {
-        this.score = score;
+        this.prefix = prefix;
+        this.level = level;
         this.inGameScore = true;
-        makeImage(title, score);
+        makeImage();
     }
 
     /**
      * Make the score board image.
      */
-    private void makeImage(String title, String prefix, int score)
+    private void makeEndImage()
     {
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
 
@@ -49,7 +51,7 @@ public class ScoreBoard extends Actor
         image.setFont(font);
         image.setColor(Color.WHITE);
         image.drawString(title, 60, 100);
-        image.drawString(prefix + score, 60, 160);
+        image.drawString(prefix + Score.getInstance().getScore("level" + level), 60, 160);
         image.drawString("click to continue" , 60, 220);
         setImage(image);
     }
@@ -57,7 +59,7 @@ public class ScoreBoard extends Actor
     /**
      * Make the score board image.
      */
-    private void makeImage(String prefix, int score)
+    private void makeImage()
     {
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
 
@@ -69,16 +71,17 @@ public class ScoreBoard extends Actor
         font = font.deriveFont(FONT_SIZE);
         image.setFont(font);
         image.setColor(Color.WHITE);
-        image.drawString(prefix + score, 160, 190);
+        image.drawString(prefix + Score.getInstance().getScore("level" + level), 160, 160);
+        image.drawString("Max Score: " + Score.getInstance().getMaxScoreForLevel("level" + level), 160, 200);
         setImage(image);
     }
     
     public void act(){
         if (Greenfoot.mousePressed(this))
         {
-            //((MyWorld) getWorld()).backgroundSound.stop();  // stop music
             if (!inGameScore)
-                Greenfoot.setWorld(new MainMenu(score));   // go to UI
+                Greenfoot.setWorld(new MainMenu());   /* go to Main Menu */
         }
+        makeImage();
     }
 }

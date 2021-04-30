@@ -13,17 +13,25 @@ public class Score
 {
     private static Score scoreInstance = null;
     private Map<String, Integer> levelScores = null;
-    private final static int ADDING_POINTS = 10;
+    private Map<String, Integer> maxLevelScores = null;
+    private final static int ADDING_POINTS = 5;
     
     private Score() 
     {
-        levelScores = getScoresFromFile();
+        getScoresFromFile();
         if (Objects.isNull(levelScores))
         {
             levelScores = new HashMap<>();
-            levelScores.put("level1", 0);
-            levelScores.put("level2", 0);
-            levelScores.put("level3", 0);
+            levelScores.put("level1", 100);
+            levelScores.put("level2", 100);
+            levelScores.put("level3", 100);
+        }
+        if (Objects.isNull(maxLevelScores))
+        {
+            maxLevelScores = new HashMap<>();
+            maxLevelScores.put("level1", 0);
+            maxLevelScores.put("level2", 0);
+            maxLevelScores.put("level3", 0);
         }
     }
   
@@ -35,6 +43,11 @@ public class Score
         return scoreInstance;
     }
     
+    public int getMaxScoreForLevel(String level)
+    {
+        return Objects.isNull(this.maxLevelScores.get(level)) ? 0 : this.maxLevelScores.get(level);
+    }
+    
     public int getScore(String level)
     {
         return levelScores.get(level);
@@ -42,43 +55,41 @@ public class Score
     
     public void increaseLevelScore(String level)
     {
-        levelScores.put(level, levelScores.get(level) + ADDING_POINTS);
-        flushScoreToFile();
+        this.levelScores.put(level, levelScores.get(level) + ADDING_POINTS*Integer.parseInt(level.substring(level.length()-1)));
     }
     
     public void reduceLevelScore(String level)
-    {
-        levelScores.put(level, levelScores.get(level) - ADDING_POINTS);
-        flushScoreToFile();
+    {   
+        this.levelScores.put(level, levelScores.get(level) - ADDING_POINTS*Integer.parseInt(level.substring(level.length()-1)));
     }
     
     /**
      * Get saved scores from file.
      */
-    public Map<String, Integer> getScoresFromFile() 
+    public void getScoresFromFile() 
     {
         FileInputStream fi;
         try {
             fi = new FileInputStream(new File("scores.dat"));
 
             ObjectInputStream oi = new ObjectInputStream(fi);
-            Map<String, Integer> levelScores = (HashMap<String, Integer>) oi.readObject();
-            return levelScores;
+            this.maxLevelScores = (HashMap<String, Integer>) oi.readObject();
         }  catch (IOException | ClassNotFoundException ex) {
-            flushScoreToFile();
         }
-        return null;
     }
     
     /**
      * Save scores to file.
      */
-    public void flushScoreToFile() 
+    public void flushScoreToFile(String level) 
     {
+        if (this.maxLevelScores.get(level) > this.levelScores.get(level))
+            return;
+        this.maxLevelScores.put(level, this.levelScores.get(level));
         try {
             FileOutputStream f = new FileOutputStream(new File("scores.dat"));
             ObjectOutputStream o = new ObjectOutputStream(f);
-            o.writeObject(levelScores);
+            o.writeObject(maxLevelScores);
             o.close();
             f.close();
         } catch (IOException ex) {

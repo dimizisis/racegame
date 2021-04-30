@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * Write a description of class MyWorld here.
+ * World of every level.
  * 
  * @author Dimitrios Zisis
  * @version 1.0
@@ -13,8 +13,7 @@ import java.util.HashMap;
 public class MyWorld extends SWorld
 {
     private int level = 1;
-    
-    private Map objectsCount;
+    private GreenfootImage backgroundImage = new GreenfootImage("track.png");
     
     public MyWorld(int level)
     {
@@ -33,6 +32,11 @@ public class MyWorld extends SWorld
         super(600, 840, 1, 5000);
         prepare();
     }
+    
+    public int getLevel()
+    {
+        return this.level;
+    }
 
     /**
      * Prepare the world for the start of the program.
@@ -42,10 +46,11 @@ public class MyWorld extends SWorld
     {
         setMainActor(new Car(), 50, 500);      
         mainActor.setLocation(-3000, 510);
-        setScrollingBackground(new GreenfootImage("track.png"));
+        setScrollingBackground(this.backgroundImage);
         
         setPaintOrder(ScoreBoard.class);
-        addObject(new ScoreBoard("Score: ", Score.getInstance().getScore("level" + level)), 50, 20, false);
+        addObject(new ScoreBoard("Score: ", level), 50, 20, false);
+        addObject(new TimeBoard(2000), 520, 20, false);
         
         Sound.getInstance().playLevelMusic();
         
@@ -60,11 +65,18 @@ public class MyWorld extends SWorld
         generateRandomCrossings();
         generateRandomCones();
         generateRandomOils();
+        generateOtherCars();
+    }
+    
+    private void generateOtherCars()
+    {
+        for (int i=0; i<this.level*3; ++i)
+            addObject(new OtherCar(this.level*2), ThreadLocalRandom.current().nextInt(-1000, 2500), ThreadLocalRandom.current().nextInt(120, 700));
     }
     
     private void generateRandomCones()
     {
-        int count = this.level * 5; /* generate according to the level */
+        int count = this.level * 3; /* generate according to the level */
         int x, prevX = 0;
         for (int i=0; i < count; ++i)
         {  
@@ -76,7 +88,7 @@ public class MyWorld extends SWorld
     
     private void generateRandomOils()
     {
-        int count = this.level * 5; /* generate according to the level */
+        int count = this.level * 3; /* generate according to the level */
         int x, prevX = 0;
         for (int i=0; i < count; ++i)
         {
@@ -101,12 +113,15 @@ public class MyWorld extends SWorld
         }
     }
     
-    public void gameOver() 
+    public void gameEnd(boolean success)
     {
+        String title = success ? "Congratulations!" : "Game Over";
+        String prefix = "Score: ";
         setPaintOrder(ScoreBoard.class);
-        addObject(new ScoreBoard(Score.getInstance().getScore("level" + level)), getWidth()/2, getHeight()/2, false);
+        addObject(new ScoreBoard(title, prefix, level), getWidth()/2, getHeight()/2, false);
         Sound.getInstance().stopLevelMusic();
         Lives.getInstance().resetLives();
-        Score.getInstance().flushScoreToFile();
+        if (success)
+            Score.getInstance().flushScoreToFile("level" + level);
     }
 }

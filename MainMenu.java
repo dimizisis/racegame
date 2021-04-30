@@ -52,6 +52,9 @@ public class MainMenu extends World
         Button soundBtn = new Button("sound");
         addObject(soundBtn, 385, 650);
         
+        //Button settingsBtn = new Button("settings");
+        //addObject(settingsBtn, 385, 650);
+        
         try {
             Score.getInstance().getScoresFromFile();
         } catch (Exception e) {}
