@@ -24,7 +24,9 @@
             Crossing crossing = (Crossing) getOneIntersectingObject(Crossing.class);
             
             if (reachedEnd())
+            {
                 end(true);
+            }
             
             if (Greenfoot.isKeyDown("h"))
                 Sound.getInstance().playHorn();
@@ -35,7 +37,8 @@
             if (collidesWith(cone) || collidesWith(pedestrian) || collidesWith(otherCar))
             {
                 Score.getInstance().reduceLevelScore("level" + ((MyWorld) getWorld()).getLevel());
-                if (Lives.getInstance().reduceLives() > 0)
+                Lives.getInstance().reduceLives();
+                if (Lives.getInstance().getLivesCount() > 0)
                     respawn();
                 else
                 {
@@ -46,7 +49,8 @@
             if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0)
             {
                 Sound.getInstance().playWrongMove();
-                if (Lives.getInstance().reduceLives() <= 0)
+                Lives.getInstance().reduceLives();
+                if (Lives.getInstance().getLivesCount() < 1)
                     end(false);
             }
         

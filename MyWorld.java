@@ -115,13 +115,16 @@ public class MyWorld extends SWorld
     
     public void gameEnd(boolean success)
     {
+        if (success)
+            Score.getInstance().flushScoreToFile("level" + level);
         String title = success ? "Congratulations!" : "Game Over";
         String prefix = "Score: ";
         setPaintOrder(ScoreBoard.class);
         addObject(new ScoreBoard(title, prefix, level), getWidth()/2, getHeight()/2, false);
         Sound.getInstance().stopLevelMusic();
         Lives.getInstance().resetLives();
-        if (success)
-            Score.getInstance().flushScoreToFile("level" + level);
+        Score.getInstance().resetScore("level" + level);
+        Greenfoot.delay(400);
+        Greenfoot.setWorld(new MainMenu());
     }
 }

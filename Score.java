@@ -53,6 +53,11 @@ public class Score
         return levelScores.get(level);
     }
     
+    public void resetScore(String level)
+    {
+        levelScores.put(level, 100);
+    }
+    
     public void increaseLevelScore(String level)
     {
         this.levelScores.put(level, levelScores.get(level) + ADDING_POINTS*Integer.parseInt(level.substring(level.length()-1)));
@@ -93,7 +98,6 @@ public class Score
             o.close();
             f.close();
         } catch (IOException ex) {
-            System.out.println("flushScoreToFile()");
         }
     }
 }

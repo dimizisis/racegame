@@ -23,6 +23,11 @@ public class Lives
         return livesInstance;
     }
     
+    public int getLivesCount()
+    {
+        return this.lives;
+    }
+    
     public int reduceLives()
     {
         return --lives;
