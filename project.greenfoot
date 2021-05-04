@@ -11,27 +11,37 @@ dependency1.from=SettingsUI
 dependency1.to=CarSelector
 dependency1.type=UsesDependency
 dependency10.from=MyWorld
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 dependency10.to=Cone
 dependency10.type=UsesDependency
 dependency11.from=MyWorld
 dependency11.to=Oil
+<<<<<<< Updated upstream
 =======
 dependency10.to=MainMenu
 dependency10.type=UsesDependency
 dependency11.from=MyWorld
 dependency11.to=Sound
 >>>>>>> master
+=======
+>>>>>>> Stashed changes
 dependency11.type=UsesDependency
 dependency12.from=MyWorld
 dependency12.to=Crossing
 dependency12.type=UsesDependency
 dependency13.from=MyWorld
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 dependency13.to=MainMenu
 dependency13.type=UsesDependency
 dependency14.from=MyWorld
 dependency14.to=Sound
+<<<<<<< Updated upstream
 dependency14.type=UsesDependency
 dependency15.from=MyWorld
 dependency15.to=Score
@@ -68,10 +78,28 @@ dependency18.type=UsesDependency
 dependency19.from=Button
 dependency19.to=MyWorld
 >>>>>>> master
+=======
+dependency14.type=UsesDependency
+dependency15.from=MyWorld
+dependency15.to=Score
+dependency15.type=UsesDependency
+dependency16.from=MyWorld
+dependency16.to=Lives
+dependency16.type=UsesDependency
+dependency17.from=MyWorld
+dependency17.to=Settings
+dependency17.type=UsesDependency
+dependency18.from=ScoreBoard
+dependency18.to=MainMenu
+dependency18.type=UsesDependency
+dependency19.from=ScoreBoard
+dependency19.to=Score
+>>>>>>> Stashed changes
 dependency19.type=UsesDependency
 dependency2.from=SettingsUI
 dependency2.to=Button
 dependency2.type=UsesDependency
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 dependency20.from=Crossing
 dependency20.to=TrafficLight
@@ -133,11 +161,45 @@ dependency28.type=UsesDependency
 dependency29.from=Car
 dependency29.to=Lives
 >>>>>>> master
+=======
+dependency20.from=Crossing
+dependency20.to=TrafficLight
+dependency20.type=UsesDependency
+dependency21.from=Crossing
+dependency21.to=Pedestrian
+dependency21.type=UsesDependency
+dependency22.from=Button
+dependency22.to=InfoMessage
+dependency22.type=UsesDependency
+dependency23.from=Button
+dependency23.to=SettingsUI
+dependency23.type=UsesDependency
+dependency24.from=Button
+dependency24.to=MainMenu
+dependency24.type=UsesDependency
+dependency25.from=Button
+dependency25.to=MyWorld
+dependency25.type=UsesDependency
+dependency26.from=Button
+dependency26.to=Sound
+dependency26.type=UsesDependency
+dependency27.from=Car
+dependency27.to=Crossing
+dependency27.type=UsesDependency
+dependency28.from=Car
+dependency28.to=MyWorld
+dependency28.type=UsesDependency
+dependency29.from=Car
+dependency29.to=Settings
+>>>>>>> Stashed changes
 dependency29.type=UsesDependency
 dependency3.from=SettingsUI
 dependency3.to=Settings
 dependency3.type=UsesDependency
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 dependency30.from=Car
 dependency30.to=Cone
 dependency30.type=UsesDependency
@@ -170,6 +232,7 @@ dependency39.to=MyWorld
 dependency39.type=UsesDependency
 dependency4.from=MainMenu
 dependency4.to=Button
+<<<<<<< Updated upstream
 =======
 dependency30.from=InfoMessage
 dependency30.to=MainMenu
@@ -180,6 +243,8 @@ dependency31.type=UsesDependency
 dependency4.from=MyWorld
 dependency4.to=ScoreBoard
 >>>>>>> master
+=======
+>>>>>>> Stashed changes
 dependency4.type=UsesDependency
 dependency40.from=Settings
 dependency40.to=Score
@@ -199,11 +264,15 @@ dependency8.type=UsesDependency
 dependency9.from=MyWorld
 dependency9.to=OtherCar
 dependency9.type=UsesDependency
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 editor.fx.0.height=971
 editor.fx.0.width=1787
 editor.fx.0.x=-7
 editor.fx.0.y=-7
+<<<<<<< Updated upstream
 height=971
 package.numDependencies=40
 package.numTargets=20
@@ -216,6 +285,11 @@ height=971
 package.numDependencies=31
 package.numTargets=17
 >>>>>>> master
+=======
+height=971
+package.numDependencies=40
+package.numTargets=20
+>>>>>>> Stashed changes
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
