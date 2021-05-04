@@ -125,16 +125,8 @@ public class MyWorld extends SWorld
         Sound.getInstance().stopLevelMusic();
         Lives.getInstance().resetLives();
         Score.getInstance().resetScore("level" + level);
-<<<<<<< Updated upstream
-<<<<<<< HEAD
         if (success)
             Settings.getInstance().updateCarAvailability();
-=======
->>>>>>> master
-=======
-        if (success)
-            Settings.getInstance().updateCarAvailability();
->>>>>>> Stashed changes
         Greenfoot.delay(400);
         Greenfoot.setWorld(new MainMenu());
     }
