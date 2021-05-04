@@ -1,10 +1,14 @@
 import greenfoot.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Write a description of class Button here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class Button extends Actor
 {
@@ -14,6 +18,7 @@ public class Button extends Actor
     public Button(String button)
     {
         this.button = button;
+        
         setImage(button + ".png");
     }
     
@@ -28,13 +33,21 @@ public class Button extends Actor
             }
             else if (button.equals("info"))
             {
-                getWorld().addObject(new InfoMessage("Accelerate Key: Right Arrow\nBackwards Move Key: Left Arrow\nBreak Key: B"), getWorld().getWidth()/2, getWorld().getHeight()/2);
+                try {
+                    getWorld().addObject(new InfoMessage(Files.readString(Paths.get("./gameinfo.txt"), StandardCharsets.US_ASCII)), getWorld().getWidth()/2, getWorld().getHeight()/2);
+                } catch(IOException e) {}
             }
-            //else if (button.equals("settings"))
-            //{
-            //}
+            else if (button.equals("settings"))
+            {
+                Greenfoot.setWorld(new SettingsUI());
+            }
+            else if (button.equals("ok"))
+            {
+                Greenfoot.setWorld(new MainMenu());
+            }
             else
-                Greenfoot.setWorld(new MyWorld(Integer.parseInt(button.substring(button.length()-1))));
+                if (!button.contains("disabled"))
+                    Greenfoot.setWorld(new MyWorld(Integer.parseInt(button.substring(button.length()-1))));
          }
     }    
 }

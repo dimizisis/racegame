@@ -10,7 +10,7 @@ import java.util.Calendar;
  */
 public class InfoMessage extends Actor
 {
-    public static final float FONT_SIZE = 30.0f;
+    public static final float FONT_SIZE = 20.0f;
     public static final int WIDTH = 800;
     public static final int HEIGHT = 840;
     
@@ -48,7 +48,6 @@ public class InfoMessage extends Actor
     public void act(){
         if (Greenfoot.mousePressed(this))
         {
-            //((MyWorld) getWorld()).backgroundSound.stop();  // stop music
             Greenfoot.setWorld(new MainMenu(score));   // go to UI
         }
     }

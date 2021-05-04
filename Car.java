@@ -11,6 +11,14 @@
     {
         private int speed = 1;
         private final static int SPEED_LIMIT = 5;
+        
+        public Car()
+        {
+            setImage(new GreenfootImage(Settings.getInstance().getSelectedCar()));
+            if (Settings.getInstance().getSelectedCar().contains("Car_2"))
+                getImage().rotate(180);
+        }
+        
         /**
          * Act - do whatever the Car wants to do. This method is called whenever
          * the 'Act' or 'Run' button gets pressed in the environment.
@@ -24,7 +32,9 @@
             Crossing crossing = (Crossing) getOneIntersectingObject(Crossing.class);
             
             if (reachedEnd())
+            {
                 end(true);
+            }
             
             if (Greenfoot.isKeyDown("h"))
                 Sound.getInstance().playHorn();
@@ -35,7 +45,8 @@
             if (collidesWith(cone) || collidesWith(pedestrian) || collidesWith(otherCar))
             {
                 Score.getInstance().reduceLevelScore("level" + ((MyWorld) getWorld()).getLevel());
-                if (Lives.getInstance().reduceLives() > 0)
+                Lives.getInstance().reduceLives();
+                if (Lives.getInstance().getLivesCount() > 0)
                     respawn();
                 else
                 {
@@ -46,7 +57,8 @@
             if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0)
             {
                 Sound.getInstance().playWrongMove();
-                if (Lives.getInstance().reduceLives() <= 0)
+                Lives.getInstance().reduceLives();
+                if (Lives.getInstance().getLivesCount() < 1)
                     end(false);
             }
         

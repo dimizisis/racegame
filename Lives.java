@@ -12,7 +12,7 @@ public class Lives
     
     private Lives() 
     {
-        this.lives = 2;
+        this.lives = 4;
     }
   
     public static Lives getInstance()
@@ -23,13 +23,19 @@ public class Lives
         return livesInstance;
     }
     
+    public int getLivesCount()
+    {
+        return this.lives;
+    }
+    
     public int reduceLives()
     {
-        return --lives;
+        --this.lives;
+        return this.lives;
     }
     
     public void resetLives()
     {
-        lives = 2;
+        this.lives = 4;
     }
 }

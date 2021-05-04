@@ -40,46 +40,24 @@ public class MainMenu extends World
         Button levelOneBtn = new Button("level1");
         addObject(levelOneBtn, 300, 290);
         
-        Button levelTwoBtn = new Button("level2");
+        Button levelTwoBtn = new Button("level2" + (Score.getInstance().getMaxScoreForLevel("level1") >= 70 ? "" : "-disabled"));
         addObject(levelTwoBtn, 300, 400);
         
-        Button levelThreeBtn = new Button("level3");
+        Button levelThreeBtn = new Button("level3" + (Score.getInstance().getMaxScoreForLevel("level2") >= 70 ? "" : "-disabled"));
         addObject(levelThreeBtn, 300, 510);
         
         Button infoBtn = new Button("info");
-        addObject(infoBtn, 225, 650);
+        addObject(infoBtn, 120, 650);
         
         Button soundBtn = new Button("sound");
-        addObject(soundBtn, 385, 650);
+        addObject(soundBtn, 485, 650);
         
-        //Button settingsBtn = new Button("settings");
-        //addObject(settingsBtn, 385, 650);
+        Button settingsBtn = new Button("settings");
+        addObject(settingsBtn, 300, 650);
         
         try {
             Score.getInstance().getScoresFromFile();
         } catch (Exception e) {}
         
-        //Button buttonUpgrade = new Button("Upgrade");
-        //addObject(buttonUpgrade,40,60);
-        //buttonUpgrade.getImage().scale(60, 40);
-        
-        // gets progress from file
-        // if no progress starts new
-        /* Progress progress = getProgressFromFile();
-        if(progress==null){
-            addObject(new Score(0), 50, 20);
-            this.progress.setArrowDamage(50);
-            this.progress.setArrowSpeed(11);
-            this.progress.setTotalMoney(0);
-            saveProgressToFile();
-        } 
-        // if there is previus progress 
-        else{
-            addObject(new Score(progress.getTotalMoney()), 50, 20);
-                this.progress.setTotalMoney(progress.getTotalMoney());
-                this.progress.setArrowDamage(progress.getArrowDamage());
-                this.progress.setArrowSpeed(progress.getArrowSpeed());
-                saveProgressToFile();
-        } */
     }
 }

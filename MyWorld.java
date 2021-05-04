@@ -55,9 +55,10 @@ public class MyWorld extends SWorld
         Sound.getInstance().playLevelMusic();
         
         generateObjects();
-        
+
         setPaintOrder(Oil.class, Cone.class);
         setPaintOrder(Cone.class, Car.class);
+        setPaintOrder(ScoreBoard.class);
     }
     
     private void generateObjects()
@@ -115,13 +116,18 @@ public class MyWorld extends SWorld
     
     public void gameEnd(boolean success)
     {
-        String title = success ? "Congratulations!" : "Game Over";
-        String prefix = "Score: ";
-        setPaintOrder(ScoreBoard.class);
-        addObject(new ScoreBoard(title, prefix, level), getWidth()/2, getHeight()/2, false);
-        Sound.getInstance().stopLevelMusic();
-        Lives.getInstance().resetLives();
         if (success)
             Score.getInstance().flushScoreToFile("level" + level);
+        String title = success ? "Congratulations!" : "Game Over";
+        String prefix = success ? "Score: " : "Directing you to main menu...";
+        // setPaintOrder(ScoreBoard.class);
+        addObject(new ScoreBoard(title, prefix, level, success), getWidth()/2, getHeight()/2, false);
+        Sound.getInstance().stopLevelMusic();
+        Lives.getInstance().resetLives();
+        Score.getInstance().resetScore("level" + level);
+        if (success)
+            Settings.getInstance().updateCarAvailability();
+        Greenfoot.delay(400);
+        Greenfoot.setWorld(new MainMenu());
     }
 }

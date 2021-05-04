@@ -19,12 +19,12 @@ public class ScoreBoard extends Actor
     private String title;
     private int level;
     
-    public ScoreBoard(String title, String prefix, int level)
+    public ScoreBoard(String title, String prefix, int level, boolean success)
     {
         this.title = title;
         this.prefix = prefix;
         this.level = level;
-        makeEndImage();
+        makeEndImage(success);
     }
     
     public ScoreBoard(String prefix, int level)
@@ -38,7 +38,7 @@ public class ScoreBoard extends Actor
     /**
      * Make the score board image.
      */
-    private void makeEndImage()
+    private void makeEndImage(boolean success)
     {
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
 
@@ -51,8 +51,10 @@ public class ScoreBoard extends Actor
         image.setFont(font);
         image.setColor(Color.WHITE);
         image.drawString(title, 60, 100);
-        image.drawString(prefix + Score.getInstance().getScore("level" + level), 60, 160);
-        image.drawString("click to continue" , 60, 220);
+        if (success)
+            image.drawString(prefix + Score.getInstance().getScore("level" + this.level), 60, 160);
+        else
+            image.drawString(prefix, 60, 160);
         setImage(image);
     }
     
