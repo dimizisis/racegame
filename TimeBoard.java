@@ -1,16 +1,17 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
- * Write a description of class TimeBoard here.
+ * The TimeBoard is used to display remaining time & lives on the screen. It can display some
+ * text and several numbers.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class TimeBoard extends Actor
 {
-    public static final float FONT_SIZE = 38.0f;
+    public static final float FONT_SIZE = 24.0f;
     public static final int WIDTH = 260;
-    public static final int HEIGHT = 300;
+    public static final int HEIGHT = 330;
     
     private int time;
     private String prefix;
@@ -44,7 +45,7 @@ public class TimeBoard extends Actor
         font = font.deriveFont(FONT_SIZE);
         image.setFont(font);
         image.setColor(Color.WHITE);
-        image.drawString(this.prefix + this.time/100, 50, 190);
+        image.drawString(this.prefix + this.time/100 + "\nLives: " + Lives.getInstance().getLivesCount(), 60, 190);
         setImage(image);
     }
     

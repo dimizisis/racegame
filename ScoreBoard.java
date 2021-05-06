@@ -52,9 +52,9 @@ public class ScoreBoard extends Actor
         image.setColor(Color.WHITE);
         image.drawString(title, 60, 100);
         if (success)
-            image.drawString(prefix + Score.getInstance().getScore("level" + this.level), 60, 160);
+            image.drawString(prefix + Score.getInstance().getScore("level" + this.level) + "\nDirecting you to main menu...", 60, 160);
         else
-            image.drawString(prefix, 60, 160);
+            image.drawString(prefix + "\nDirecting you to main menu...", 60, 160);
         setImage(image);
     }
     
@@ -66,15 +66,15 @@ public class ScoreBoard extends Actor
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
 
         image.setColor(new Color(255, 255, 255, 128));
-        image.fillRect(0, 0, WIDTH-80, HEIGHT-80);
+        image.fillRect(0, 0, WIDTH-65, HEIGHT-80);
         image.setColor(new Color(0, 0, 0, 128));
-        image.fillRect(5, 5, WIDTH-80, HEIGHT-80);
+        image.fillRect(5, 5, WIDTH-65, HEIGHT-80);
         Font font = image.getFont();
         font = font.deriveFont(FONT_SIZE);
         image.setFont(font);
         image.setColor(Color.WHITE);
-        image.drawString(prefix + Score.getInstance().getScore("level" + level), 160, 160);
-        image.drawString("Max Score: " + Score.getInstance().getMaxScoreForLevel("level" + level), 160, 200);
+        image.drawString(prefix + Score.getInstance().getScore("level" + level), 165, 162);
+        image.drawString("Max Score: " + Score.getInstance().getMaxScoreForLevel("level" + level), 162, 200);
         setImage(image);
     }
     

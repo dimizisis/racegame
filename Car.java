@@ -49,9 +49,7 @@
                 if (Lives.getInstance().getLivesCount() > 0)
                     respawn();
                 else
-                {
                     end(false);
-                }
             }
         
             if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0)

@@ -27,8 +27,7 @@ public class MyWorld extends SWorld
      * 
      */
     public MyWorld()
-    {    
-        // Create a new world with 600x840 cells with a cell size of 1x1 pixels.
+    {
         super(600, 840, 1, 5000);
         prepare();
     }
@@ -119,8 +118,7 @@ public class MyWorld extends SWorld
         if (success)
             Score.getInstance().flushScoreToFile("level" + level);
         String title = success ? "Congratulations!" : "Game Over";
-        String prefix = success ? "Score: " : "Directing you to main menu...";
-        // setPaintOrder(ScoreBoard.class);
+        String prefix = success ? "Score: " : "";
         addObject(new ScoreBoard(title, prefix, level, success), getWidth()/2, getHeight()/2, false);
         Sound.getInstance().stopLevelMusic();
         Lives.getInstance().resetLives();

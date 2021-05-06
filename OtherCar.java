@@ -1,4 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Write a description of class OtherCar here.
@@ -13,11 +14,17 @@ public class OtherCar extends Actor
     
     public OtherCar()
     {
+        int i = ThreadLocalRandom.current().nextInt(1, 4);
+        this.setImage(new GreenfootImage("Car_" + i + "_01.png"));
         this.speed = 2;
     }
     
     public OtherCar(int speed)
     {
+        int i = ThreadLocalRandom.current().nextInt(1, 4);
+        this.setImage(new GreenfootImage("Car_" + i + "_01.png"));
+        if (i != 2)
+            this.getImage().rotate(180);
         this.speed = speed;
     }
     /**
