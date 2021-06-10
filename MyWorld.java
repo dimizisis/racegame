@@ -12,10 +12,11 @@ import java.util.HashMap;
  */
 public class MyWorld extends SWorld
 {
-    private int level = 1;
+    private String level = "crossings";
     private GreenfootImage backgroundImage = new GreenfootImage("track.png");
+    private Car mainActor = new Car();
     
-    public MyWorld(int level)
+    public MyWorld(String level)
     {
         super(600, 840, 1, 5000);
         this.level = level;
@@ -32,7 +33,7 @@ public class MyWorld extends SWorld
         prepare();
     }
     
-    public int getLevel()
+    public String getLevel()
     {
         return this.level;
     }
@@ -43,17 +44,17 @@ public class MyWorld extends SWorld
      */
     private void prepare()
     {
-        setMainActor(new Car(), 50, 500);      
+        setMainActor(mainActor, 50, 500);      
         mainActor.setLocation(-3000, 510);
         setScrollingBackground(this.backgroundImage);
         
         setPaintOrder(ScoreBoard.class);
         addObject(new ScoreBoard("Score: ", level), 50, 20, false);
-        addObject(new TimeBoard(2000), 520, 20, false);
-        
-        Sound.getInstance().playLevelMusic();
+        addObject(new Speedometer(mainActor), 520, 20, false);
         
         generateObjects();
+        
+        //Sound.getInstance().playLevelMusic();
 
         setPaintOrder(Oil.class, Cone.class);
         setPaintOrder(Cone.class, Car.class);
@@ -63,20 +64,20 @@ public class MyWorld extends SWorld
     private void generateObjects()
     {
         generateRandomCrossings();
-        generateRandomCones();
-        generateRandomOils();
+        //generateRandomCones();
+        //generateRandomOils();
         generateOtherCars();
     }
     
     private void generateOtherCars()
     {
-        for (int i=0; i<this.level*3; ++i)
-            addObject(new OtherCar(this.level*2), ThreadLocalRandom.current().nextInt(-1000, 2500), ThreadLocalRandom.current().nextInt(120, 700));
+        for (int i=0; i<4; ++i)
+            addObject(new OtherCar(2), ThreadLocalRandom.current().nextInt(-1000, 2500), ThreadLocalRandom.current().nextInt(120, 700));
     }
     
     private void generateRandomCones()
     {
-        int count = this.level * 3; /* generate according to the level */
+        int count = 3; /* generate according to the level */
         int x, prevX = 0;
         for (int i=0; i < count; ++i)
         {  
@@ -88,7 +89,7 @@ public class MyWorld extends SWorld
     
     private void generateRandomOils()
     {
-        int count = this.level * 3; /* generate according to the level */
+        int count = 3; /* generate according to the level */
         int x, prevX = 0;
         for (int i=0; i < count; ++i)
         {
@@ -100,15 +101,15 @@ public class MyWorld extends SWorld
     
     private void generateRandomCrossings()
     {
-        int count = this.level; /* generate according to the level */
-        boolean hasPedestrians = this.level > 1 ? true : false;
+        boolean hasPedestrians = true;
         int x, prevX = 0;
-        for (int i=0; i < count; ++i)
+        for (int i=0; i < 3; ++i)
         {
-            x = ThreadLocalRandom.current().nextInt(-1900 + prevX, 2500);
+            x = ThreadLocalRandom.current().nextInt(-2000 + prevX, 3000);
             Crossing crossing = new Crossing(hasPedestrians);
             addObject(crossing, x, 420);
-            crossing.addTrafficLight();
+            if (i % 2 == 0)
+                crossing.addTrafficLight();
             prevX = x;
         }
     }
@@ -116,13 +117,13 @@ public class MyWorld extends SWorld
     public void gameEnd(boolean success)
     {
         if (success)
-            Score.getInstance().flushScoreToFile("level" + level);
+            Score.getInstance().flushScoreToFile(level);
         String title = success ? "Congratulations!" : "Game Over";
         String prefix = success ? "Score: " : "";
         addObject(new ScoreBoard(title, prefix, level, success), getWidth()/2, getHeight()/2, false);
         Sound.getInstance().stopLevelMusic();
         Lives.getInstance().resetLives();
-        Score.getInstance().resetScore("level" + level);
+        Score.getInstance().resetScore(level);
         if (success)
             Settings.getInstance().updateCarAvailability();
         Greenfoot.delay(400);

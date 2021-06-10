@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Speedometer
+comment0.text=\r\n\ The\ TimeBoard\ is\ used\ to\ display\ remaining\ time\ &\ lives\ on\ the\ screen.\ It\ can\ display\ some\r\n\ text\ and\ several\ numbers.\r\n\ \r\n\ @author\ Dimitrios\ Zisis\r\n\ @version\ 1.0\r\n
+comment1.params=c
+comment1.target=Speedometer(Car)
+comment2.params=
+comment2.target=void\ makeImage()
+comment2.text=\r\n\ Make\ the\ score\ board\ image.\r\n
+comment3.params=
+comment3.target=void\ act()
+numComments=4

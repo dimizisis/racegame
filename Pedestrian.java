@@ -28,5 +28,10 @@ public class Pedestrian extends Actor
     public void act() 
     {
         setLocation(getX(), getY() - speed);
-    }    
+    }
+    
+    public void increaseSpeed()
+    {
+        this.speed++;
+    }
 }

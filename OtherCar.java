@@ -33,6 +33,9 @@ public class OtherCar extends Actor
      */
     public void act() 
     {
-        move(-this.speed);
+        if (getObjectsInRange(100, Pedestrian.class).isEmpty() && getObjectsInRange(100, OtherCar.class).isEmpty() && getObjectsInRange(100, Car.class).isEmpty())
+            move(-this.speed);
+        else
+            move(0);
     }    
 }

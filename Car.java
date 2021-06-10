@@ -1,22 +1,28 @@
 
     import greenfoot.*;
     import java.util.Objects;
+    import java.util.List;
+    import java.util.Set;
+    import java.util.HashSet;
     /**
      * Write a description of class Car here.
      * 
      * @author Dimitrios Zisis 
      * @version 1.0
      */
-    public class Car extends Actor
+    public class Car extends SmoothMover
     {
-        private int speed = 1;
         private final static int SPEED_LIMIT = 5;
+        private Set<Actor> stopped;
+        private Set<Actor> passed;
         
         public Car()
         {
             setImage(new GreenfootImage(Settings.getInstance().getSelectedCar()));
             if (Settings.getInstance().getSelectedCar().contains("Car_2"))
                 getImage().rotate(180);
+            stopped = new HashSet<>();
+            passed = new HashSet<>();
         }
         
         /**
@@ -25,55 +31,153 @@
          */
         public void act() 
         {
-            move(speed);
-            Actor cone = getOneIntersectingObject(Cone.class);
-            Actor pedestrian = getOneIntersectingObject(Pedestrian.class);
-            Actor otherCar = getOneIntersectingObject(OtherCar.class);
-            Crossing crossing = (Crossing) getOneIntersectingObject(Crossing.class);
+
+            move();
+            checkCollisions();
+            checkTrafficLight();
             
+            if (Greenfoot.isKeyDown("left")) 
+            {
+                moveBackwards();
+            }
+
+            if (Greenfoot.isKeyDown("right")) 
+            {
+                moveForward();
+            }
+        
+            if (Greenfoot.isKeyDown("up")) 
+            {
+                moveUp();
+            }
+            
+            if (Greenfoot.isKeyDown("down")) 
+            {
+                moveDown();
+            }
+            
+            if (Greenfoot.isKeyDown("b"))
+            {
+                stop();
+                checkIfStoppedBeforeCrossing();
+            }
+            
+            if (Greenfoot.isKeyDown("h"))
+            {
+                Sound.getInstance().playHorn();
+                warnPedestrians();
+            }
+                
             if (reachedEnd())
             {
                 end(true);
             }
             
-            if (Greenfoot.isKeyDown("h"))
-                Sound.getInstance().playHorn();
-                
-            if (isTouching(Oil.class))
-                twist();
-                
-            if (collidesWith(cone) || collidesWith(pedestrian) || collidesWith(otherCar))
+    }
+    
+    private void moveBackwards()
+    {
+        stop();
+        addForce (new Vector(getRotation(), -0.2));
+    }
+    
+    private void moveForward()
+    {
+        if (getSpeed() < SPEED_LIMIT)
+        {
+            addForce (new Vector(getRotation(), 0.2));
+        }
+    }
+    
+    private void moveUp()
+    {
+        if (canGoUp())
+        {
+            double currSpeed = getSpeed();
+            stop();
+            setRotation(getRotation() - 2);
+            addForce (new Vector(getRotation(), currSpeed));
+        }
+    }
+    
+    private void moveDown()
+    {
+        if (canGoDown())
+        {
+            double currSpeed = getSpeed();
+            stop();
+            setRotation(getRotation() + 2);
+            addForce (new Vector(getRotation(), currSpeed));
+        }
+    }
+    
+    private void warnPedestrians()
+    {
+        List<Crossing> crossings = getObjectsInRange(200, Crossing.class);
+        List<Pedestrian> pedestriansInRange = getObjectsInRange(350, Pedestrian.class);
+        if (!crossings.isEmpty())
+        {
+            if (!pedestriansInRange.isEmpty())
             {
-                Score.getInstance().reduceLevelScore("level" + ((MyWorld) getWorld()).getLevel());
-                Lives.getInstance().reduceLives();
-                if (Lives.getInstance().getLivesCount() > 0)
-                    respawn();
-                else
-                    end(false);
+                for (Crossing cr : crossings)
+                {
+                    if ((cr.hasTrafficLight() && cr.getTrafficLight().getState() == 1) || !cr.hasTrafficLight())
+                    {
+                        pedestriansInRange.forEach(Pedestrian::increaseSpeed);
+                    }
+                }
             }
-        
-            if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0)
+        }
+    }
+    
+    private void checkCollisions()
+    {
+        Actor pedestrian = getOneIntersectingObject(Pedestrian.class);
+        Actor otherCar = getOneIntersectingObject(OtherCar.class);
+        if (collidesWith(pedestrian) || collidesWith(otherCar))
+        {
+            Score.getInstance().reduceLevelScore(((MyWorld) getWorld()).getLevel());
+            Lives.getInstance().reduceLives();
+            if (Lives.getInstance().getLivesCount() > 0)
+                respawn();
+            else
+                end(false);
+        }
+    }
+    
+    private void checkTrafficLight()
+    {
+        Crossing crossing = (Crossing) getOneIntersectingObject(Crossing.class);
+        if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0)
+        {
+            //Sound.getInstance().playWrongMove();
+            if (!passed.contains(crossing))
             {
-                Sound.getInstance().playWrongMove();
+                passed.add(crossing);
                 Lives.getInstance().reduceLives();
                 if (Lives.getInstance().getLivesCount() < 1)
                     end(false);
             }
-        
-            if (Greenfoot.isKeyDown("up"))
-                goUp();
-            
-            if (Greenfoot.isKeyDown("down"))
-                goDown();
-            
-            if (Greenfoot.isKeyDown("right"))
-                accelerate();
-        
-            if (Greenfoot.isKeyDown("left"))
-                reverse();
-        
-            if (Greenfoot.isKeyDown("b"))
-                stop();
+        }
+    }
+    
+    private boolean checkIfStoppedBeforeCrossing()
+    {
+        Crossing cr = (Crossing) getOneIntersectingObject(Crossing.class);
+        List<Crossing> actorsInRange = getObjectsInRange(200, Crossing.class);
+        if (!actorsInRange.isEmpty() && Objects.isNull(cr))
+        {
+            for (Crossing crossing : actorsInRange)
+            {
+                if (!stopped.contains(crossing))
+                {
+                    stopped.add(crossing);
+                    Score.getInstance().increaseLevelScore("crossings");
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     
     private boolean reachedEnd()
@@ -87,45 +191,6 @@
         if (!success)
             setImage(new GreenfootImage("explode.gif"));
         ((MyWorld) getWorld()).gameEnd(success);
-    }
-    
-    private void goUp()
-    {
-       if (canGoUp())
-            setLocation(getX(), getY() - 2); 
-    }
-    
-    private void goDown()
-    {
-        if (canGoDown())
-            setLocation(getX(), getY() + 2);
-    }
-    
-    private void stop()
-    {
-        speed = 0;
-    }
-    
-    private void reverse()
-    {
-        if (speed > 1)
-            --speed;
-        if (speed == 0)
-        {
-            --speed;
-            if (Math.abs(speed) >= SPEED_LIMIT) speed = -SPEED_LIMIT;
-        }
-    }
-    
-    private void accelerate()
-    {
-        if (speed >= 0)
-        {
-            ++speed;   
-            if (speed > SPEED_LIMIT) speed = SPEED_LIMIT;
-        }
-        if (speed <= 0)
-            speed = 0;
     }
     
     private boolean canGoUp()
@@ -148,7 +213,7 @@
             return false;
         return true;
     }
-    
+    /*
     private void twist()
     {
         Sound.getInstance().playScreech();
@@ -161,7 +226,7 @@
             else
                 setLocation(getX() + 40, getY());
         }
-    }
+    } */
     
     private void respawn()
     {

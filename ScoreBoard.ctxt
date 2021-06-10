@@ -2,9 +2,9 @@
 comment0.target=ScoreBoard
 comment0.text=\r\n\ The\ ScoreBoard\ is\ used\ to\ display\ results\ on\ the\ screen.\ It\ can\ display\ some\r\n\ text\ and\ several\ numbers.\r\n\ \r\n\ @author\ M\ Kolling\r\n\ @version\ 1.0\r\n
 comment1.params=title\ prefix\ level\ success
-comment1.target=ScoreBoard(java.lang.String,\ java.lang.String,\ int,\ boolean)
+comment1.target=ScoreBoard(java.lang.String,\ java.lang.String,\ java.lang.String,\ boolean)
 comment2.params=prefix\ level
-comment2.target=ScoreBoard(java.lang.String,\ int)
+comment2.target=ScoreBoard(java.lang.String,\ java.lang.String)
 comment3.params=success
 comment3.target=void\ makeEndImage(boolean)
 comment3.text=\r\n\ Make\ the\ score\ board\ image.\r\n

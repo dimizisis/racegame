@@ -33,15 +33,25 @@ public class Crossing extends Actor
     public void act() 
     {
         if (this.hasPedestrians)
-            if (Objects.nonNull(trafficLight))
+        {
+            long currTime  = System.currentTimeMillis();
+            if (currTime >= lastPassed + ThreadLocalRandom.current().nextInt(2000, 4000+1))
             {
-                long currTime  = System.currentTimeMillis();
-                if (currTime >= lastPassed + ThreadLocalRandom.current().nextInt(2000, 4000+1) && trafficLight.getState() == 0)
+                if (Objects.nonNull(trafficLight))
+                {
+                    if (trafficLight.getState() == 0)
+                    {
+                        pedestrianPass(ThreadLocalRandom.current().nextInt(1, 5));
+                        lastPassed = currTime;
+                    }
+                }
+                else
                 {
                     pedestrianPass(ThreadLocalRandom.current().nextInt(1, 5));
-                    lastPassed  = currTime;
+                    lastPassed = currTime;
                 }
             }
+        }
     }
     
     private void pedestrianPass(int pedestrianNum)

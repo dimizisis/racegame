@@ -19,7 +19,7 @@ public class Sound
     
     private Sound() 
     {
-        this.soundOn = 1; /* start with on */
+        this.soundOn = 1; /* start with off */
     }
   
     public static Sound getInstance()

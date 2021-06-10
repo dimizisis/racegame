@@ -17,9 +17,9 @@ public class ScoreBoard extends Actor
     
     private String prefix;
     private String title;
-    private int level;
+    private String level;
     
-    public ScoreBoard(String title, String prefix, int level, boolean success)
+    public ScoreBoard(String title, String prefix, String level, boolean success)
     {
         this.title = title;
         this.prefix = prefix;
@@ -27,7 +27,7 @@ public class ScoreBoard extends Actor
         makeEndImage(success);
     }
     
-    public ScoreBoard(String prefix, int level)
+    public ScoreBoard(String prefix, String level)
     {
         this.prefix = prefix;
         this.level = level;
@@ -52,7 +52,7 @@ public class ScoreBoard extends Actor
         image.setColor(Color.WHITE);
         image.drawString(title, 60, 100);
         if (success)
-            image.drawString(prefix + Score.getInstance().getScore("level" + this.level) + "\nDirecting you to main menu...", 60, 160);
+            image.drawString(prefix + Score.getInstance().getScore(this.level) + "\nDirecting you to main menu...", 60, 160);
         else
             image.drawString(prefix + "\nDirecting you to main menu...", 60, 160);
         setImage(image);
@@ -73,8 +73,8 @@ public class ScoreBoard extends Actor
         font = font.deriveFont(FONT_SIZE);
         image.setFont(font);
         image.setColor(Color.WHITE);
-        image.drawString(prefix + Score.getInstance().getScore("level" + level), 165, 162);
-        image.drawString("Max Score: " + Score.getInstance().getMaxScoreForLevel("level" + level), 162, 200);
+        image.drawString(prefix + Score.getInstance().getScore(level), 165, 162);
+        image.drawString("Max Score: " + Score.getInstance().getMaxScoreForLevel(level), 162, 200);
         setImage(image);
     }
     

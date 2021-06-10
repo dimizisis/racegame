@@ -22,16 +22,16 @@ public class Score
         if (Objects.isNull(levelScores))
         {
             levelScores = new HashMap<>();
-            levelScores.put("level1", 100);
-            levelScores.put("level2", 100);
-            levelScores.put("level3", 100);
+            levelScores.put("crossings", 100);
+            levelScores.put("roundabouts", 100);
+            //levelScores.put("level3", 100);
         }
         if (Objects.isNull(maxLevelScores))
         {
             maxLevelScores = new HashMap<>();
-            maxLevelScores.put("level1", 0);
-            maxLevelScores.put("level2", 0);
-            maxLevelScores.put("level3", 0);
+            maxLevelScores.put("crossings", 0);
+            maxLevelScores.put("roundabouts", 0);
+           //maxLevelScores.put("level3", 0);
         }
     }
   
@@ -60,12 +60,12 @@ public class Score
     
     public void increaseLevelScore(String level)
     {
-        this.levelScores.put(level, levelScores.get(level) + ADDING_POINTS*Integer.parseInt(level.substring(level.length()-1)));
+        this.levelScores.put(level, levelScores.get(level) + ADDING_POINTS);
     }
     
     public void reduceLevelScore(String level)
     {   
-        this.levelScores.put(level, levelScores.get(level) - ADDING_POINTS*Integer.parseInt(level.substring(level.length()-1)));
+        this.levelScores.put(level, levelScores.get(level) - ADDING_POINTS);
     }
     
     /**

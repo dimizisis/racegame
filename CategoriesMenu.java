@@ -7,13 +7,13 @@ import java.io.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MainMenu extends World
+public class CategoriesMenu extends World
 {
     
     /**
      * Constructor for objects of class UI.
      */
-    public MainMenu()
+    public CategoriesMenu()
     {    
         // Create a new world with 600x840 cells with a cell size of 1x1 pixels.
         super(600, 840, 1);
@@ -21,7 +21,7 @@ public class MainMenu extends World
 
         prepare();
     }
-    public MainMenu(int score)
+    public CategoriesMenu(int score)
     {
         // Create a new world with 600x840 cells with a cell size of 1x1 pixels.
         super(600, 840, 1);
@@ -37,27 +37,27 @@ public class MainMenu extends World
     private void prepare()
     {
         /* Adds buttons */
-        Button categoriesBtn = new Button("categories_btn_" + Language.getInstance().getCurrLanguage());
-        addObject(categoriesBtn, 310, 280);
-
-        Button statsBtn = new Button("stats_btn_" + Language.getInstance().getCurrLanguage());
-        addObject(statsBtn, 310, 390);
-
-        Button exitBtn = new Button("exit_btn_" + Language.getInstance().getCurrLanguage());
-        addObject(exitBtn, 310, 500);
-
+        Button crossingsBtn = new Button("crossings_btn_" + Language.getInstance().getCurrLanguage());
+        addObject(crossingsBtn, 310, 280);
+        
+        Button roundAboutsBtn = new Button("roundabouts_btn_" + Language.getInstance().getCurrLanguage());
+        addObject(roundAboutsBtn, 310, 390);
+        
+        Button backBtn = new Button("back_btn_" + Language.getInstance().getCurrLanguage());
+        addObject(backBtn, 310, 500);
+        
         Button infoBtn = new Button("info");
         addObject(infoBtn, 120, 650);
-
+        
         Button soundBtn = new Button("sound");
         addObject(soundBtn, 485, 650);
-
+        
         Button settingsBtn = new Button("settings");
         addObject(settingsBtn, 300, 650);
-
+        
         try {
             Score.getInstance().getScoresFromFile();
         } catch (Exception e) {}
-
+        
     }
 }

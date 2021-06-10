@@ -18,7 +18,6 @@ public class Button extends Actor
     public Button(String button)
     {
         this.button = button;
-        
         setImage(button + ".png");
     }
     
@@ -45,9 +44,26 @@ public class Button extends Actor
             {
                 Greenfoot.setWorld(new MainMenu());
             }
-            else
-                if (!button.contains("disabled"))
-                    Greenfoot.setWorld(new MyWorld(Integer.parseInt(button.substring(button.length()-1))));
+            else if (button.startsWith("categories_btn_"))
+            {
+                Greenfoot.setWorld(new CategoriesMenu());
+            }
+            else if (button.startsWith("stats_btn_"))
+            {
+                // TODO
+            }
+            else if (button.startsWith("exit_btn_"))
+            {
+                Greenfoot.stop();
+            }
+            else if (button.startsWith("back_btn_"))
+            {
+                Greenfoot.setWorld(new MainMenu());
+            }
+            else if (button.startsWith("crossings_btn_"))
+            {
+                Greenfoot.setWorld(new MyWorld("crossings"));
+            }
          }
     }    
 }
