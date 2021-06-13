@@ -23,30 +23,14 @@ public class Score
         {
             levelScores = new HashMap<>();
             levelScores.put("crossings", 100);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            levelScores.put("roundabouts", 100);
-=======
             levelScores.put("speed_limits", 100);
->>>>>>> Stashed changes
-=======
-            levelScores.put("speed_limits", 100);
->>>>>>> Stashed changes
             //levelScores.put("level3", 100);
         }
         if (Objects.isNull(maxLevelScores))
         {
             maxLevelScores = new HashMap<>();
             maxLevelScores.put("crossings", 0);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            maxLevelScores.put("roundabouts", 0);
-=======
             maxLevelScores.put("speed_limits", 0);
->>>>>>> Stashed changes
-=======
-            maxLevelScores.put("speed_limits", 0);
->>>>>>> Stashed changes
            //maxLevelScores.put("level3", 0);
         }
     }

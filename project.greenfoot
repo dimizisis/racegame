@@ -9,38 +9,6 @@ class.TrafficLight.image=traffic_light_red.png
 dependency1.from=SettingsUI
 dependency1.to=CarSelector
 dependency1.type=UsesDependency
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-dependency10.from=MyWorld
-dependency10.to=Car
-dependency10.type=UsesDependency
-dependency11.from=MyWorld
-dependency11.to=ScoreBoard
-dependency11.type=UsesDependency
-dependency12.from=MyWorld
-dependency12.to=Speedometer
-dependency12.type=UsesDependency
-dependency13.from=MyWorld
-dependency13.to=OtherCar
-dependency13.type=UsesDependency
-dependency14.from=MyWorld
-dependency14.to=Cone
-dependency14.type=UsesDependency
-dependency15.from=MyWorld
-dependency15.to=Oil
-dependency15.type=UsesDependency
-dependency16.from=MyWorld
-dependency16.to=Crossing
-dependency16.type=UsesDependency
-dependency17.from=MyWorld
-dependency17.to=MainMenu
-dependency17.type=UsesDependency
-dependency18.from=MyWorld
-dependency18.to=Score
-dependency18.type=UsesDependency
-dependency19.from=MyWorld
-dependency19.to=Sound
-=======
 dependency10.from=CategoriesMenu
 dependency10.to=Score
 dependency10.type=UsesDependency
@@ -70,74 +38,11 @@ dependency18.to=WarningMessage
 dependency18.type=UsesDependency
 dependency19.from=MyWorld
 dependency19.to=MainMenu
->>>>>>> Stashed changes
-=======
-dependency10.from=CategoriesMenu
-dependency10.to=Score
-dependency10.type=UsesDependency
-dependency11.from=MyWorld
-dependency11.to=Car
-dependency11.type=UsesDependency
-dependency12.from=MyWorld
-dependency12.to=SpeedLimitRange
-dependency12.type=UsesDependency
-dependency13.from=MyWorld
-dependency13.to=ScoreBoard
-dependency13.type=UsesDependency
-dependency14.from=MyWorld
-dependency14.to=Speedometer
-dependency14.type=UsesDependency
-dependency15.from=MyWorld
-dependency15.to=OtherCar
-dependency15.type=UsesDependency
-dependency16.from=MyWorld
-dependency16.to=SpeedSign
-dependency16.type=UsesDependency
-dependency17.from=MyWorld
-dependency17.to=Crossing
-dependency17.type=UsesDependency
-dependency18.from=MyWorld
-dependency18.to=WarningMessage
-dependency18.type=UsesDependency
-dependency19.from=MyWorld
-dependency19.to=MainMenu
->>>>>>> Stashed changes
 dependency19.type=UsesDependency
 dependency2.from=SettingsUI
 dependency2.to=Button
 dependency2.type=UsesDependency
 dependency20.from=MyWorld
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-dependency20.to=Lives
-dependency20.type=UsesDependency
-dependency21.from=MyWorld
-dependency21.to=Settings
-dependency21.type=UsesDependency
-dependency22.from=Speedometer
-dependency22.to=Car
-dependency22.type=UsesDependency
-dependency23.from=ScoreBoard
-dependency23.to=MainMenu
-dependency23.type=UsesDependency
-dependency24.from=ScoreBoard
-dependency24.to=Score
-dependency24.type=UsesDependency
-dependency25.from=OtherCar
-dependency25.to=Pedestrian
-dependency25.type=UsesDependency
-dependency26.from=OtherCar
-dependency26.to=Car
-dependency26.type=UsesDependency
-dependency27.from=Button
-dependency27.to=InfoMessage
-dependency27.type=UsesDependency
-dependency28.from=Button
-dependency28.to=SettingsUI
-dependency28.type=UsesDependency
-dependency29.from=Button
-dependency29.to=MainMenu
-=======
 dependency20.to=Cone
 dependency20.type=UsesDependency
 dependency21.from=MyWorld
@@ -166,72 +71,11 @@ dependency28.to=MainMenu
 dependency28.type=UsesDependency
 dependency29.from=ScoreBoard
 dependency29.to=Score
->>>>>>> Stashed changes
-=======
-dependency20.to=Cone
-dependency20.type=UsesDependency
-dependency21.from=MyWorld
-dependency21.to=Language
-dependency21.type=UsesDependency
-dependency22.from=MyWorld
-dependency22.to=Score
-dependency22.type=UsesDependency
-dependency23.from=MyWorld
-dependency23.to=Sound
-dependency23.type=UsesDependency
-dependency24.from=MyWorld
-dependency24.to=Lives
-dependency24.type=UsesDependency
-dependency25.from=MyWorld
-dependency25.to=Settings
-dependency25.type=UsesDependency
-dependency26.from=Speedometer
-dependency26.to=Car
-dependency26.type=UsesDependency
-dependency27.from=Speedometer
-dependency27.to=MyWorld
-dependency27.type=UsesDependency
-dependency28.from=ScoreBoard
-dependency28.to=MainMenu
-dependency28.type=UsesDependency
-dependency29.from=ScoreBoard
-dependency29.to=Score
->>>>>>> Stashed changes
 dependency29.type=UsesDependency
 dependency3.from=SettingsUI
 dependency3.to=Settings
 dependency3.type=UsesDependency
 dependency30.from=Button
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-dependency30.to=CategoriesMenu
-dependency30.type=UsesDependency
-dependency31.from=Button
-dependency31.to=MyWorld
-dependency31.type=UsesDependency
-dependency32.from=Button
-dependency32.to=Sound
-dependency32.type=UsesDependency
-dependency33.from=InfoMessage
-dependency33.to=MainMenu
-dependency33.type=UsesDependency
-dependency34.from=SmoothMover
-dependency34.to=Vector
-dependency34.type=UsesDependency
-dependency35.from=Car
-dependency35.to=Vector
-dependency35.type=UsesDependency
-dependency36.from=Car
-dependency36.to=Crossing
-dependency36.type=UsesDependency
-dependency37.from=Car
-dependency37.to=Pedestrian
-dependency37.type=UsesDependency
-dependency38.from=Car
-dependency38.to=MyWorld
-dependency38.type=UsesDependency
-dependency39.from=Car
-=======
 dependency30.to=InfoMessage
 dependency30.type=UsesDependency
 dependency31.from=Button
@@ -252,28 +96,6 @@ dependency35.type=UsesDependency
 dependency36.from=InfoMessage
 dependency36.to=MainMenu
 dependency36.type=UsesDependency
-=======
-dependency30.to=InfoMessage
-dependency30.type=UsesDependency
-dependency31.from=Button
-dependency31.to=SettingsUI
-dependency31.type=UsesDependency
-dependency32.from=Button
-dependency32.to=MainMenu
-dependency32.type=UsesDependency
-dependency33.from=Button
-dependency33.to=CategoriesMenu
-dependency33.type=UsesDependency
-dependency34.from=Button
-dependency34.to=MyWorld
-dependency34.type=UsesDependency
-dependency35.from=Button
-dependency35.to=Sound
-dependency35.type=UsesDependency
-dependency36.from=InfoMessage
-dependency36.to=MainMenu
-dependency36.type=UsesDependency
->>>>>>> Stashed changes
 dependency37.from=LanguageSelector
 dependency37.to=MainMenu
 dependency37.type=UsesDependency
@@ -281,62 +103,11 @@ dependency38.from=LanguageSelector
 dependency38.to=Language
 dependency38.type=UsesDependency
 dependency39.from=CarSelector
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 dependency39.to=Settings
 dependency39.type=UsesDependency
 dependency4.from=MainMenu
 dependency4.to=Button
 dependency4.type=UsesDependency
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-dependency40.from=Car
-dependency40.to=Sound
-dependency40.type=UsesDependency
-dependency41.from=Car
-dependency41.to=OtherCar
-dependency41.type=UsesDependency
-dependency42.from=Car
-dependency42.to=Score
-dependency42.type=UsesDependency
-dependency43.from=Car
-dependency43.to=Lives
-dependency43.type=UsesDependency
-dependency44.from=Crossing
-dependency44.to=TrafficLight
-dependency44.type=UsesDependency
-dependency45.from=Crossing
-dependency45.to=Pedestrian
-dependency45.type=UsesDependency
-dependency46.from=CarSelector
-dependency46.to=Settings
-dependency46.type=UsesDependency
-dependency47.from=TimeBoard
-dependency47.to=MyWorld
-dependency47.type=UsesDependency
-dependency48.from=TimeBoard
-dependency48.to=Lives
-dependency48.type=UsesDependency
-dependency49.from=Settings
-dependency49.to=Score
-dependency49.type=UsesDependency
-dependency5.from=MainMenu
-dependency5.to=Language
-dependency5.type=UsesDependency
-dependency6.from=MainMenu
-dependency6.to=Score
-dependency6.type=UsesDependency
-dependency7.from=CategoriesMenu
-dependency7.to=Button
-dependency7.type=UsesDependency
-dependency8.from=CategoriesMenu
-dependency8.to=Language
-dependency8.type=UsesDependency
-dependency9.from=CategoriesMenu
-dependency9.to=Score
-=======
 dependency40.from=SmoothMover
 dependency40.to=Vector
 dependency40.type=UsesDependency
@@ -405,95 +176,14 @@ dependency8.to=Button
 dependency8.type=UsesDependency
 dependency9.from=CategoriesMenu
 dependency9.to=Language
->>>>>>> Stashed changes
-=======
-dependency40.from=SmoothMover
-dependency40.to=Vector
-dependency40.type=UsesDependency
-dependency41.from=OtherCar
-dependency41.to=Pedestrian
-dependency41.type=UsesDependency
-dependency42.from=OtherCar
-dependency42.to=Car
-dependency42.type=UsesDependency
-dependency43.from=Car
-dependency43.to=SpeedLimitRange
-dependency43.type=UsesDependency
-dependency44.from=Car
-dependency44.to=MyWorld
-dependency44.type=UsesDependency
-dependency45.from=Car
-dependency45.to=Vector
-dependency45.type=UsesDependency
-dependency46.from=Car
-dependency46.to=Crossing
-dependency46.type=UsesDependency
-dependency47.from=Car
-dependency47.to=Pedestrian
-dependency47.type=UsesDependency
-dependency48.from=Car
-dependency48.to=Settings
-dependency48.type=UsesDependency
-dependency49.from=Car
-dependency49.to=Sound
-dependency49.type=UsesDependency
-dependency5.from=MainMenu
-dependency5.to=LanguageSelector
-dependency5.type=UsesDependency
-dependency50.from=Car
-dependency50.to=Score
-dependency50.type=UsesDependency
-dependency51.from=Car
-dependency51.to=OtherCar
-dependency51.type=UsesDependency
-dependency52.from=Car
-dependency52.to=Lives
-dependency52.type=UsesDependency
-dependency53.from=Crossing
-dependency53.to=TrafficLight
-dependency53.type=UsesDependency
-dependency54.from=Crossing
-dependency54.to=Pedestrian
-dependency54.type=UsesDependency
-dependency55.from=TimeBoard
-dependency55.to=MyWorld
-dependency55.type=UsesDependency
-dependency56.from=TimeBoard
-dependency56.to=Lives
-dependency56.type=UsesDependency
-dependency57.from=Settings
-dependency57.to=Score
-dependency57.type=UsesDependency
-dependency6.from=MainMenu
-dependency6.to=Language
-dependency6.type=UsesDependency
-dependency7.from=MainMenu
-dependency7.to=Score
-dependency7.type=UsesDependency
-dependency8.from=CategoriesMenu
-dependency8.to=Button
-dependency8.type=UsesDependency
-dependency9.from=CategoriesMenu
-dependency9.to=Language
->>>>>>> Stashed changes
 dependency9.type=UsesDependency
 editor.fx.0.height=1056
 editor.fx.0.width=1936
 editor.fx.0.x=-8
 editor.fx.0.y=-8
 height=1056
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-package.numDependencies=49
-package.numTargets=27
-=======
 package.numDependencies=57
 package.numTargets=31
->>>>>>> Stashed changes
-=======
-package.numDependencies=57
-package.numTargets=31
->>>>>>> Stashed changes
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -516,49 +206,20 @@ target1.width=80
 target1.x=0
 target1.y=0
 target10.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target10.name=Language
-=======
 target10.name=SpeedSign
->>>>>>> Stashed changes
-=======
-target10.name=SpeedSign
->>>>>>> Stashed changes
 target10.showInterface=false
 target10.type=ClassTarget
 target10.width=80
 target10.x=0
 target10.y=0
 target11.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target11.name=Button
-=======
 target11.name=OtherCar
->>>>>>> Stashed changes
-=======
-target11.name=OtherCar
->>>>>>> Stashed changes
 target11.showInterface=false
 target11.type=ClassTarget
 target11.width=80
 target11.x=0
 target11.y=0
 target12.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target12.name=InfoMessage
-target12.showInterface=false
-target12.type=ClassTarget
-target12.width=90
-target12.x=0
-target12.y=0
-target13.height=50
-target13.name=Vector
-=======
-=======
->>>>>>> Stashed changes
 target12.name=CategoriesMenu
 target12.showInterface=false
 target12.type=ClassTarget
@@ -567,59 +228,26 @@ target12.x=0
 target12.y=0
 target13.height=50
 target13.name=SpeedLimitRange
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 target13.showInterface=false
 target13.type=ClassTarget
 target13.width=120
 target13.x=0
 target13.y=0
 target14.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target14.name=MyWorld
-=======
 target14.name=Language
->>>>>>> Stashed changes
-=======
-target14.name=Language
->>>>>>> Stashed changes
 target14.showInterface=false
 target14.type=ClassTarget
 target14.width=80
 target14.x=0
 target14.y=0
 target15.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target15.name=Settings
-=======
 target15.name=Button
->>>>>>> Stashed changes
-=======
-target15.name=Button
->>>>>>> Stashed changes
 target15.showInterface=false
 target15.type=ClassTarget
 target15.width=80
 target15.x=0
 target15.y=0
 target16.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target16.name=GlobalDifficulty
-target16.showInterface=false
-target16.type=ClassTarget
-target16.width=110
-target16.x=0
-target16.y=0
-target17.height=50
-target17.name=SWorld
-=======
-=======
->>>>>>> Stashed changes
 target16.name=InfoMessage
 target16.showInterface=false
 target16.type=ClassTarget
@@ -628,138 +256,61 @@ target16.x=0
 target16.y=0
 target17.height=50
 target17.name=Vector
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 target17.showInterface=false
 target17.type=ClassTarget
 target17.width=80
 target17.x=0
 target17.y=0
 target18.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target18.name=Cone
-=======
 target18.name=MyWorld
->>>>>>> Stashed changes
-=======
-target18.name=MyWorld
->>>>>>> Stashed changes
 target18.showInterface=false
 target18.type=ClassTarget
 target18.width=80
 target18.x=0
 target18.y=0
 target19.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target19.name=SmoothMover
-=======
 target19.name=Settings
->>>>>>> Stashed changes
-=======
-target19.name=Settings
->>>>>>> Stashed changes
 target19.showInterface=false
-target19.type=AbstractTarget
-target19.width=100
+target19.type=ClassTarget
+target19.width=80
 target19.x=0
 target19.y=0
 target2.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target2.name=Lives
-=======
 target2.name=WarningMessage
->>>>>>> Stashed changes
-=======
-target2.name=WarningMessage
->>>>>>> Stashed changes
 target2.showInterface=false
 target2.type=ClassTarget
 target2.width=120
 target2.x=0
 target2.y=0
 target20.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target20.name=Sound
-=======
 target20.name=GlobalDifficulty
->>>>>>> Stashed changes
-=======
-target20.name=GlobalDifficulty
->>>>>>> Stashed changes
 target20.showInterface=false
 target20.type=ClassTarget
 target20.width=110
 target20.x=0
 target20.y=0
 target21.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target21.name=Crossing
-target21.showInterface=false
-target21.type=ClassTarget
-=======
 target21.name=Selector
 target21.showInterface=false
 target21.type=AbstractTarget
->>>>>>> Stashed changes
-=======
-target21.name=Selector
-target21.showInterface=false
-target21.type=AbstractTarget
->>>>>>> Stashed changes
 target21.width=80
 target21.x=0
 target21.y=0
 target22.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target22.name=Statistics
-=======
 target22.name=SWorld
->>>>>>> Stashed changes
-=======
-target22.name=SWorld
->>>>>>> Stashed changes
 target22.showInterface=false
 target22.type=ClassTarget
 target22.width=80
 target22.x=0
 target22.y=0
 target23.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target23.name=Score
-=======
 target23.name=Cone
->>>>>>> Stashed changes
-=======
-target23.name=Cone
->>>>>>> Stashed changes
 target23.showInterface=false
 target23.type=ClassTarget
 target23.width=80
 target23.x=0
 target23.y=0
 target24.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target24.name=Oil
-target24.showInterface=false
-target24.type=ClassTarget
-target24.width=80
-target24.x=0
-target24.y=0
-target25.height=50
-target25.name=Car
-=======
-=======
->>>>>>> Stashed changes
 target24.name=SmoothMover
 target24.showInterface=false
 target24.type=AbstractTarget
@@ -768,50 +319,25 @@ target24.x=0
 target24.y=0
 target25.height=50
 target25.name=Sound
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 target25.showInterface=false
 target25.type=ClassTarget
 target25.width=80
 target25.x=0
 target25.y=0
 target26.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target26.name=CarSelector
-=======
 target26.name=Crossing
->>>>>>> Stashed changes
-=======
-target26.name=Crossing
->>>>>>> Stashed changes
 target26.showInterface=false
 target26.type=ClassTarget
 target26.width=80
 target26.x=0
 target26.y=0
 target27.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target27.name=TimeBoard
-=======
 target27.name=Statistics
->>>>>>> Stashed changes
-=======
-target27.name=Statistics
->>>>>>> Stashed changes
 target27.showInterface=false
 target27.type=ClassTarget
 target27.width=80
 target27.x=0
 target27.y=0
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
 target28.height=50
 target28.name=Score
 target28.showInterface=false
@@ -826,15 +352,11 @@ target29.type=ClassTarget
 target29.width=80
 target29.x=0
 target29.y=0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 target3.height=50
-target3.name=Speedometer
+target3.name=Lives
 target3.showInterface=false
 target3.type=ClassTarget
-target3.width=100
+target3.width=80
 target3.x=0
 target3.y=0
 target30.height=50
@@ -873,40 +395,24 @@ target6.width=80
 target6.x=0
 target6.y=0
 target7.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target7.name=MainMenu
-=======
 target7.name=ScoreBoard
->>>>>>> Stashed changes
-=======
-target7.name=ScoreBoard
->>>>>>> Stashed changes
 target7.showInterface=false
 target7.type=ClassTarget
 target7.width=80
 target7.x=0
 target7.y=0
 target8.height=50
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-target8.name=OtherCar
-=======
 target8.name=LanguageSelector
->>>>>>> Stashed changes
-=======
-target8.name=LanguageSelector
->>>>>>> Stashed changes
 target8.showInterface=false
 target8.type=ClassTarget
 target8.width=120
 target8.x=0
 target8.y=0
 target9.height=50
-target9.name=CategoriesMenu
+target9.name=MainMenu
 target9.showInterface=false
 target9.type=ClassTarget
-target9.width=110
+target9.width=80
 target9.x=0
 target9.y=0
 version=3.0.0

@@ -4,37 +4,12 @@ comment0.text=\r\n\ Write\ a\ description\ of\ class\ Car\ here.\r\n\ \r\n\ @aut
 comment1.params=
 comment1.target=Car()
 comment10.params=
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-comment10.target=boolean\ checkIfStoppedBeforeCrossing()
-comment11.params=
-comment11.target=boolean\ reachedEnd()
-comment12.params=success
-comment12.target=void\ end(boolean)
-comment13.params=
-comment13.target=boolean\ canGoUp()
-comment14.params=
-comment14.target=boolean\ canGoDown()
-comment15.params=a
-comment15.target=boolean\ collidesWith(greenfoot.Actor)
-comment16.params=
-comment16.target=void\ respawn()
-comment16.text=\r\n\ \ \ \ private\ void\ twist()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ Sound.getInstance().playScreech();\r\n\ \ \ \ \ \ \ \ for\ (int\ i\=0;\ i<5;\ ++i)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ setRotation(90*i);\r\n\ \ \ \ \ \ \ \ \ \ \ \ Greenfoot.delay(20);\r\n\ \ \ \ \ \ \ \ \ \ \ \ if\ (speed\ <\=\ 0)\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ setLocation(getX()\ -\ 40,\ getY());\r\n\ \ \ \ \ \ \ \ \ \ \ \ else\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ setLocation(getX()\ +\ 40,\ getY());\r\n\ \ \ \ \ \ \ \ }\r\n}
-=======
 comment10.target=void\ checkCollisions()
 comment11.params=
 comment11.target=void\ checkTrafficLight()
 comment12.params=
 comment12.target=boolean\ checkIfStoppedBeforeCrossing()
 comment13.params=
-=======
-comment10.target=void\ checkCollisions()
-comment11.params=
-comment11.target=void\ checkTrafficLight()
-comment12.params=
-comment12.target=boolean\ checkIfStoppedBeforeCrossing()
-comment13.params=
->>>>>>> Stashed changes
 comment13.target=boolean\ reachedEnd()
 comment14.params=success
 comment14.target=void\ end(boolean)
@@ -46,33 +21,10 @@ comment17.params=a
 comment17.target=boolean\ collidesWith(greenfoot.Actor)
 comment18.params=
 comment18.target=void\ respawn()
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 comment2.params=
 comment2.target=void\ act()
 comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Car\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment3.params=
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-comment3.target=void\ moveBackwards()
-comment4.params=
-comment4.target=void\ moveForward()
-comment5.params=
-comment5.target=void\ moveUp()
-comment6.params=
-comment6.target=void\ moveDown()
-comment7.params=
-comment7.target=void\ warnPedestrians()
-comment8.params=
-comment8.target=void\ checkCollisions()
-comment9.params=
-comment9.target=void\ checkTrafficLight()
-numComments=17
-=======
-=======
->>>>>>> Stashed changes
 comment3.target=void\ checkSpeedLimits()
 comment4.params=speedLimit
 comment4.target=boolean\ hasExceededSpeedLimit(double)
@@ -87,7 +39,3 @@ comment8.target=void\ moveDown()
 comment9.params=
 comment9.target=void\ warnPedestrians()
 numComments=19
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

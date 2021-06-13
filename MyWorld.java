@@ -16,17 +16,8 @@ public class MyWorld extends SWorld
 {
     private String level = "crossings";
     private GreenfootImage backgroundImage = new GreenfootImage("track.png");
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    private Car mainActor = new Car();
-=======
     private Car mainActor;
     private List<SpeedLimitRange> speedLimits = new ArrayList<>();
->>>>>>> Stashed changes
-=======
-    private Car mainActor;
-    private List<SpeedLimitRange> speedLimits = new ArrayList<>();
->>>>>>> Stashed changes
     
     public MyWorld(String level)
     {
@@ -56,38 +47,17 @@ public class MyWorld extends SWorld
      */
     private void prepare()
     {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        setMainActor(mainActor, 50, 500);      
-        mainActor.setLocation(-3000, 510);
-=======
-=======
->>>>>>> Stashed changes
         generateObjects();
         
         mainActor = new Car();
         setMainActor(mainActor, 50, 500);      
         mainActor.setLocation(-2200, 510);
         
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         setScrollingBackground(this.backgroundImage);
         
         setPaintOrder(ScoreBoard.class);
         addObject(new ScoreBoard("Score: ", level), 50, 20, false);
         addObject(new Speedometer(mainActor), 520, 20, false);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        
-        generateObjects();
-        
-        //Sound.getInstance().playLevelMusic();
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
         //Sound.getInstance().playLevelMusic();
         setPaintOrder(WarningMessage.class, Cone.class);
@@ -97,77 +67,22 @@ public class MyWorld extends SWorld
     
     private void generateObjects()
     {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        generateRandomCrossings();
-        //generateRandomCones();
-        //generateRandomOils();
-        generateOtherCars();
-=======
-=======
->>>>>>> Stashed changes
         if (level.equals("crossings"))
             generateRandomCrossings();
         else if (level.equals("speed_limits"))
             generateRandomSpeedLimitSigns();
         //generateRandomOils();
         //generateOtherCars();
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     }
     
     private void generateOtherCars()
     {
         for (int i=0; i<4; ++i)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            addObject(new OtherCar(2), ThreadLocalRandom.current().nextInt(-1000, 2500), ThreadLocalRandom.current().nextInt(120, 700));
-=======
             addObject(new OtherCar(2), ThreadLocalRandom.current().nextInt(-1000, 2200), ThreadLocalRandom.current().nextInt(120, 700));
->>>>>>> Stashed changes
-=======
-            addObject(new OtherCar(2), ThreadLocalRandom.current().nextInt(-1000, 2200), ThreadLocalRandom.current().nextInt(120, 700));
->>>>>>> Stashed changes
     }
     
     private void generateRandomSpeedLimitSigns()
     {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        int count = 3; /* generate according to the level */
-        int x, prevX = 0;
-        for (int i=0; i < count; ++i)
-        {  
-            x = ThreadLocalRandom.current().nextInt(-1900, 2500);
-            addObject(new Cone(), x + prevX, ThreadLocalRandom.current().nextInt(120, 700));
-            prevX = x;
-        }
-    }
-    
-    private void generateRandomOils()
-    {
-        int count = 3; /* generate according to the level */
-        int x, prevX = 0;
-        for (int i=0; i < count; ++i)
-=======
-        int x = getScrolledX();
-        for (int i=0; i < 4; ++i)
-        {
-            int speedLimit = ThreadLocalRandom.current().nextBoolean() ? 30 : 55;
-            String speedLimitImg = "speed_limit_" + speedLimit;
-            x = ThreadLocalRandom.current().nextInt(x+200, x+400);
-            speedLimits.add(new SpeedLimitRange(x, speedLimit));
-            addObject(new SpeedSign(speedLimitImg), x, 768);
-            if (speedLimits.size() > 1)
-                speedLimits.get(speedLimits.size()-2).setStopX(x);
-        }
-        int xx = 60, yy = 160;
-        for (SpeedLimitRange speedLimitRange : speedLimits)
->>>>>>> Stashed changes
-        {
-=======
         int x = getScrolledX();
         for (int i=0; i < 4; ++i)
         {
@@ -182,7 +97,6 @@ public class MyWorld extends SWorld
         int xx = 60, yy = 160;
         for (SpeedLimitRange speedLimitRange : speedLimits)
         {
->>>>>>> Stashed changes
             showText(speedLimitRange.getStartX() + " " + speedLimitRange.getStopX(), xx, yy);
             xx+=30;
             yy+=30;
@@ -192,34 +106,14 @@ public class MyWorld extends SWorld
     private void generateRandomCrossings()
     {
         boolean hasPedestrians = true;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        int x, prevX = 0;
-        for (int i=0; i < 3; ++i)
-        {
-            x = ThreadLocalRandom.current().nextInt(-2000 + prevX, 3000);
-=======
-=======
->>>>>>> Stashed changes
         int x = getScrolledX();
         for (int i=0; i < 3; ++i)
         {
             x = ThreadLocalRandom.current().nextInt(x+300, 2200);
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
             Crossing crossing = new Crossing(hasPedestrians);
             addObject(crossing, x, 420);
             if (i % 2 == 0)
                 crossing.addTrafficLight();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            prevX = x;
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         }
     }
     

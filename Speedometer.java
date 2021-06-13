@@ -1,12 +1,5 @@
 import greenfoot.*;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 import java.text.DecimalFormat;
->>>>>>> Stashed changes
-=======
-import java.text.DecimalFormat;
->>>>>>> Stashed changes
 
 /**
  * The TimeBoard is used to display remaining time & lives on the screen. It can display some
@@ -48,17 +41,8 @@ public class Speedometer extends Actor
         font = font.deriveFont(FONT_SIZE);
         image.setFont(font);
         image.setColor(Color.WHITE);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        image.drawString(this.prefix + this.car.getSpeed()*10 + " km/h", 60, 190);
-=======
         if (((MyWorld) getWorld()) != null)
             image.drawString(this.prefix + new DecimalFormat("#0.00").format(this.car.getSpeed()*10) + " km/h\n " + ((MyWorld) getWorld()).getScrolledX() + "\n " + this.car.getX(), 60, 190);
->>>>>>> Stashed changes
-=======
-        if (((MyWorld) getWorld()) != null)
-            image.drawString(this.prefix + new DecimalFormat("#0.00").format(this.car.getSpeed()*10) + " km/h\n " + ((MyWorld) getWorld()).getScrolledX() + "\n " + this.car.getX(), 60, 190);
->>>>>>> Stashed changes
         setImage(image);
     }
     
