@@ -4,15 +4,21 @@ comment0.text=\r\n\ World\ of\ every\ level.\r\n\ \r\n\ @author\ Dimitrios\ Zisi
 comment1.params=level
 comment1.target=MyWorld(java.lang.String)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 comment10.params=success
 comment10.target=void\ gameEnd(boolean)
 =======
+=======
+>>>>>>> Stashed changes
 comment10.params=
 comment10.target=void\ showSpeedWarning()
 comment11.params=
 comment11.target=void\ removeSpeedWarning()
 comment12.params=success
 comment12.target=void\ gameEnd(boolean)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 comment2.params=
 comment2.target=MyWorld()

@@ -38,6 +38,7 @@ public class CategoriesMenu extends World
     {
         /* Adds buttons */
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         Button crossingsBtn = new Button("crossings_btn_" + Language.getInstance().getCurrLanguage());
         addObject(crossingsBtn, 310, 280);
         
@@ -46,6 +47,8 @@ public class CategoriesMenu extends World
         
         Button backBtn = new Button("back_btn_" + Language.getInstance().getCurrLanguage());
 =======
+=======
+>>>>>>> Stashed changes
         Button crossingsBtn = new Button("crossings_btn_" + Language.getInstance().getSelectedLanguage());
         addObject(crossingsBtn, 310, 280);
         
@@ -53,6 +56,9 @@ public class CategoriesMenu extends World
         addObject(roundAboutsBtn, 310, 390);
         
         Button backBtn = new Button("back_btn_" + Language.getInstance().getSelectedLanguage());
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         addObject(backBtn, 310, 500);
         

@@ -40,6 +40,7 @@ public class MainMenu extends World
     {
         /* Adds buttons */
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         Button categoriesBtn = new Button("categories_btn_" + Language.getInstance().getCurrLanguage());
         addObject(categoriesBtn, 310, 280);
 
@@ -48,6 +49,8 @@ public class MainMenu extends World
 
         Button exitBtn = new Button("exit_btn_" + Language.getInstance().getCurrLanguage());
 =======
+=======
+>>>>>>> Stashed changes
         Button categoriesBtn = new Button("categories_btn_" + Language.getInstance().getSelectedLanguage());
         addObject(categoriesBtn, 310, 280);
 
@@ -55,6 +58,9 @@ public class MainMenu extends World
         addObject(statsBtn, 310, 390);
 
         Button exitBtn = new Button("exit_btn_" + Language.getInstance().getSelectedLanguage());
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         addObject(exitBtn, 310, 500);
 
@@ -72,10 +78,19 @@ public class MainMenu extends World
         LanguageSelector greekFlag = new LanguageSelector("gr_flag");
         addObject(greekFlag, 210, 770);
         
+<<<<<<< Updated upstream
+=======
+        LanguageSelector greekFlag = new LanguageSelector("gr_flag");
+        addObject(greekFlag, 210, 770);
+        
+>>>>>>> Stashed changes
         LanguageSelector enFlag = new LanguageSelector("en_flag");
         addObject(enFlag, 390, 770);
         
         selectLastSelectedLang();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
         try {
@@ -83,7 +98,10 @@ public class MainMenu extends World
         } catch (Exception e) {}
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     }
     
     private void selectLastSelectedLang()
@@ -91,6 +109,9 @@ public class MainMenu extends World
         for (LanguageSelector ls : (List<LanguageSelector>)(getObjects(LanguageSelector.class)))
             if (ls.getLangImage().startsWith(Language.getInstance().getSelectedLanguage()))
                 ls.select();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }

@@ -12,7 +12,11 @@
     public class Car extends SmoothMover
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         private final static int SPEED_LIMIT = 5;
+=======
+        private final static int SPEED_LIMIT = 6;
+>>>>>>> Stashed changes
 =======
         private final static int SPEED_LIMIT = 6;
 >>>>>>> Stashed changes
@@ -39,6 +43,10 @@
             checkCollisions();
             checkTrafficLight();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+            checkSpeedLimits();
+>>>>>>> Stashed changes
 =======
             checkSpeedLimits();
 >>>>>>> Stashed changes
@@ -67,7 +75,12 @@
             {
                 stop();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 checkIfStoppedBeforeCrossing();
+=======
+                if (checkIfStoppedBeforeCrossing())
+                    Sound.getInstance().playWellDone();
+>>>>>>> Stashed changes
 =======
                 if (checkIfStoppedBeforeCrossing())
                     Sound.getInstance().playWellDone();
@@ -87,6 +100,7 @@
             
     }
     
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     private void moveBackwards()
     {
@@ -172,6 +186,65 @@
     }
     
 >>>>>>> Stashed changes
+=======
+    private void checkSpeedLimits()
+    {
+        for (SpeedLimitRange speedLimitRange : ((MyWorld) getWorld()).getSpeedLimits())
+        {
+            if (((MyWorld) getWorld()).getScrolledX()+getX() >= speedLimitRange.getStartX() && ((MyWorld) getWorld()).getScrolledX() <= speedLimitRange.getStopX()+getX())
+            {
+                if (hasExceededSpeedLimit(speedLimitRange.getSpeedLimit()))
+                {
+                    Score.getInstance().reduceLevelScore(((MyWorld) getWorld()).getLevel());
+                    ((MyWorld) getWorld()).showSpeedWarning();
+                }
+                else
+                {
+                    ((MyWorld) getWorld()).removeSpeedWarning();
+                }
+            }
+            else
+            {
+                ((MyWorld) getWorld()).removeSpeedWarning();
+            }
+        }
+    }
+    
+    public boolean hasExceededSpeedLimit(double speedLimit)
+    {
+        if (Math.abs(this.getSpeed()*10) >= speedLimit)
+            return true;
+        return false;
+    }
+    
+    private void moveBackwards()
+    {
+        if (getSpeed() > -SPEED_LIMIT)
+        {
+            getMovement().setLength(getMovement().getLength() - 0.2);
+        }
+    }
+    
+    private void moveForward()
+    {
+        if (getSpeed() < SPEED_LIMIT)
+        {
+            getMovement().setLength(getMovement().getLength() + 0.2);
+        }
+    }
+    
+    private void moveUp()
+    {
+        if (canGoUp())
+        {
+            double currSpeed = getSpeed();
+            stop();
+            setRotation(getRotation() - 2);
+            addForce (new Vector(getRotation(), currSpeed));
+        }
+    }
+    
+>>>>>>> Stashed changes
     private void moveDown()
     {
         if (canGoDown())
@@ -181,6 +254,7 @@
             setRotation(getRotation() + 2);
             addForce (new Vector(getRotation(), currSpeed));
         }
+<<<<<<< Updated upstream
     }
     
     private void warnPedestrians()
@@ -249,6 +323,76 @@
                 }
             }
         }
+=======
+    }
+    
+    private void warnPedestrians()
+    {
+        List<Crossing> crossings = getObjectsInRange(200, Crossing.class);
+        List<Pedestrian> pedestriansInRange = getObjectsInRange(350, Pedestrian.class);
+        if (!crossings.isEmpty())
+        {
+            if (!pedestriansInRange.isEmpty())
+            {
+                for (Crossing cr : crossings)
+                {
+                    if ((cr.hasTrafficLight() && cr.getTrafficLight().getState() == 1) || !cr.hasTrafficLight())
+                    {
+                        pedestriansInRange.forEach(Pedestrian::increaseSpeed);
+                    }
+                }
+            }
+        }
+    }
+    
+    private void checkCollisions()
+    {
+        Actor pedestrian = getOneIntersectingObject(Pedestrian.class);
+        Actor otherCar = getOneIntersectingObject(OtherCar.class);
+        if (collidesWith(pedestrian) || collidesWith(otherCar))
+        {
+            Score.getInstance().reduceLevelScore(((MyWorld) getWorld()).getLevel());
+            Lives.getInstance().reduceLives();
+            if (Lives.getInstance().getLivesCount() > 0)
+                respawn();
+            else
+                end(false);
+        }
+    }
+    
+    private void checkTrafficLight()
+    {
+        Crossing crossing = (Crossing) getOneIntersectingObject(Crossing.class);
+        if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0)
+        {
+            //Sound.getInstance().playWrongMove();
+            if (!passed.contains(crossing))
+            {
+                passed.add(crossing);
+                Lives.getInstance().reduceLives();
+                if (Lives.getInstance().getLivesCount() < 1)
+                    end(false);
+            }
+        }
+    }
+    
+    private boolean checkIfStoppedBeforeCrossing()
+    {
+        Crossing cr = (Crossing) getOneIntersectingObject(Crossing.class);
+        List<Crossing> actorsInRange = getObjectsInRange(200, Crossing.class);
+        if (!actorsInRange.isEmpty() && Objects.isNull(cr))
+        {
+            for (Crossing crossing : actorsInRange)
+            {
+                if (!stopped.contains(crossing))
+                {
+                    stopped.add(crossing);
+                    Score.getInstance().increaseLevelScore("crossings");
+                    return true;
+                }
+            }
+        }
+>>>>>>> Stashed changes
         return false;
     }
     
@@ -286,6 +430,7 @@
         return true;
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     /*
     private void twist()
     {
@@ -300,6 +445,8 @@
                 setLocation(getX() + 40, getY());
         }
     } */
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     
