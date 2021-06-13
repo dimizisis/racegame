@@ -23,14 +23,22 @@ public class Score
         {
             levelScores = new HashMap<>();
             levelScores.put("crossings", 100);
+<<<<<<< Updated upstream
             levelScores.put("roundabouts", 100);
+=======
+            levelScores.put("speed_limits", 100);
+>>>>>>> Stashed changes
             //levelScores.put("level3", 100);
         }
         if (Objects.isNull(maxLevelScores))
         {
             maxLevelScores = new HashMap<>();
             maxLevelScores.put("crossings", 0);
+<<<<<<< Updated upstream
             maxLevelScores.put("roundabouts", 0);
+=======
+            maxLevelScores.put("speed_limits", 0);
+>>>>>>> Stashed changes
            //maxLevelScores.put("level3", 0);
         }
     }
@@ -76,7 +84,6 @@ public class Score
         FileInputStream fi;
         try {
             fi = new FileInputStream(new File("scores.dat"));
-
             ObjectInputStream oi = new ObjectInputStream(fi);
             this.maxLevelScores = (HashMap<String, Integer>) oi.readObject();
         }  catch (IOException | ClassNotFoundException ex) {
@@ -88,8 +95,14 @@ public class Score
      */
     public void flushScoreToFile(String level) 
     {
-        if (this.maxLevelScores.get(level) > this.levelScores.get(level))
+        try
+        {
+            if (this.maxLevelScores.get(level) > this.levelScores.get(level))
+                return;
+        } catch (NullPointerException e)
+        {
             return;
+        }
         this.maxLevelScores.put(level, this.levelScores.get(level));
         try {
             FileOutputStream f = new FileOutputStream(new File("scores.dat"));

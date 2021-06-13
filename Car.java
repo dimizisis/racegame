@@ -1,4 +1,3 @@
-
     import greenfoot.*;
     import java.util.Objects;
     import java.util.List;
@@ -12,7 +11,11 @@
      */
     public class Car extends SmoothMover
     {
+<<<<<<< Updated upstream
         private final static int SPEED_LIMIT = 5;
+=======
+        private final static int SPEED_LIMIT = 6;
+>>>>>>> Stashed changes
         private Set<Actor> stopped;
         private Set<Actor> passed;
         
@@ -35,6 +38,10 @@
             move();
             checkCollisions();
             checkTrafficLight();
+<<<<<<< Updated upstream
+=======
+            checkSpeedLimits();
+>>>>>>> Stashed changes
             
             if (Greenfoot.isKeyDown("left")) 
             {
@@ -59,7 +66,12 @@
             if (Greenfoot.isKeyDown("b"))
             {
                 stop();
+<<<<<<< Updated upstream
                 checkIfStoppedBeforeCrossing();
+=======
+                if (checkIfStoppedBeforeCrossing())
+                    Sound.getInstance().playWellDone();
+>>>>>>> Stashed changes
             }
             
             if (Greenfoot.isKeyDown("h"))
@@ -75,6 +87,7 @@
             
     }
     
+<<<<<<< Updated upstream
     private void moveBackwards()
     {
         stop();
@@ -100,6 +113,65 @@
         }
     }
     
+=======
+    private void checkSpeedLimits()
+    {
+        for (SpeedLimitRange speedLimitRange : ((MyWorld) getWorld()).getSpeedLimits())
+        {
+            if (((MyWorld) getWorld()).getScrolledX()+getX() >= speedLimitRange.getStartX() && ((MyWorld) getWorld()).getScrolledX() <= speedLimitRange.getStopX()+getX())
+            {
+                if (hasExceededSpeedLimit(speedLimitRange.getSpeedLimit()))
+                {
+                    Score.getInstance().reduceLevelScore(((MyWorld) getWorld()).getLevel());
+                    ((MyWorld) getWorld()).showSpeedWarning();
+                }
+                else
+                {
+                    ((MyWorld) getWorld()).removeSpeedWarning();
+                }
+            }
+            else
+            {
+                ((MyWorld) getWorld()).removeSpeedWarning();
+            }
+        }
+    }
+    
+    public boolean hasExceededSpeedLimit(double speedLimit)
+    {
+        if (Math.abs(this.getSpeed()*10) >= speedLimit)
+            return true;
+        return false;
+    }
+    
+    private void moveBackwards()
+    {
+        if (getSpeed() > -SPEED_LIMIT)
+        {
+            getMovement().setLength(getMovement().getLength() - 0.2);
+        }
+    }
+    
+    private void moveForward()
+    {
+        if (getSpeed() < SPEED_LIMIT)
+        {
+            getMovement().setLength(getMovement().getLength() + 0.2);
+        }
+    }
+    
+    private void moveUp()
+    {
+        if (canGoUp())
+        {
+            double currSpeed = getSpeed();
+            stop();
+            setRotation(getRotation() - 2);
+            addForce (new Vector(getRotation(), currSpeed));
+        }
+    }
+    
+>>>>>>> Stashed changes
     private void moveDown()
     {
         if (canGoDown())
@@ -213,6 +285,7 @@
             return false;
         return true;
     }
+<<<<<<< Updated upstream
     /*
     private void twist()
     {
@@ -227,6 +300,8 @@
                 setLocation(getX() + 40, getY());
         }
     } */
+=======
+>>>>>>> Stashed changes
     
     private void respawn()
     {

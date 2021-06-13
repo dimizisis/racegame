@@ -33,7 +33,7 @@ public class Settings
     public void updateCarAvailability()
     {
         this.carsAvailable.put("Car_1_01", true); // first car (basic red) always available
-        this.carsAvailable.put("Car_2_01", Score.getInstance().getMaxScoreForLevel("level2") >= 70 ? true : false); // second car (yellow) available only if player scored 70 or more in the 2nd level
+        this.carsAvailable.put("Car_2_01", Score.getInstance().getMaxScoreForLevel("crossings") >= 70 ? true : false); // second car (yellow) available only if player scored 70 or more in the 2nd level
         this.carsAvailable.put("Car_3_01", Score.getInstance().getMaxScoreForLevel("level3") >= 80 ? true : false); // third car (police) available only if player scored 80 or more in the 3rd level
     }
     

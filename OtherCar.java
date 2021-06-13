@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class OtherCar extends Actor
+public class OtherCar extends SmoothMover
 {
     
     private int speed;

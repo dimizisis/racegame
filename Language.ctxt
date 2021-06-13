@@ -7,7 +7,16 @@ comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Language\r\n
 comment2.params=
 comment2.target=Language\ getInstance()
 comment3.params=
+<<<<<<< Updated upstream
 comment3.target=java.lang.String\ getCurrLanguage()
 comment4.params=
 comment4.target=java.lang.String\ changeLanguage()
 numComments=5
+=======
+comment3.target=java.lang.String\ getSelectedLanguage()
+comment4.params=sl
+comment4.target=void\ setSelectedLanguage(java.lang.String)
+comment5.params=
+comment5.target=java.lang.String\ changeLanguage()
+numComments=6
+>>>>>>> Stashed changes

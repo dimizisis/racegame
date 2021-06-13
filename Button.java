@@ -64,6 +64,13 @@ public class Button extends Actor
             {
                 Greenfoot.setWorld(new MyWorld("crossings"));
             }
+<<<<<<< Updated upstream
+=======
+            else if (button.startsWith("speed_limits_btn_"))
+            {
+                Greenfoot.setWorld(new MyWorld("speed_limits"));
+            }
+>>>>>>> Stashed changes
          }
     }    
 }

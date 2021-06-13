@@ -1,5 +1,7 @@
+
 import greenfoot.*;
 import java.io.*;
+import java.util.List;
 
 /**
  * Write a description of class MainMenu here.
@@ -37,6 +39,7 @@ public class MainMenu extends World
     private void prepare()
     {
         /* Adds buttons */
+<<<<<<< Updated upstream
         Button categoriesBtn = new Button("categories_btn_" + Language.getInstance().getCurrLanguage());
         addObject(categoriesBtn, 310, 280);
 
@@ -44,6 +47,15 @@ public class MainMenu extends World
         addObject(statsBtn, 310, 390);
 
         Button exitBtn = new Button("exit_btn_" + Language.getInstance().getCurrLanguage());
+=======
+        Button categoriesBtn = new Button("categories_btn_" + Language.getInstance().getSelectedLanguage());
+        addObject(categoriesBtn, 310, 280);
+
+        Button statsBtn = new Button("stats_btn_" + Language.getInstance().getSelectedLanguage());
+        addObject(statsBtn, 310, 390);
+
+        Button exitBtn = new Button("exit_btn_" + Language.getInstance().getSelectedLanguage());
+>>>>>>> Stashed changes
         addObject(exitBtn, 310, 500);
 
         Button infoBtn = new Button("info");
@@ -54,10 +66,31 @@ public class MainMenu extends World
 
         Button settingsBtn = new Button("settings");
         addObject(settingsBtn, 300, 650);
+<<<<<<< Updated upstream
+=======
+        
+        LanguageSelector greekFlag = new LanguageSelector("gr_flag");
+        addObject(greekFlag, 210, 770);
+        
+        LanguageSelector enFlag = new LanguageSelector("en_flag");
+        addObject(enFlag, 390, 770);
+        
+        selectLastSelectedLang();
+>>>>>>> Stashed changes
 
         try {
             Score.getInstance().getScoresFromFile();
         } catch (Exception e) {}
 
+<<<<<<< Updated upstream
+=======
+    }
+    
+    private void selectLastSelectedLang()
+    {
+        for (LanguageSelector ls : (List<LanguageSelector>)(getObjects(LanguageSelector.class)))
+            if (ls.getLangImage().startsWith(Language.getInstance().getSelectedLanguage()))
+                ls.select();
+>>>>>>> Stashed changes
     }
 }

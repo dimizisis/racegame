@@ -8,7 +8,7 @@ import java.util.List;
  * @author Dimitrios Zisis 
  * @version 1.0
  */
-public class CarSelector extends Actor
+public class CarSelector extends Selector
 {
     private String carImage;
     
@@ -35,7 +35,7 @@ public class CarSelector extends Actor
         }
     }
     
-    public boolean select()
+    protected boolean select()
     {
         this.setCarImage(this.getCarImage() + "_selected");
         setImage(new GreenfootImage(this.getCarImage() + ".png"));
@@ -45,13 +45,13 @@ public class CarSelector extends Actor
         return true;
     }
     
-    private void deselectAll()
+    protected void deselectAll()
     {
         for (CarSelector cs : (List<CarSelector>)(getWorld().getObjects(CarSelector.class)))
             cs.deselect();
     }
     
-    public void deselect()
+    protected void deselect()
     {
         this.setCarImage(this.getCarImage().replace("_selected", ""));
         this.setImage(new GreenfootImage(this.getCarImage() + ".png"));

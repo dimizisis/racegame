@@ -16,12 +16,13 @@ public class Sound
     private GreenfootSound wrongMove = new GreenfootSound("wrong-move.wav");
     private GreenfootSound screech = new GreenfootSound("screech.mp3");
     private GreenfootSound breaking = new GreenfootSound("break.wav");
+    private GreenfootSound wellDone = new GreenfootSound("well_done.wav");
     
     private Sound() 
     {
         this.soundOn = 1; /* start with off */
     }
-  
+
     public static Sound getInstance()
     {
         if (Objects.isNull(soundInstance))
@@ -58,6 +59,12 @@ public class Sound
     {
         if (soundOn == 1)
             this.breaking.play();
+    }
+    
+    public void playWellDone()
+    {
+        if (soundOn == 1)
+            this.wellDone.play();
     }
     
     public void stopLevelMusic()

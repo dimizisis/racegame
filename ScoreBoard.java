@@ -42,7 +42,7 @@ public class ScoreBoard extends Actor
     {
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
 
-        image.setColor(new Color(255,255,255, 128));
+        image.setColor(new Color(255, 255, 255, 128));
         image.fillRect(0, 0, WIDTH, HEIGHT);
         image.setColor(new Color(0, 0, 0, 128));
         image.fillRect(5, 5, WIDTH-10, HEIGHT-10);
