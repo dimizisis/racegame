@@ -55,11 +55,11 @@ public class MyWorld extends SWorld
         
         setScrollingBackground(this.backgroundImage);
         
+        setPaintOrder(WarningMessage.class);
         setPaintOrder(ScoreBoard.class);
         addObject(new ScoreBoard("Score: ", level), 50, 20, false);
         addObject(new Speedometer(mainActor), 520, 20, false);
 
-        //Sound.getInstance().playLevelMusic();
         setPaintOrder(WarningMessage.class, Cone.class);
         setPaintOrder(Cone.class, Car.class);
         setPaintOrder(ScoreBoard.class);
@@ -78,38 +78,31 @@ public class MyWorld extends SWorld
     private void generateOtherCars()
     {
         for (int i=0; i<4; ++i)
-            addObject(new OtherCar(2), ThreadLocalRandom.current().nextInt(-1000, 2200), ThreadLocalRandom.current().nextInt(120, 700));
+            addObject(new OtherCar(2), ThreadLocalRandom.current().nextInt(-1000, 2200), ThreadLocalRandom.current().nextInt(120, 420));
     }
     
     private void generateRandomSpeedLimitSigns()
     {
-        int x = getScrolledX();
-        for (int i=0; i < 4; ++i)
+        int x = -1900;
+        for (int i=1; i <= 5; ++i)
         {
             int speedLimit = ThreadLocalRandom.current().nextBoolean() ? 30 : 55;
             String speedLimitImg = "speed_limit_" + speedLimit;
-            x = ThreadLocalRandom.current().nextInt(x+200, x+400);
+            x = ThreadLocalRandom.current().nextInt(x+200*i, x+300*i);
             speedLimits.add(new SpeedLimitRange(x, speedLimit));
             addObject(new SpeedSign(speedLimitImg), x, 768);
             if (speedLimits.size() > 1)
                 speedLimits.get(speedLimits.size()-2).setStopX(x);
-        }
-        int xx = 60, yy = 160;
-        for (SpeedLimitRange speedLimitRange : speedLimits)
-        {
-            showText(speedLimitRange.getStartX() + " " + speedLimitRange.getStopX(), xx, yy);
-            xx+=30;
-            yy+=30;
         }
     }
     
     private void generateRandomCrossings()
     {
         boolean hasPedestrians = true;
-        int x = getScrolledX();
-        for (int i=0; i < 3; ++i)
+        int x = -1900;
+        for (int i=1; i <= 5; ++i)
         {
-            x = ThreadLocalRandom.current().nextInt(x+300, 2200);
+            x = ThreadLocalRandom.current().nextInt(x+200*i, x+300*i);
             Crossing crossing = new Crossing(hasPedestrians);
             addObject(crossing, x, 420);
             if (i % 2 == 0)
@@ -139,7 +132,6 @@ public class MyWorld extends SWorld
         String title = success ? "Congratulations!" : "Game Over";
         String prefix = success ? "Score: " : "";
         addObject(new ScoreBoard(title, prefix, level, success), getWidth()/2, getHeight()/2, false);
-        Sound.getInstance().stopLevelMusic();
         Lives.getInstance().resetLives();
         Score.getInstance().resetScore(level);
         if (success)

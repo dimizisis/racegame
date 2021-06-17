@@ -1,0 +1,12 @@
+Controls:
+Accelerate Key: Right Arrow
+Backwards Move Key: Left Arrow
+Break Key: B
+
+Basic Info:
+There are 4 lives available for each level.
+Try to get to the end within the time limit
+without violating the highway code.
+
+Before attempting to play, see the information 
+next to each level button.

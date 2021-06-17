@@ -18,15 +18,6 @@ public class CategoriesMenu extends World
         // Create a new world with 600x840 cells with a cell size of 1x1 pixels.
         super(600, 840, 1);
         setBackground("menu.png");
-
-        prepare();
-    }
-    public CategoriesMenu(int score)
-    {
-        // Create a new world with 600x840 cells with a cell size of 1x1 pixels.
-        super(600, 840, 1);
-        setBackground("menu.png");
-        
         prepare();
     }
 
@@ -38,22 +29,19 @@ public class CategoriesMenu extends World
     {
         /* Adds buttons */
         Button crossingsBtn = new Button("crossings_btn_" + Language.getInstance().getSelectedLanguage());
-        addObject(crossingsBtn, 310, 280);
+        addObject(crossingsBtn, 250, 280);
         
-        Button roundAboutsBtn = new Button("speed_limits_btn_" + Language.getInstance().getSelectedLanguage());
-        addObject(roundAboutsBtn, 310, 390);
+        Button crossingsInfoBtn = new Button("information_crossings_btn_" + Language.getInstance().getSelectedLanguage());
+        addObject(crossingsInfoBtn, 450, 280);
+        
+        Button speedLimitsBtn = new Button("speed_limits_btn_" + Language.getInstance().getSelectedLanguage());
+        addObject(speedLimitsBtn, 250, 390);
+        
+        Button speedLimitsInfoBtn = new Button("information_speed_limits_btn_" + Language.getInstance().getSelectedLanguage());
+        addObject(speedLimitsInfoBtn, 450, 390);
         
         Button backBtn = new Button("back_btn_" + Language.getInstance().getSelectedLanguage());
-        addObject(backBtn, 310, 500);
-        
-        Button infoBtn = new Button("info");
-        addObject(infoBtn, 120, 650);
-        
-        Button soundBtn = new Button("sound");
-        addObject(soundBtn, 485, 650);
-        
-        Button settingsBtn = new Button("settings");
-        addObject(settingsBtn, 300, 650);
+        addObject(backBtn, 310, 650);
         
         try {
             Score.getInstance().getScoresFromFile();

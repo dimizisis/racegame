@@ -11,10 +11,8 @@ public class Sound
 {
     private static Sound soundInstance = null;
     private int soundOn; /* 1 for on, 0 for off */
-    private GreenfootSound levelMusic = new GreenfootSound("spyhunter.wav");
     private GreenfootSound horn = new GreenfootSound("horn.wav");
     private GreenfootSound wrongMove = new GreenfootSound("wrong-move.wav");
-    private GreenfootSound screech = new GreenfootSound("screech.mp3");
     private GreenfootSound breaking = new GreenfootSound("break.wav");
     private GreenfootSound wellDone = new GreenfootSound("well_done.wav");
     
@@ -43,18 +41,6 @@ public class Sound
             this.wrongMove.play();
     }
     
-    public void playScreech()
-    {
-        if (soundOn == 1)
-            this.screech.play();
-    }
-    
-    public void playLevelMusic()
-    {
-        if (soundOn == 1)
-            this.levelMusic.play();
-    }
-    
     public void playBreaking()
     {
         if (soundOn == 1)
@@ -65,11 +51,6 @@ public class Sound
     {
         if (soundOn == 1)
             this.wellDone.play();
-    }
-    
-    public void stopLevelMusic()
-    {
-        this.levelMusic.stop();
     }
     
     public boolean isSoundOn()

@@ -48,7 +48,7 @@ public class InfoMessage extends Actor
     public void act(){
         if (Greenfoot.mousePressed(this))
         {
-            Greenfoot.setWorld(new MainMenu(score));   // go to UI
+            Greenfoot.setWorld(new MainMenu());   // go to Menu
         }
     }
 }

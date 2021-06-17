@@ -8,18 +8,17 @@ import java.util.List;
  * @author Dimitrios Zisis
  * @version 1.0
  */
-public class SettingsUI extends World
+public class SettingsMenu extends World
 {
 
     /**
      * Constructor for objects of class SettingsUI.
      * 
      */
-    public SettingsUI()
+    public SettingsMenu()
     {    
         super(600, 840, 1);
-        setBackground("settings_ui.png");
-
+        setBackground("settings_ui_" + Language.getInstance().getSelectedLanguage() + ".png");
         prepare();
     }
     
@@ -34,11 +33,11 @@ public class SettingsUI extends World
         {
             String carName = entry.getKey() + (entry.getValue() ? "" : "_disabled");
             CarSelector car = new CarSelector(carName);
-            addObject(car, 300, y);
+            addObject(car, 315, y);
             y += 100;
         }
         Button okBtn = new Button("ok");
-        addObject(okBtn, 300, 650);
+        addObject(okBtn, 315, 650);
         
         selectLastSelected();
         

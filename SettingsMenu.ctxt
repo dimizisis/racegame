@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.target=SettingsUI
+comment0.target=SettingsMenu
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ SettingsUI\ here.\r\n\ \r\n\ @author\ Dimitrios\ Zisis\r\n\ @version\ 1.0\r\n
 comment1.params=
-comment1.target=SettingsUI()
+comment1.target=SettingsMenu()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ SettingsUI.\r\n\ \r\n
 comment2.params=
 comment2.target=void\ prepare()

@@ -75,7 +75,7 @@ public class Score
     {
         FileInputStream fi;
         try {
-            fi = new FileInputStream(new File("scores.dat"));
+            fi = new FileInputStream(new File("./savedata/scores.dat"));
             ObjectInputStream oi = new ObjectInputStream(fi);
             this.maxLevelScores = (HashMap<String, Integer>) oi.readObject();
         }  catch (IOException | ClassNotFoundException ex) {
@@ -97,7 +97,7 @@ public class Score
         }
         this.maxLevelScores.put(level, this.levelScores.get(level));
         try {
-            FileOutputStream f = new FileOutputStream(new File("scores.dat"));
+            FileOutputStream f = new FileOutputStream(new File("./savedata/scores.dat"));
             ObjectOutputStream o = new ObjectOutputStream(f);
             o.writeObject(maxLevelScores);
             o.close();

@@ -18,7 +18,10 @@ public class Button extends Actor
     public Button(String button)
     {
         this.button = button;
-        setImage(button + ".png");
+        if (button.startsWith("information_"))
+            setImage("info" + ".png");
+        else
+            setImage(button + ".png");
     }
     
     public void act() 
@@ -32,13 +35,15 @@ public class Button extends Actor
             }
             else if (button.equals("info"))
             {
+                /*
                 try {
-                    getWorld().addObject(new InfoMessage(Files.readString(Paths.get("./gameinfo.txt"), StandardCharsets.US_ASCII)), getWorld().getWidth()/2, getWorld().getHeight()/2);
-                } catch(IOException e) {}
+                    getWorld().addObject(new InfoMessage(Files.readString(Paths.get("./text/gameinfo_" + Language.getInstance().getSelectedLanguage() + ".txt"), StandardCharsets.US_ASCII)), getWorld().getWidth()/2, getWorld().getHeight()/2);
+                } catch(IOException e) {} */
+                Greenfoot.setWorld(new AboutMenu());
             }
             else if (button.equals("settings"))
             {
-                Greenfoot.setWorld(new SettingsUI());
+                Greenfoot.setWorld(new SettingsMenu());
             }
             else if (button.equals("ok"))
             {
@@ -67,6 +72,10 @@ public class Button extends Actor
             else if (button.startsWith("speed_limits_btn_"))
             {
                 Greenfoot.setWorld(new MyWorld("speed_limits"));
+            }
+            else if (button.startsWith("information_"))
+            {
+                
             }
          }
     }    

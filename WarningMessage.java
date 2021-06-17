@@ -12,7 +12,7 @@ public class WarningMessage extends Actor
 {
     public static final float FONT_SIZE = 24.0f;
     public static final int WIDTH = 300;
-    public static final int HEIGHT = 400;
+    public static final int HEIGHT = 200;
     
     private String text;
     private String messageType;
@@ -42,8 +42,8 @@ public class WarningMessage extends Actor
         font = font.deriveFont(FONT_SIZE);
         image.setFont(font);
         image.setColor(Color.WHITE);
-        image.drawString(messageType, 60, 100);
-        image.drawString(text, 60, 160);
+        image.drawString(messageType, 60, 70);
+        image.drawString(text, 60, 130);
         setImage(image);
     }
     

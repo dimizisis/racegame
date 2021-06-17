@@ -1,5 +1,7 @@
 import greenfoot.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.Comparator;
+import java.util.Objects;
 
 /**
  * Write a description of class OtherCar here.
@@ -33,9 +35,17 @@ public class OtherCar extends SmoothMover
      */
     public void act() 
     {
-        if (getObjectsInRange(100, Pedestrian.class).isEmpty() && getObjectsInRange(100, OtherCar.class).isEmpty() && getObjectsInRange(100, Car.class).isEmpty())
+        if (getObjectsInRange(100, Pedestrian.class).isEmpty() || isFirstInOrder())
             move(-this.speed);
         else
             move(0);
-    }    
+    }
+    
+    private boolean isFirstInOrder()
+    {
+        Actor frontCar = getObjectsInRange(200, OtherCar.class).stream().min(Comparator.comparing(OtherCar::getX)).orElse(null);
+        if (Objects.nonNull(frontCar) && this.equals(frontCar))
+            return true;
+        return false;
+    }
 }

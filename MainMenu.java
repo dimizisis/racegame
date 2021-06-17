@@ -20,15 +20,6 @@ public class MainMenu extends World
         // Create a new world with 600x840 cells with a cell size of 1x1 pixels.
         super(600, 840, 1);
         setBackground("menu.png");
-
-        prepare();
-    }
-    public MainMenu(int score)
-    {
-        // Create a new world with 600x840 cells with a cell size of 1x1 pixels.
-        super(600, 840, 1);
-        setBackground("menu.png");
-        
         prepare();
     }
 

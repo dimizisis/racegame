@@ -11,7 +11,7 @@
      */
     public class Car extends SmoothMover
     {
-        private final static int SPEED_LIMIT = 6;
+        public final static int SPEED_LIMIT = 6;
         private Set<Actor> stopped;
         private Set<Actor> passed;
         
@@ -84,17 +84,13 @@
             {
                 if (hasExceededSpeedLimit(speedLimitRange.getSpeedLimit()))
                 {
-                    Score.getInstance().reduceLevelScore(((MyWorld) getWorld()).getLevel());
+                    //Score.getInstance().reduceLevelScore(((MyWorld) getWorld()).getLevel());
                     ((MyWorld) getWorld()).showSpeedWarning();
                 }
                 else
                 {
                     ((MyWorld) getWorld()).removeSpeedWarning();
                 }
-            }
-            else
-            {
-                ((MyWorld) getWorld()).removeSpeedWarning();
             }
         }
     }
