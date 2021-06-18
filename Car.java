@@ -32,9 +32,31 @@
         {
 
             move();
-            checkCollisions();
+            
+            if (collisionDetected())
+            {
+                Score.getInstance().reduceLevelScore(((MyWorld) getWorld()).getLevel());
+                Lives.getInstance().reduceLives();
+                Statistics.getInstance().incrementCollisions();
+                if (Lives.getInstance().getLivesCount() > 0)
+                    respawn();
+                else
+                    end(false);
+            }
+            
             checkTrafficLight();
-            checkSpeedLimits();
+            
+            SpeedSign ss = speedViolationDetected();
+            if (Objects.nonNull(ss))
+            {
+                if (!passed.contains(ss))
+                        Statistics.getInstance().incrementSpeedViolations();
+                passed.add(ss);
+                ((MyWorld) getWorld()).showSpeedWarning();
+            } else
+            {
+                ((MyWorld) getWorld()).disposeSpeedWarning();
+            }
             
             if (Greenfoot.isKeyDown("left")) 
             {
@@ -59,8 +81,16 @@
             if (Greenfoot.isKeyDown("b"))
             {
                 stop();
-                if (checkIfStoppedBeforeCrossing())
+                if (stoppedBeforeCrossing())
+                {
                     Sound.getInstance().playWellDone();
+                    Score.getInstance().increaseLevelScore("crossings");
+                }
+                if (stoppedBeforeRoad())
+                {
+                    Sound.getInstance().playWellDone();
+                    Score.getInstance().increaseLevelScore("stop_sign");
+                }
             }
             
             if (Greenfoot.isKeyDown("h"))
@@ -76,23 +106,21 @@
             
     }
     
-    private void checkSpeedLimits()
+    private SpeedSign speedViolationDetected()
     {
+        SpeedSign ss = null;
         for (SpeedLimitRange speedLimitRange : ((MyWorld) getWorld()).getSpeedLimits())
         {
             if (((MyWorld) getWorld()).getScrolledX()+getX() >= speedLimitRange.getStartX() && ((MyWorld) getWorld()).getScrolledX() <= speedLimitRange.getStopX()+getX())
             {
                 if (hasExceededSpeedLimit(speedLimitRange.getSpeedLimit()))
                 {
-                    //Score.getInstance().reduceLevelScore(((MyWorld) getWorld()).getLevel());
-                    ((MyWorld) getWorld()).showSpeedWarning();
-                }
-                else
-                {
-                    ((MyWorld) getWorld()).removeSpeedWarning();
+                    ss = speedLimitRange.getSpeedSign();
+                    break;
                 }
             }
         }
+        return ss;
     }
     
     public boolean hasExceededSpeedLimit(double speedLimit)
@@ -159,19 +187,15 @@
         }
     }
     
-    private void checkCollisions()
+    private boolean collisionDetected()
     {
         Actor pedestrian = getOneIntersectingObject(Pedestrian.class);
         Actor otherCar = getOneIntersectingObject(OtherCar.class);
         if (collidesWith(pedestrian) || collidesWith(otherCar))
         {
-            Score.getInstance().reduceLevelScore(((MyWorld) getWorld()).getLevel());
-            Lives.getInstance().reduceLives();
-            if (Lives.getInstance().getLivesCount() > 0)
-                respawn();
-            else
-                end(false);
+            return true;
         }
+        return false;
     }
     
     private void checkTrafficLight()
@@ -184,24 +208,42 @@
             {
                 passed.add(crossing);
                 Lives.getInstance().reduceLives();
+                Statistics.getInstance().incrementCrossingViolations();
                 if (Lives.getInstance().getLivesCount() < 1)
                     end(false);
             }
         }
     }
     
-    private boolean checkIfStoppedBeforeCrossing()
+    private boolean stoppedBeforeCrossing()
     {
-        Crossing cr = (Crossing) getOneIntersectingObject(Crossing.class);
-        List<Crossing> actorsInRange = getObjectsInRange(200, Crossing.class);
-        if (!actorsInRange.isEmpty() && Objects.isNull(cr))
+        Crossing crossing = (Crossing) getOneIntersectingObject(Crossing.class);
+        List<? extends Actor> actorsInRange = getObjectsInRange(200, Crossing.class);
+        if (!actorsInRange.isEmpty() && Objects.isNull(crossing))
         {
-            for (Crossing crossing : actorsInRange)
+            for (Actor a : actorsInRange)
             {
-                if (!stopped.contains(crossing))
+                if (!stopped.contains(a))
                 {
-                    stopped.add(crossing);
-                    Score.getInstance().increaseLevelScore("crossings");
+                    stopped.add(a);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    private boolean stoppedBeforeRoad()
+    {
+        Road road = (Road) getOneIntersectingObject(Road.class);
+        List<? extends Actor> actorsInRange = getObjectsInRange(200, Road.class);
+        if (!actorsInRange.isEmpty() && Objects.isNull(road))
+        {
+            for (Actor a : actorsInRange)
+            {
+                if (!stopped.contains(a))
+                {
+                    stopped.add(a);
                     return true;
                 }
             }

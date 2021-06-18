@@ -59,7 +59,7 @@ public class MyWorld extends SWorld
         setPaintOrder(ScoreBoard.class);
         addObject(new ScoreBoard("Score: ", level), 50, 20, false);
         addObject(new Speedometer(mainActor), 520, 20, false);
-
+        
         setPaintOrder(WarningMessage.class, Cone.class);
         setPaintOrder(Cone.class, Car.class);
         setPaintOrder(ScoreBoard.class);
@@ -71,7 +71,8 @@ public class MyWorld extends SWorld
             generateRandomCrossings();
         else if (level.equals("speed_limits"))
             generateRandomSpeedLimitSigns();
-        //generateRandomOils();
+        else if (level.equals("stop_sign"))
+            generateRandomRoads();
         //generateOtherCars();
     }
     
@@ -89,8 +90,9 @@ public class MyWorld extends SWorld
             int speedLimit = ThreadLocalRandom.current().nextBoolean() ? 30 : 55;
             String speedLimitImg = "speed_limit_" + speedLimit;
             x = ThreadLocalRandom.current().nextInt(x+200*i, x+300*i);
-            speedLimits.add(new SpeedLimitRange(x, speedLimit));
-            addObject(new SpeedSign(speedLimitImg), x, 768);
+            SpeedSign ss = new SpeedSign(speedLimitImg);
+            speedLimits.add(new SpeedLimitRange(x, speedLimit, ss));
+            addObject(ss, x, 768);
             if (speedLimits.size() > 1)
                 speedLimits.get(speedLimits.size()-2).setStopX(x);
         }
@@ -110,6 +112,19 @@ public class MyWorld extends SWorld
         }
     }
     
+    private void generateRandomRoads()
+    {
+        boolean hasPedestrians = true;
+        int x = -1900;
+        for (int i=1; i <= 5; ++i)
+        {
+            x = ThreadLocalRandom.current().nextInt(x+200*i, x+300*i);
+            Road road = new Road();
+            addObject(road, x, 420);
+            addObject(new StopSign(), x-210, 768);
+        }
+    }
+    
     public List<SpeedLimitRange> getSpeedLimits()
     {
         return this.speedLimits;
@@ -120,7 +135,7 @@ public class MyWorld extends SWorld
         addObject(Language.getInstance().getSelectedLanguage().equals("en") ? new WarningMessage("Warning!", "Slow down!") : new WarningMessage("Προσοχή!", "Περιόρισε ταχύτητα!"), getWidth()/2, getHeight()/2, false);
     }
     
-    public void removeSpeedWarning()
+    public void disposeSpeedWarning()
     {
         this.removeObjects(getObjects(WarningMessage.class));
     }
@@ -136,6 +151,7 @@ public class MyWorld extends SWorld
         Score.getInstance().resetScore(level);
         if (success)
             Settings.getInstance().updateCarAvailability();
+        Statistics.getInstance().flushStatsToFile();
         Greenfoot.delay(400);
         Greenfoot.setWorld(new MainMenu());
     }

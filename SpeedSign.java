@@ -1,4 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Write a description of class SpeedSign here.
@@ -8,14 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SpeedSign extends Actor
 {
-    private int speedLimit;
     
     public SpeedSign(String type)
     {
         setImage(new GreenfootImage(type + ".png"));
-        this.speedLimit = Integer.parseInt(type.substring(type.length()-2));
     }
-    
+        
     /**
      * Act - do whatever the SpeedSign wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -23,5 +22,5 @@ public class SpeedSign extends Actor
     public void act() 
     {
         // Add your action code here.
-    }    
+    }
 }

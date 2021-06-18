@@ -10,6 +10,7 @@ public class SpeedLimitRange
     private int startX = -1;
     private int stopX = -1;
     private double speedLimit = -1.0;
+    private SpeedSign speedSign = null;
 
     /**
      * Constructor for objects of class SpeedLimitRange
@@ -21,10 +22,11 @@ public class SpeedLimitRange
         this.speedLimit = speedLimit;
     }
     
-    public SpeedLimitRange(int startX, double speedLimit)
+    public SpeedLimitRange(int startX, double speedLimit, SpeedSign speedSign)
     {
         this.startX = startX;
         this.speedLimit = speedLimit;
+        this.speedSign = speedSign;
     }
     
     public int getStartX()
@@ -45,6 +47,11 @@ public class SpeedLimitRange
     public void setStopX(int x)
     {
         this.stopX = x;
+    }
+    
+    public SpeedSign getSpeedSign()
+    {
+        return this.speedSign;
     }
 
 }

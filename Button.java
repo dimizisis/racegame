@@ -35,10 +35,6 @@ public class Button extends Actor
             }
             else if (button.equals("info"))
             {
-                /*
-                try {
-                    getWorld().addObject(new InfoMessage(Files.readString(Paths.get("./text/gameinfo_" + Language.getInstance().getSelectedLanguage() + ".txt"), StandardCharsets.US_ASCII)), getWorld().getWidth()/2, getWorld().getHeight()/2);
-                } catch(IOException e) {} */
                 Greenfoot.setWorld(new AboutMenu());
             }
             else if (button.equals("settings"))
@@ -55,7 +51,7 @@ public class Button extends Actor
             }
             else if (button.startsWith("stats_btn_"))
             {
-                // TODO
+                Greenfoot.setWorld(new StatisticsMenu());
             }
             else if (button.startsWith("exit_btn_"))
             {
@@ -63,7 +59,10 @@ public class Button extends Actor
             }
             else if (button.startsWith("back_btn_"))
             {
-                Greenfoot.setWorld(new MainMenu());
+                if (this.getWorld().getClass().equals(InformationWindow.class))
+                    Greenfoot.setWorld(new CategoriesMenu());
+                else
+                    Greenfoot.setWorld(new MainMenu());
             }
             else if (button.startsWith("crossings_btn_"))
             {
@@ -73,9 +72,13 @@ public class Button extends Actor
             {
                 Greenfoot.setWorld(new MyWorld("speed_limits"));
             }
+            else if (button.startsWith("stop_sign_btn_"))
+            {
+                Greenfoot.setWorld(new MyWorld("stop_sign"));
+            }
             else if (button.startsWith("information_"))
             {
-                
+                Greenfoot.setWorld(new InformationWindow(button.replace("information_", "").replace("_btn", "").replace("_" + Language.getInstance().getSelectedLanguage(), "")));
             }
          }
     }    

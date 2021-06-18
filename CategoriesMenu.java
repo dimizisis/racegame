@@ -15,9 +15,7 @@ public class CategoriesMenu extends World
      */
     public CategoriesMenu()
     {    
-        // Create a new world with 600x840 cells with a cell size of 1x1 pixels.
         super(600, 840, 1);
-        setBackground("menu.png");
         prepare();
     }
 
@@ -27,25 +25,32 @@ public class CategoriesMenu extends World
      */
     private void prepare()
     {
+        setBackground("menu.png");
         /* Adds buttons */
         Button crossingsBtn = new Button("crossings_btn_" + Language.getInstance().getSelectedLanguage());
         addObject(crossingsBtn, 250, 280);
-        
+
         Button crossingsInfoBtn = new Button("information_crossings_btn_" + Language.getInstance().getSelectedLanguage());
         addObject(crossingsInfoBtn, 450, 280);
-        
+
         Button speedLimitsBtn = new Button("speed_limits_btn_" + Language.getInstance().getSelectedLanguage());
         addObject(speedLimitsBtn, 250, 390);
-        
+
         Button speedLimitsInfoBtn = new Button("information_speed_limits_btn_" + Language.getInstance().getSelectedLanguage());
         addObject(speedLimitsInfoBtn, 450, 390);
         
+        Button stopSignBtn = new Button("stop_sign_btn_" + Language.getInstance().getSelectedLanguage());
+        addObject(stopSignBtn, 250, 500);
+        
+        Button stopSignInfoBtn = new Button("information_stop_sign_btn_" + Language.getInstance().getSelectedLanguage());
+        addObject(stopSignInfoBtn, 450, 500);
+
         Button backBtn = new Button("back_btn_" + Language.getInstance().getSelectedLanguage());
         addObject(backBtn, 310, 650);
-        
+
         try {
             Score.getInstance().getScoresFromFile();
         } catch (Exception e) {}
-        
+
     }
 }
