@@ -54,15 +54,12 @@ public class MyWorld extends SWorld
         mainActor.setLocation(-2200, 510);
         
         setScrollingBackground(this.backgroundImage);
+     
+        setPaintOrder(WarningMessage.class, ScoreBoard.class, Speedometer.class, Car.class, OtherCar.class, Road.class);
         
-        setPaintOrder(WarningMessage.class);
-        setPaintOrder(ScoreBoard.class);
         addObject(new ScoreBoard("Score: ", level), 50, 20, false);
         addObject(new Speedometer(mainActor), 520, 20, false);
         
-        setPaintOrder(WarningMessage.class, Cone.class);
-        setPaintOrder(Cone.class, Car.class);
-        setPaintOrder(ScoreBoard.class);
     }
     
     private void generateObjects()
@@ -73,13 +70,7 @@ public class MyWorld extends SWorld
             generateRandomSpeedLimitSigns();
         else if (level.equals("stop_sign"))
             generateRandomRoads();
-        //generateOtherCars();
-    }
-    
-    private void generateOtherCars()
-    {
-        for (int i=0; i<4; ++i)
-            addObject(new OtherCar(2), ThreadLocalRandom.current().nextInt(-1000, 2200), ThreadLocalRandom.current().nextInt(120, 420));
+        generateOtherCars();
     }
     
     private void generateRandomSpeedLimitSigns()
@@ -118,11 +109,24 @@ public class MyWorld extends SWorld
         int x = -1900;
         for (int i=1; i <= 5; ++i)
         {
-            x = ThreadLocalRandom.current().nextInt(x+200*i, x+300*i);
+            x = ThreadLocalRandom.current().nextInt(x+200*(i+1), x+300*(i+1));
             Road road = new Road();
             addObject(road, x, 420);
             addObject(new StopSign(), x-210, 768);
+            generateOtherCars(x, 600, true);
         }
+    }
+    
+    private void generateOtherCars(int width, int height, boolean vertical)
+    {
+        for (int i=1; i<=1; ++i)
+            addObject(new OtherCar(2, vertical), width+2*i, height);
+    }
+    
+    private void generateOtherCars()
+    {
+        for (int i=0; i<4; ++i)
+            addObject(new OtherCar(2), ThreadLocalRandom.current().nextInt(-1000, 2200), ThreadLocalRandom.current().nextInt(120, 420));
     }
     
     public List<SpeedLimitRange> getSpeedLimits()

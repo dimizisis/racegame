@@ -1,4 +1,5 @@
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Write a description of class Lives here.
  * 
@@ -8,11 +9,11 @@ import java.util.Objects;
 public class Lives  
 {
     private static Lives livesInstance = null;
-    private int lives;
+    private AtomicInteger lives;
     
     private Lives() 
     {
-        this.lives = 4;
+        this.lives = new AtomicInteger(4);
     }
   
     public static Lives getInstance()
@@ -25,17 +26,16 @@ public class Lives
     
     public int getLivesCount()
     {
-        return this.lives;
+        return this.lives.getAcquire();
     }
     
     public int reduceLives()
     {
-        --this.lives;
-        return this.lives;
+        return this.lives.getAndDecrement();
     }
     
     public void resetLives()
     {
-        this.lives = 4;
+        this.lives.set(4);
     }
 }

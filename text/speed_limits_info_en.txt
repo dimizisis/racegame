@@ -1,21 +1,16 @@
-Speed limits are used in most countries to set the legal maximum, middle 
-or minimum speed at which vehicles may travel on a given stretch of road.
-Speed limits are generally indicated on a traffic sign reflecting the 
-maximum, middle or minimum permitted expressed as kilometres per hour 
-(km/h) and/or miles per hour (mph).
+Speed limits are used in most countries to set the legal maximum, middle or minimum 
+speed at which vehicles may travel on a given stretch of road.Speed limits are 
+generally indicated on a traffic sign reflecting the maximum, middle or minimum 
+permitted expressed as kilometres per hour (km/h) and/or miles per hour (mph).
 
-There are several reasons to regulate speed on roads. It is often done 
-in an attempt to improve road traffic safety and reduce the number of 
-casualties from traffic collisions. The World Health Organization (WHO) 
-identified speed control as one of a number of steps that can be taken 
-to reduce road casualties.
+There are several reasons to regulate speed on roads. It is often done in an attempt 
+to improve road traffic safety and reduce the number of casualties from traffic 
+collisions. The World Health Organization (WHO) identified speed control as one of a 
+number of steps that can be taken to reduce road casualties.
 
-Speed limits may also be set to reduce the environmental impact of road 
-traffic (vehicle noise, vibration, emissions) and as a political response 
-to local community concerns for the safety of pedestrians. For example, 
-a draft proposal from Germany's National Platform on the Future of 
-Mobility task force recommended a blanket 130 km/h (81 mph) speed limit 
-across the Autobahn to curb fuel consumption and carbon emissions. Some 
-cities have reduced limits to as little as 30 km/h (19 mph) for both 
-safety and efficiency reasons. However, some research indicates that 
-changes in the speed limit may not always alter average vehicle speed.
+Speed limits may also be set to reduce the environmental impact of road traffic 
+(vehicle noise, vibration, emissions) and as a political response to local community 
+concerns for the safety of pedestrians.
+
+In this game, only speed signs that refer to the maximum speed permitted are available.
+Try not to violate the speed limits.

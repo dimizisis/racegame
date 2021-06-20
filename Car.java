@@ -81,15 +81,10 @@
             if (Greenfoot.isKeyDown("b"))
             {
                 stop();
-                if (stoppedBeforeCrossing())
+                if (stoppedBeforeCrossing() || stoppedBeforeRoad())
                 {
                     Sound.getInstance().playWellDone();
-                    Score.getInstance().increaseLevelScore("crossings");
-                }
-                if (stoppedBeforeRoad())
-                {
-                    Sound.getInstance().playWellDone();
-                    Score.getInstance().increaseLevelScore("stop_sign");
+                    Score.getInstance().increaseLevelScore(((MyWorld) getWorld()).getLevel());
                 }
             }
             
@@ -101,7 +96,10 @@
                 
             if (reachedEnd())
             {
-                end(true);
+                if (Score.getInstance().getScore(((MyWorld) getWorld()).getLevel()) > 0)
+                    end(true);
+                else
+                    end(false);
             }
             
     }
@@ -203,7 +201,6 @@
         Crossing crossing = (Crossing) getOneIntersectingObject(Crossing.class);
         if (Objects.nonNull(crossing) && crossing.hasTrafficLight() && crossing.getTrafficLight().getState() == 0)
         {
-            //Sound.getInstance().playWrongMove();
             if (!passed.contains(crossing))
             {
                 passed.add(crossing);
@@ -223,10 +220,13 @@
         {
             for (Actor a : actorsInRange)
             {
-                if (!stopped.contains(a))
+                if (getX() < a.getX())
                 {
-                    stopped.add(a);
-                    return true;
+                    if (!stopped.contains(a))
+                    {
+                        stopped.add(a);
+                        return true;
+                    }
                 }
             }
         }
@@ -236,15 +236,18 @@
     private boolean stoppedBeforeRoad()
     {
         Road road = (Road) getOneIntersectingObject(Road.class);
-        List<? extends Actor> actorsInRange = getObjectsInRange(200, Road.class);
+        List<? extends Actor> actorsInRange = getObjectsInRange(330, Road.class);
         if (!actorsInRange.isEmpty() && Objects.isNull(road))
         {
             for (Actor a : actorsInRange)
             {
-                if (!stopped.contains(a))
+                if (getX() < a.getX())
                 {
-                    stopped.add(a);
-                    return true;
+                    if (!stopped.contains(a))
+                    {
+                        stopped.add(a);
+                        return true;
+                    }
                 }
             }
         }

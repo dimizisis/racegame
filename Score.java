@@ -1,6 +1,6 @@
 import java.util.Objects;
 import java.util.Map;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.io.*;
 
 /**
@@ -21,14 +21,14 @@ public class Score
         getScoresFromFile();
         if (Objects.isNull(levelScores))
         {
-            levelScores = new HashMap<>();
-            levelScores.put("crossings", 100);
-            levelScores.put("speed_limits", 100);
-            levelScores.put("stop_sign", 100);
+            levelScores = new ConcurrentHashMap<>();
+            levelScores.put("crossings", 0);
+            levelScores.put("speed_limits", 0);
+            levelScores.put("stop_sign", 0);
         }
         if (Objects.isNull(maxLevelScores))
         {
-            maxLevelScores = new HashMap<>();
+            maxLevelScores = new ConcurrentHashMap<>();
             maxLevelScores.put("crossings", 0);
             maxLevelScores.put("speed_limits", 0);
             maxLevelScores.put("stop_sign", 0);
@@ -55,7 +55,7 @@ public class Score
     
     public void resetScore(String level)
     {
-        levelScores.put(level, 100);
+        levelScores.put(level, 0);
     }
     
     public void increaseLevelScore(String level)
@@ -77,7 +77,7 @@ public class Score
         try {
             fi = new FileInputStream(new File("./savedata/scores.dat"));
             ObjectInputStream oi = new ObjectInputStream(fi);
-            this.maxLevelScores = (HashMap<String, Integer>) oi.readObject();
+            this.maxLevelScores = (ConcurrentHashMap<String, Integer>) oi.readObject();
         }  catch (IOException | ClassNotFoundException ex) {
         }
     }

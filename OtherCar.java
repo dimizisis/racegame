@@ -13,6 +13,7 @@ public class OtherCar extends SmoothMover
 {
     
     private int speed;
+    private boolean vertical = false;
     
     public OtherCar()
     {
@@ -28,6 +29,35 @@ public class OtherCar extends SmoothMover
         if (i != 2)
             this.getImage().rotate(180);
         this.speed = speed;
+        move();
+    }
+    
+    public OtherCar(boolean vertical)
+    {
+        int i = ThreadLocalRandom.current().nextInt(1, 4);
+        this.setImage(new GreenfootImage("Car_" + i + "_01.png"));
+        this.vertical = vertical;
+        if (vertical)
+            this.setImage(new GreenfootImage("Car_" + i + "_01_v.png"));
+        else
+            if (i != 2)
+                this.getImage().rotate(180);
+        this.speed = 2;
+        move();
+    }
+
+    public OtherCar(int speed, boolean vertical)
+    {
+        int i = ThreadLocalRandom.current().nextInt(1, 4);
+        this.setImage(new GreenfootImage("Car_" + i + "_01.png"));
+        this.vertical = vertical;
+        if (vertical)
+            this.setImage(new GreenfootImage("Car_" + i + "_01_v.png"));
+        else
+            if (i != 2)
+                this.getImage().rotate(180);
+        this.speed = speed;
+        move();
     }
     /**
      * Act - do whatever the OtherCar wants to do. This method is called whenever
@@ -36,14 +66,17 @@ public class OtherCar extends SmoothMover
     public void act() 
     {
         if (getObjectsInRange(100, Pedestrian.class).isEmpty() || isFirstInOrder())
-            move(-this.speed);
+            if (!vertical)
+                accelerate(1.2);
+            else
+                setLocation(getExactX(), getExactY()+0.2);
         else
-            move(0);
+            stop();
     }
     
     private boolean isFirstInOrder()
     {
-        Actor frontCar = getObjectsInRange(200, OtherCar.class).stream().min(Comparator.comparing(OtherCar::getX)).orElse(null);
+        Actor frontCar = getObjectsInRange(80, OtherCar.class).stream().min(Comparator.comparing(OtherCar::getX)).orElse(null);
         if (Objects.nonNull(frontCar) && this.equals(frontCar))
             return true;
         return false;

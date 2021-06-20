@@ -78,7 +78,10 @@ public class Button extends Actor
             }
             else if (button.startsWith("information_"))
             {
-                Greenfoot.setWorld(new InformationWindow(button.replace("information_", "").replace("_btn", "").replace("_" + Language.getInstance().getSelectedLanguage(), "")));
+                if (button.contains("speed_limits"))
+                    Greenfoot.setWorld(new InformationWindow(button.replace("information_", "").replace("_btn", "").replace("_" + Language.getInstance().getSelectedLanguage(), ""), 310, 260, 80, 335, 10.5f));
+                else if (button.contains("crossing"))
+                    Greenfoot.setWorld(new InformationWindow(button.replace("information_", "").replace("_btn", "").replace("_" + Language.getInstance().getSelectedLanguage(), ""), 310, 290, 80, 400, 13.0f));
             }
          }
     }    

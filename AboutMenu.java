@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class AboutMenu extends World
 {
-    
+
     /**
      * Constructor for objects of class UI.
      */
@@ -30,12 +30,17 @@ public class AboutMenu extends World
      */
     private void prepare()
     {
-        try 
+        try
         {
-            showText(Files.readString(Paths.get("./text/gameinfo_" + Language.getInstance().getSelectedLanguage() + ".txt"), StandardCharsets.UTF_8), 310, 385);
-        } catch (IOException e)
-        {
-        }
+            GreenfootImage image = new GreenfootImage(500, 600);
+            image.setColor(new Color(255, 255, 255, 128));
+            Font font = image.getFont();
+            font = font.deriveFont(14.0f);
+            image.setFont(font);
+            image.setColor(Color.WHITE);
+            image.drawString(Files.readString(Paths.get("./text/gameinfo_" + Language.getInstance().getSelectedLanguage() + ".txt")), 10, 10);
+            getBackground().drawImage(image, 100, 220);
+        } catch (IOException e) {}
         
         Button backBtn = new Button("back_btn_" + Language.getInstance().getSelectedLanguage());
         addObject(backBtn, 310, 650);
