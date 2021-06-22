@@ -1,0 +1,9 @@
+A stop sign is a traffic sign designed to notify drivers that they must come to a 
+complete stop and make sure the intersection is safely clear of vehicles and 
+pedestrians before continuing past the sign. In many countries, the sign is a red 
+octagon with the word STOP, in either English or the national language of that 
+particular country, displayed in white or yellow.
+
+At the level of the game, try to stop before the "STOP" signal appears, which will 
+be followed by a road perpendicular to that of your car. Each time you stop, you 
+will be rewarded with points.

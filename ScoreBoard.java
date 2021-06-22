@@ -5,7 +5,7 @@ import java.util.Calendar;
  * The ScoreBoard is used to display results on the screen. It can display some
  * text and several numbers.
  * 
- * @author M Kolling
+ * @author M Kolling (modified by Dimitrios Zisis)
  * @version 1.0
  */
 public class ScoreBoard extends Actor
@@ -13,12 +13,20 @@ public class ScoreBoard extends Actor
     public static final float FONT_SIZE = 24.0f;
     public static final int WIDTH = 400;
     public static final int HEIGHT = 300;
-    public boolean inGameScore = false;
+    public boolean inGameScore = false; /* if it is in-game score, no need for title */
     
     private String prefix;
     private String title;
     private String level;
     
+    /**
+     * Constructor for objects of class ScoreBoard.
+     * 
+     * @param title  the title of the scoreboard
+     * @param prefix  the prefix of the message (within the scoreboard)
+     * @param level  the current level that the score reffers to
+     * @param success  whether or not the game ended with success
+     */
     public ScoreBoard(String title, String prefix, String level, boolean success)
     {
         this.title = title;
@@ -27,6 +35,11 @@ public class ScoreBoard extends Actor
         makeEndImage(success);
     }
     
+    /**
+     * Constructor for objects of class ScoreBoard.
+     * @param prefix  the prefix of the message (within the scoreboard)
+     * @param level  the current level that the score reffers to
+     */
     public ScoreBoard(String prefix, String level)
     {
         this.prefix = prefix;
@@ -36,7 +49,8 @@ public class ScoreBoard extends Actor
     }
 
     /**
-     * Make the score board image.
+     * Makes the score board image.
+     * @param success  whether or not the game ended with success
      */
     private void makeEndImage(boolean success)
     {
@@ -59,7 +73,7 @@ public class ScoreBoard extends Actor
     }
     
     /**
-     * Make the score board image.
+     * Makes the score board image.
      */
     private void makeImage()
     {
@@ -78,7 +92,12 @@ public class ScoreBoard extends Actor
         setImage(image);
     }
     
-    public void act(){
+    /**
+     * Act - do whatever the ScoreBoard wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
         if (Greenfoot.mousePressed(this))
         {
             if (!inGameScore)

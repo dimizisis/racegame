@@ -2,14 +2,17 @@ import greenfoot.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Write a description of class SpeedSign here.
+ * Class that represents the speed sign.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class SpeedSign extends Actor
 {
-    
+    /**
+     * Constructor for objects of class SpeedSign.
+     * @param type  type of the speed sign (limit)
+     */
     public SpeedSign(String type)
     {
         setImage(new GreenfootImage(type + ".png"));
@@ -21,6 +24,5 @@ public class SpeedSign extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
     }
 }

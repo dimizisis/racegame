@@ -3,25 +3,36 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * Settings class using singleton pattern.
+ * Class that holds the game's data about settings.
+ * It is created using the Singleton Pattern.
  * 
- * @author Dimitrios Zisis 
+ * @author Dimitrios Zisis
  * @version 1.0
  */
 public class Settings  
 {
     private static Settings settingsInstance = null;
-    private static final String DEFAULT_CAR = "Car_1_01";
     private String selectedCar;
     private Map<String, Boolean> carsAvailable;
     
+    private static final String DEFAULT_CAR = "Car_1_01";
+    
+    /**
+     * Constructor for object of class Settings.
+     * Cannot be called outside the instance.
+     */
     private Settings() 
     {
         this.carsAvailable = new HashMap();
         this.selectedCar = DEFAULT_CAR;
         this.updateCarAvailability();
     }
-  
+    
+    /**
+     * Returns the (only) instance of class Settings.
+     * 
+     * @return  the instance of class Settings
+     */
     public static Settings getInstance()
     {
         if (Objects.isNull(settingsInstance))
@@ -30,6 +41,9 @@ public class Settings
         return settingsInstance;
     }
     
+    /**
+     * Updates car availability according to the scores.
+     */
     public void updateCarAvailability()
     {
         this.carsAvailable.put("Car_1_01", true); // first car (basic red) always available
@@ -37,16 +51,31 @@ public class Settings
         this.carsAvailable.put("Car_3_01", Score.getInstance().getMaxScoreForLevel("level3") >= 80 ? true : false); // third car (police) available only if player scored 80 or more in the 3rd level
     }
     
+    /**
+     * Returns a Map containing all the available cars.
+     * 
+     * @return  the available cars
+     */
     public Map<String, Boolean> getCarAvailability()
     {
         return this.carsAvailable;
     }
     
+    /**
+     * Returns a String with the selected car.
+     * 
+     * @return  a string representation of the selected car's image. 
+     */
     public String getSelectedCar()
     {
         return this.selectedCar.replace("_selected", "") + ".png";
     }
     
+    /**
+     * Sets the selected car.
+     * 
+     * @param  a string representation of the selected car's image. 
+     */
     public void setSelectedCar(String sc)
     {
         this.selectedCar = sc;

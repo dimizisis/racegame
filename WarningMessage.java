@@ -2,10 +2,10 @@ import greenfoot.*;
 import java.util.Calendar;
 
 /**
- * The ScoreBoard is used to display results on the screen. It can display some
+ * The WarningMessage is used to display warnings on the screen. It can display some
  * text and several numbers.
  * 
- * @author M Kolling
+ * @author M Kolling (original author of ScoreBoard, from which the Speedometer class is derived)
  * @version 1.0
  */
 public class WarningMessage extends Actor
@@ -18,7 +18,10 @@ public class WarningMessage extends Actor
     private String messageType;
     
     /**
-     * Create a score board for the final result.
+     * Constructor for objects of class WarningMessage.
+     * 
+     * @param text  the text of the warning
+     * @param messageType  the type of the warning (like a title)
      */
     public WarningMessage(String text, String messageType)
     {
@@ -28,12 +31,11 @@ public class WarningMessage extends Actor
     }
 
     /**
-     * Make the information image.
+     * Makes the warning image.
      */
     private void makeInfoImage()
     {
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
-
         image.setColor(new Color(255, 255, 255, 128));
         image.fillRect(0, 0, WIDTH, HEIGHT);
         image.setColor(new Color(0, 0, 0, 128));
@@ -47,8 +49,12 @@ public class WarningMessage extends Actor
         setImage(image);
     }
     
-    public void act(){
-        
+    /**
+     * Act - do whatever the WarningMessage wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    { 
     }
 
 }

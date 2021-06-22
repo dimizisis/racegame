@@ -1,19 +1,17 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
- * Write a description of class Selector here.
+ * Abstract class that represents a selector,
+ * mainly used for Language selector and car
+ * selector in this version of the game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public abstract class Selector extends Actor
 {
-    /**
-     * Act - do whatever the Selector wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public abstract void act();   
-    protected abstract boolean select();
+    protected abstract void select();
     protected abstract void deselectAll();
     protected abstract void deselect();
 }

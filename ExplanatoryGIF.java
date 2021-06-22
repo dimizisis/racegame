@@ -1,21 +1,28 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
- * Write a description of class ExplanatoryGIF here.
+ * Class that represents the explanatory GIF image,
+ * whose instances are contained to every instance
+ * of InformationWindow class.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class ExplanatoryGIF extends Actor
 {
-    GifImage explanatoryGIF;
+    private GifImage explanatoryGIF;
     private String type;
     
+    /**
+     * Constructor for objects of class ExplanatoryGIF.
+     * @param type  the type of explanatory GIF image (crossing, stop sign, etc)
+     */
     public ExplanatoryGIF(String type)
     {
         this.type = type;
         this.explanatoryGIF = new GifImage(type + "_explained.gif");
     }
+    
     /**
      * Act - do whatever the ExplanatoryGIF wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

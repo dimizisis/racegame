@@ -2,10 +2,10 @@ import greenfoot.*;
 import java.text.DecimalFormat;
 
 /**
- * The TimeBoard is used to display remaining time & lives on the screen. It can display some
+ * The Speedometer is used to display the main actor's speed on the screen. It can display some
  * text and several numbers.
  * 
- * @author Dimitrios Zisis
+ * @author M Kolling (original author of ScoreBoard, from which the Speedometer class is derived)
  * @version 1.0
  */
 public class Speedometer extends Actor
@@ -18,6 +18,11 @@ public class Speedometer extends Actor
     private String prefix;
     private Car car;
     
+    /**
+     * Constructor for objects of class Speedometer.
+     * 
+     * @param c  the car, whose speed will be showing.
+     */
     public Speedometer(Car c)
     {
         this.car = c;
@@ -27,12 +32,11 @@ public class Speedometer extends Actor
     }
     
     /**
-     * Make the score board image.
+     * Makes the speedometer image.
      */
     private void makeImage()
     {
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
-
         image.setColor(new Color(255, 255, 255, 128));
         image.fillRect(0, 0, WIDTH-30, HEIGHT-80);
         image.setColor(new Color(0, 0, 0, 128));
@@ -42,11 +46,13 @@ public class Speedometer extends Actor
         image.setFont(font);
         image.setColor(Color.WHITE);
         if (((MyWorld) getWorld()) != null)
-            image.drawString(this.prefix + new DecimalFormat("#0.00").format(this.car.getSpeed()*10) + " km/h\n " + ((MyWorld) getWorld()).getScrolledX() + "\n " + this.car.getX(), 60, 190);
+            image.drawString(this.prefix + new DecimalFormat("#0.00").format(this.car.getSpeed()*10) + " km/h\n ", 35, 190);
         setImage(image);
     }
     
-    public void act(){
+    public void act()
+    {
         makeImage();
-    }   
+    }
+    
 }

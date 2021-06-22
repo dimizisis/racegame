@@ -1,15 +1,19 @@
 #BlueJ class context
 comment0.target=Language
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Language\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ that\ holds\ the\ game's\ language\ data.\r\n\ It\ is\ created\ using\ the\ Singleton\ Pattern.\r\n\ \r\n\ @author\ Dimitrios\ Zisis\r\n\ @version\ 1.0\r\n
 comment1.params=
 comment1.target=Language()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Language\r\n
+comment1.text=\r\n\ Constructor\ for\ object\ of\ class\ Language.\r\n\ Cannot\ be\ called\ outside\ the\ instance.\r\n
 comment2.params=
 comment2.target=Language\ getInstance()
+comment2.text=\r\n\ Returns\ the\ (only)\ instance\ of\ class\ Language.\r\n\ \r\n\ @return\ \ the\ instance\ of\ class\ Language\r\n
 comment3.params=
 comment3.target=java.lang.String\ getSelectedLanguage()
+comment3.text=\r\n\ Returns\ the\ current\ selected\ language\ of\ the\ game.\r\n\ \r\n\ @return\ \ the\ string\ representation\ of\ the\ language\ (either\ "en"\ or\ "gr")\r\n
 comment4.params=sl
 comment4.target=void\ setSelectedLanguage(java.lang.String)
+comment4.text=\r\n\ Sets\ the\ current\ selected\ language\ of\ the\ game.\r\n\ \r\n\ @param\ \ the\ string\ representation\ of\ the\ language\ (either\ "en"\ or\ "gr")\r\n
 comment5.params=
 comment5.target=java.lang.String\ changeLanguage()
+comment5.text=\r\n\ Toggles\ the\ current\ selected\ language\ of\ the\ game.\r\n\ \r\n\ @return\ \ the\ string\ representation\ of\ the\ toggled\ language\ (either\ "en"\ or\ "gr")\r\n
 numComments=6

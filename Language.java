@@ -1,24 +1,31 @@
 import java.util.Objects;
+
 /**
- * Write a description of class Language here.
+ * Class that holds the game's language data.
+ * It is created using the Singleton Pattern.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class Language  
 {
-
     private static Language langInstance = null;
     private String selectedLang;
 
     /**
-     * Constructor for objects of class Language
+     * Constructor for object of class Language.
+     * Cannot be called outside the instance.
      */
     private Language()
     {
-        this.selectedLang = "gr";
+        this.selectedLang = "gr"; /* Greek by default */
     }
     
+    /**
+     * Returns the (only) instance of class Language.
+     * 
+     * @return  the instance of class Language
+     */
     public static Language getInstance() 
     {
         if (Objects.isNull(langInstance))
@@ -27,16 +34,31 @@ public class Language
         return langInstance;
     }
     
+    /**
+     * Returns the current selected language of the game.
+     * 
+     * @return  the string representation of the language (either "en" or "gr")
+     */
     public String getSelectedLanguage()
     {
         return this.selectedLang;
     }
     
+    /**
+     * Sets the current selected language of the game.
+     * 
+     * @param  the string representation of the language (either "en" or "gr")
+     */
     public void setSelectedLanguage(String sl)
     {
         this.selectedLang = sl;
     }
     
+    /**
+     * Toggles the current selected language of the game.
+     * 
+     * @return  the string representation of the toggled language (either "en" or "gr")
+     */
     public String changeLanguage()
     {
         if (getSelectedLanguage().equals("gr"))

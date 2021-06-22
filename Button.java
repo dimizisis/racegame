@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Write a description of class Button here.
+ * Class that represents each button of the game.
  * 
  * @author Dimitrios Zisis
  * @version 1.0
@@ -15,6 +15,10 @@ public class Button extends Actor
     
     private String button;
     
+    /**
+     * Constructor for objects of class Button.
+     * @param button  the name of the button
+     */
     public Button(String button)
     {
         this.button = button;
@@ -24,6 +28,10 @@ public class Button extends Actor
             setImage(button + ".png");
     }
     
+    /**
+     * Act - do whatever the Button wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() 
     {
         if (Greenfoot.mousePressed(this))
@@ -81,7 +89,18 @@ public class Button extends Actor
                 if (button.contains("speed_limits"))
                     Greenfoot.setWorld(new InformationWindow(button.replace("information_", "").replace("_btn", "").replace("_" + Language.getInstance().getSelectedLanguage(), ""), 310, 260, 80, 335, 10.5f));
                 else if (button.contains("crossing"))
-                    Greenfoot.setWorld(new InformationWindow(button.replace("information_", "").replace("_btn", "").replace("_" + Language.getInstance().getSelectedLanguage(), ""), 310, 290, 80, 400, 13.0f));
+                    Greenfoot.setWorld(new InformationWindow(button.replace("information_", "").replace("_btn", "").replace("_" + Language.getInstance().getSelectedLanguage(), ""), 310, 290, 80, 400, 9.0f));
+                else if (button.contains("stop_sign"))
+                    Greenfoot.setWorld(new InformationWindow(button.replace("information_", "").replace("_btn", "").replace("_" + Language.getInstance().getSelectedLanguage(), ""), 310, 295, 80, 410, 11.5f));
+            }
+            else if (button.startsWith("reset"))
+            {
+                Statistics.getInstance().resetAll();
+                Greenfoot.setWorld(new StatisticsMenu());
+            }
+            else if (button.startsWith("cumulative"))
+            {
+                Greenfoot.setWorld(new MyWorld("cumulative"));
             }
          }
     }    

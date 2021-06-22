@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=StatisticsMenu
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ StatisticsMenu\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ that\ represents\ the\ statistics\ window\r\n\ of\ the\ game.\ Player\ can\ be\ informed\ on\ his\r\n\ progress.\r\n\ \r\n\ @author\ Dimitrios\ Zisis\r\n\ @version\ 1.0\r\n
 comment1.params=
 comment1.target=StatisticsMenu()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ StatisticsMenu.\r\n\ \r\n

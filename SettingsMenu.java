@@ -3,7 +3,9 @@ import java.util.Map;
 import java.util.List;
 
 /**
- * Write a description of class SettingsUI here.
+ * Class that represents the settings menu
+ * of the game. Player can choose his/her
+ * car, if available.
  * 
  * @author Dimitrios Zisis
  * @version 1.0
@@ -43,6 +45,10 @@ public class SettingsMenu extends World
         
     }
     
+    /**
+    * Selects the last selected car by the user.
+    * Triggers every time the user opens settings menu.
+    */
     private void selectLastSelected()
     {
         for (CarSelector cs : (List<CarSelector>)(getObjects(CarSelector.class)))

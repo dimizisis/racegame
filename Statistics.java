@@ -1,14 +1,16 @@
 import java.util.Objects;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
 import java.io.*;
+
 /**
- * Write a description of class Statistics here.
+ * Class that holds the game's data about statistics.
+ * It is created using the Singleton Pattern.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class Statistics  
 {
@@ -31,6 +33,11 @@ public class Statistics
         }
     }
     
+    /**
+     * Returns the (only) instance of class Statistics.
+     * 
+     * @return  the instance of class Statistics
+     */
     public static Statistics getInstance()
     {
         if (Objects.isNull(statsInstance))
@@ -39,48 +46,88 @@ public class Statistics
         return statsInstance;
     }
     
+    /**
+     * Resets all statistics' variables to zero (0.0).
+     * Triggered when the 'Reset' button is clicked.
+     */
+    public void resetAll()
+    {
+        stats.put("Total Violations", 0.0);
+        stats.put("Crossing Violations", 0.0);
+        stats.put("Speed Violations", 0.0);
+        stats.put("Collisions", 0.0);
+        flushStatsToFile();
+    }
+    
+    /**
+     * Returns the integer representation of total violations count.
+     * 
+     * @return  the integer representation of total violations count
+     */
     public int getTotalViolationsCount()
     {
         double countD = this.stats.get("Total Violations");
         return (int) countD;
     }
     
+    /**
+     * Increments the crossing violations count.
+     */
     public void incrementCrossingViolations()
     {
         Double incrementedVal = stats.get("Crossing Violations");
         ++incrementedVal;
         stats.put("Crossing Violations", incrementedVal);
-        incrementTotalMistakes();
+        incrementTotalViolations();
     }
     
+    /**
+     * Increments the collisions count.
+     */
     public void incrementCollisions()
     {
         Double incrementedVal = stats.get("Collisions");
         ++incrementedVal;
         stats.put("Collisions", incrementedVal);
-        incrementTotalMistakes();
+        incrementTotalViolations();
     }
     
+    /**
+     * Increments the speed violations count.
+     */
     public void incrementSpeedViolations()
     {
         Double incrementedVal = stats.get("Speed Violations");
         ++incrementedVal;
         stats.put("Speed Violations", incrementedVal);
-        incrementTotalMistakes();
+        incrementTotalViolations();
     }
     
-    private void incrementTotalMistakes()
+    /**
+     * Increments the total violations count.
+     */
+    private void incrementTotalViolations()
     {
         Double incrementedVal = stats.get("Total Violations");
         ++incrementedVal;
         stats.put("Total Violations", incrementedVal);
     }
     
+    /**
+     * Returns statistics' headers as a string array.
+     * 
+     * @return  the statistics' headers as a string array.
+     */
     public String[] getStatsHeadersAsArray()
     {
         return stats.keySet().toArray(String[]::new);
     }
     
+    /**
+     * Returns statistics' values as a doubles array.
+     * 
+     * @return  the statistics' values as a doubles array.
+     */
     public double[] getStatsValuesAsArray()
     {
         List<Double> valuesLst = new ArrayList<>(stats.values());
@@ -91,7 +138,7 @@ public class Statistics
     }
     
     /**
-     * Get saved scores from file.
+     * Assigns saved statistics values from file to instance's Map object.
      */
     public void getStatsFromFile() 
     {
@@ -105,7 +152,7 @@ public class Statistics
     }
     
     /**
-     * Save scores to file.
+     * Saves statistics to stat's file.
      */
     public void flushStatsToFile()
     {

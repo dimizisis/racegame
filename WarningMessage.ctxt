@@ -1,12 +1,13 @@
 #BlueJ class context
 comment0.target=WarningMessage
-comment0.text=\r\n\ The\ ScoreBoard\ is\ used\ to\ display\ results\ on\ the\ screen.\ It\ can\ display\ some\r\n\ text\ and\ several\ numbers.\r\n\ \r\n\ @author\ M\ Kolling\r\n\ @version\ 1.0\r\n
+comment0.text=\r\n\ The\ WarningMessage\ is\ used\ to\ display\ warnings\ on\ the\ screen.\ It\ can\ display\ some\r\n\ text\ and\ several\ numbers.\r\n\ \r\n\ @author\ M\ Kolling\ (original\ author\ of\ ScoreBoard,\ from\ which\ the\ Speedometer\ class\ is\ derived)\r\n\ @version\ 1.0\r\n
 comment1.params=text\ messageType
 comment1.target=WarningMessage(java.lang.String,\ java.lang.String)
-comment1.text=\r\n\ Create\ a\ score\ board\ for\ the\ final\ result.\r\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ WarningMessage.\r\n\ \r\n\ @param\ text\ \ the\ text\ of\ the\ warning\r\n\ @param\ messageType\ \ the\ type\ of\ the\ warning\ (like\ a\ title)\r\n
 comment2.params=
 comment2.target=void\ makeInfoImage()
-comment2.text=\r\n\ Make\ the\ information\ image.\r\n
+comment2.text=\r\n\ Makes\ the\ warning\ image.\r\n
 comment3.params=
 comment3.target=void\ act()
+comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ WarningMessage\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 numComments=4

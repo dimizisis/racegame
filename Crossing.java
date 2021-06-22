@@ -3,17 +3,20 @@ import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Write a description of class Crossing here.
+ * Class that represents the pedestrian crossing.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class Crossing extends Actor
 {
     private TrafficLight trafficLight;
     private long lastPassed;
     private boolean hasPedestrians;
-
+    
+    /**
+     * Constructor for objects of class Crossing.
+     */
     public Crossing()
     {
         this.trafficLight = null;
@@ -21,6 +24,10 @@ public class Crossing extends Actor
         this.hasPedestrians = true; /* has pedestrians by default */
     }
     
+    /**
+     * Constructor for objects of class Crossing.
+     * @param hasPedestrians  whether or not this instance of crossing will contain pedestrians
+     */
     public Crossing(boolean hasPedestrians)
     {
         this.hasPedestrians = hasPedestrians;
@@ -54,12 +61,21 @@ public class Crossing extends Actor
         }
     }
     
+    /**
+     * Adds randomly pedestrian to the specific instance
+     * of crossing.
+     * 
+     * @param pedestrianNum the total count of pedestrians to pass
+     */
     private void pedestrianPass(int pedestrianNum)
     {
         for (int i=0; i<pedestrianNum; ++i)
             getWorld().addObject(new Pedestrian(ThreadLocalRandom.current().nextInt(1, 4)), getX(), 700);
     }
     
+    /**
+     * Adds a traffic light to the specific instance of crossing.
+     */
     public void addTrafficLight()
     {
         if (Objects.isNull(this.trafficLight))
@@ -67,17 +83,32 @@ public class Crossing extends Actor
             
     }
     
+    /**
+     * Creates and sets a traffic light to the specific instance of crossing.
+     */
     private void setTrafficLight()
     {
         this.trafficLight = new TrafficLight();
         getWorld().addObject(this.trafficLight, getX(), 420);
     }
     
+    /**
+     * Returns the instance of the traffic light that is contained
+     * to the crossing's instance (this).
+     * 
+     * @return the instance of the traffic light
+     */
     public TrafficLight getTrafficLight()
     {
         return this.trafficLight;
     }
     
+    /**
+     * Returns whether or not a traffic light is contained to the
+     * crossing instance (this).
+     * 
+     * @return true if a traffic light is contained, false otherwise.
+     */
     public boolean hasTrafficLight()
     {
         return Objects.nonNull(this.getTrafficLight());

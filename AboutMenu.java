@@ -5,20 +5,20 @@ import java.nio.file.Paths;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Write a description of class MainMenu here.
+ * Class that represents the about screen
+ * of the game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis 
+ * @version 1.0
  */
 public class AboutMenu extends World
 {
 
     /**
-     * Constructor for objects of class UI.
+     * Constructor for objects of class AboutMenu.
      */
     public AboutMenu()
     {    
-        // Create a new world with 600x840 cells with a cell size of 1x1 pixels.
         super(600, 840, 1);
         setBackground("about_" + Language.getInstance().getSelectedLanguage() + ".png");
         prepare();

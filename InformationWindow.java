@@ -5,10 +5,12 @@ import java.nio.file.Paths;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Write a description of class InformationWindow here.
+ * Class that represents the information window
+ * of the game. Player can be informed on how to
+ * play and behave in each level.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class InformationWindow extends World
 {
@@ -19,6 +21,9 @@ public class InformationWindow extends World
     private int txtHeight;
     private float fontSize;
     
+    /**
+     * Constructor for objects of class InformationWindow.
+     */
     public InformationWindow(String type, int imgWidth, int imgHeight, int txtWidth, int txtHeight, float fontSize)
     {
         super(600, 840, 1);

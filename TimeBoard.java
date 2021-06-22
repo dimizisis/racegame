@@ -4,7 +4,7 @@ import greenfoot.*;
  * The TimeBoard is used to display remaining time & lives on the screen. It can display some
  * text and several numbers.
  * 
- * @author Dimitrios Zisis
+ * @author M Kolling (original author of ScoreBoard, from which the TimeBoard class is derived)
  * @version 1.0
  */
 public class TimeBoard extends Actor
@@ -16,6 +16,9 @@ public class TimeBoard extends Actor
     private int time;
     private String prefix;
     
+    /**
+     * Constructor for objects of class TimeBoard.
+     */
     public TimeBoard()
     {
         this.prefix = "Time: ";
@@ -23,6 +26,11 @@ public class TimeBoard extends Actor
         makeImage();
     }
     
+    /**
+     * Constructor for objects of class TimeBoard.
+     * 
+     * @param initTimerVal  the initial value for the countdown timer
+     */
     public TimeBoard(int initTimerVal)
     {
         this.prefix = "Time: ";
@@ -31,7 +39,7 @@ public class TimeBoard extends Actor
     }
     
     /**
-     * Make the score board image.
+     * Makes the time board image.
      */
     private void makeImage()
     {
@@ -49,12 +57,20 @@ public class TimeBoard extends Actor
         setImage(image);
     }
     
+    /**
+     * Performs a countdown.
+     */
     private void updateTimer()
     {
         --this.time;
     }
     
-    public void act(){
+    /**
+     * Act - do whatever the TimeBoard wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
         makeImage();
         updateTimer();
         if (this.time <= 0)

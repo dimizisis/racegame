@@ -2,16 +2,19 @@ import greenfoot.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Write a description of class TrafficLight here.
+ * Class that represents the traffic light.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class TrafficLight extends Actor
 {
     private int state = 0; /* 0 for red, 1 for green */
     private long lastChanged = 0;
     
+    /**
+     * Constructor for objects of class TrafficLight.
+     */
     public TrafficLight()
     {
         setImage(new GreenfootImage("traffic_light_red.png"));
@@ -31,6 +34,9 @@ public class TrafficLight extends Actor
         }
     }
     
+    /**
+     * Changes the current state of the traffic light's instance (green to red and vice versa).
+     */
     private void changeState()
     {
         int newState = 1 - state;
@@ -41,11 +47,21 @@ public class TrafficLight extends Actor
         this.setState(newState);
     }
     
+    /**
+     * Sets the current state of the traffic light's instance.
+     * 
+     * @param newState  the new state that will be set.
+     */
     private void setState(int newState)
     {
         this.state = newState;
     }
     
+    /**
+     * Returns the current state of the traffic light's instance.
+     * 
+     * @return  the current state of the traffic light's instance.
+     */
     public int getState()
     {
         return this.state;

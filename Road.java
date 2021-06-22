@@ -1,10 +1,10 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Road here.
+ * Class that represents the (vertical) Road.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class Road extends Actor
 {
@@ -14,6 +14,5 @@ public class Road extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
     }    
 }

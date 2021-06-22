@@ -1,13 +1,16 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
- * Write a description of class StopSign here.
+ * Class that represents the stop sign.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class StopSign extends Actor
 {
+    /**
+     * Constructor for objects of class StopSign.
+     */
     public StopSign()
     {
         getImage().rotate(90);
@@ -18,6 +21,5 @@ public class StopSign extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
     }    
 }

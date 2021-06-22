@@ -4,17 +4,19 @@ import java.util.Comparator;
 import java.util.Objects;
 
 /**
- * Write a description of class OtherCar here.
+ * Class that represents a Car, which is autocontrolled.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dimitrios Zisis
+ * @version 1.0
  */
 public class OtherCar extends SmoothMover
 {
-    
     private int speed;
     private boolean vertical = false;
     
+    /**
+     * Constructor for objects of class Car.
+     */
     public OtherCar()
     {
         int i = ThreadLocalRandom.current().nextInt(1, 4);
@@ -22,6 +24,10 @@ public class OtherCar extends SmoothMover
         this.speed = 2;
     }
     
+    /**
+     * Constructor for objects of class Car.
+     * @param speed  the speed of the instance
+     */
     public OtherCar(int speed)
     {
         int i = ThreadLocalRandom.current().nextInt(1, 4);
@@ -32,6 +38,10 @@ public class OtherCar extends SmoothMover
         move();
     }
     
+    /**
+     * Constructor for objects of class Car.
+     * @param vertical  whether or not the car will move vertically.
+     */
     public OtherCar(boolean vertical)
     {
         int i = ThreadLocalRandom.current().nextInt(1, 4);
@@ -45,7 +55,12 @@ public class OtherCar extends SmoothMover
         this.speed = 2;
         move();
     }
-
+    
+    /**
+     * Constructor for objects of class Car.
+     * @param speed  the speed of the instance
+     * @param vertical  whether or not the car will move vertically.
+     */
     public OtherCar(int speed, boolean vertical)
     {
         int i = ThreadLocalRandom.current().nextInt(1, 4);
@@ -59,21 +74,28 @@ public class OtherCar extends SmoothMover
         this.speed = speed;
         move();
     }
+    
     /**
      * Act - do whatever the OtherCar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        if (getObjectsInRange(100, Pedestrian.class).isEmpty() || isFirstInOrder())
+        if (getObjectsInRange(80, Pedestrian.class).isEmpty() || isFirstInOrder())
             if (!vertical)
-                accelerate(1.2);
+                move(-speed);
             else
-                setLocation(getExactX(), getExactY()+0.2);
+                setLocation(getExactX(), getExactY()+0.7);
         else
             stop();
     }
     
+    /**
+     * Checks if the car is first in the road (lowest X).
+     * This method exists in order not to create traffic congestion.
+     * 
+     * @return  true if the car is first in order, false otherwise.
+     */
     private boolean isFirstInOrder()
     {
         Actor frontCar = getObjectsInRange(80, OtherCar.class).stream().min(Comparator.comparing(OtherCar::getX)).orElse(null);
