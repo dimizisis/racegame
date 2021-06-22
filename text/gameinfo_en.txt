@@ -11,5 +11,5 @@ end within the time limit without violating the highway code.
 Before attempting to play, see the information next to each 
 level button.
 
-Score in each level more than 20 and 30 to unlock the yellow 
-and police car, respectively.
+Score in cumulative level more than 10 and 20 to unlock the 
+yellow and police car, respectively.
