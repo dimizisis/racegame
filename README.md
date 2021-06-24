@@ -21,5 +21,20 @@ The game was developed on the platform "Greenfoot", continuing the game "Drive T
 There are similar games, both 2D and 3D. When it comes to similar games in the two dimensions, there is no one between them that focuses so much on the issues of proper driving rules, but on more specific issues (eg proper parking and parking). Similar three-dimensional games do exist, but are not available for free.
 The purpose was to create the first two-dimensional game, which provides a more complete picture to the player in relation to the correct road behavior and its rules. The game is 2D. However, the two dimensions do not constitute a barrier to achieving the goal of the game.
 
-## System Requirements
+## Requirements
+
+### System Requirements
 No special system requirements are required. A computer of any power of the last three / four (at least) years will be able to execute the game without any problems. The game is only available for PC, independent of operating system. With this in mind, the player will be able to control his character (in this case the car) with basic keyboard keys (arrow keys). The handling concerns the movement and direction of the player's car.
+
+### Software Requirements
+You need to have:
+
+1. Java installed (version 8+)
+2. The last version of Greenfoot
+
+## Execution
+Simply open a command prompt to the directory, where DriveThruTheHighwayCode.jar exists and type the following command:
+
+```
+"C:\Program Files\Greenfoot\jdk\bin\java.exe" -cp "C:\Program Files\Greenfoot\lib\javafx\lib\javafx.base.jar;C:\Program Files\Greenfoot\lib\javafx\lib\javafx.controls.jar;C:\Program Files\Greenfoot\lib\javafx\lib\javafx.fxml.jar;C:\Program Files\Greenfoot\lib\javafx\lib\javafx.graphics.jar;C:\Program Files\Greenfoot\lib\javafx\lib\javafx.media.jar;C:\Program Files\Greenfoot\lib\javafx\lib\javafx.properties.jar;C:\Program Files\Greenfoot\lib\javafx\lib\javafx.swing.jar;C:\Program Files\Greenfoot\lib\javafx\lib\javafx.web.jar;C:\Users\Dimitris\Desktop\DriveThruTheHighwayCode.jar" --module-path "C:\Program Files\Greenfoot\lib\javafx\lib" --add-modules=ALL-MODULE-PATH greenfoot.export.GreenfootScenarioApplication
+```
