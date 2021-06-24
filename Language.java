@@ -30,7 +30,6 @@ public class Language
     {
         if (Objects.isNull(langInstance))
             langInstance = new Language();
-  
         return langInstance;
     }
     

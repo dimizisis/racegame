@@ -192,7 +192,7 @@ public class Car extends SmoothMover
     }
     
     /**
-     * Warns the pedestrians to move away. Triggered when car horn is pressed (Key: H).
+     * Warns pedestrians to move away. Triggered when car horn is pressed (Key: H).
      */
     private void warnPedestrians() 
     {

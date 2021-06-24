@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=InformationWindow
-comment0.text=\r\n\ Class\ that\ represents\ the\ information\ window\r\n\ of\ the\ game.\ Player\ can\ be\ informed\ on\ how\ to\r\n\ play\ and\ behave\ in\ each\ level.\r\n\ \r\n\ @author\ Dimitrios\ Zisis\r\n\ @version\ 1.0\r\n
-comment1.params=type\ imgWidth\ imgHeight\ txtWidth\ txtHeight\ fontSize
-comment1.target=InformationWindow(java.lang.String,\ int,\ int,\ int,\ int,\ float)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ InformationWindow.\r\n
-numComments=2

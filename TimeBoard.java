@@ -9,7 +9,7 @@ import greenfoot.*;
  */
 public class TimeBoard extends Actor
 {
-    public static final float FONT_SIZE = 24.0f;
+    public static final float FONT_SIZE = 20.0f;
     public static final int WIDTH = 260;
     public static final int HEIGHT = 330;
     
@@ -22,19 +22,19 @@ public class TimeBoard extends Actor
     public TimeBoard()
     {
         this.prefix = "Time: ";
-        this.time = 0;
+        this.time = Settings.getInstance().getSecondsPerLevel()*100;
         makeImage();
     }
     
     /**
      * Constructor for objects of class TimeBoard.
      * 
-     * @param initTimerVal  the initial value for the countdown timer
+     * @param initTimerVal  the initial value for the countdown timer (seconds)
      */
     public TimeBoard(int initTimerVal)
     {
         this.prefix = "Time: ";
-        this.time = initTimerVal;
+        this.time = initTimerVal*100;
         makeImage();
     }
     
@@ -46,14 +46,14 @@ public class TimeBoard extends Actor
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
 
         image.setColor(new Color(255, 255, 255, 128));
-        image.fillRect(0, 0, WIDTH-30, HEIGHT-80);
+        image.fillRect(0, 0, WIDTH-30, HEIGHT-150);
         image.setColor(new Color(0, 0, 0, 128));
-        image.fillRect(5, 5, WIDTH-30, HEIGHT-80);
+        image.fillRect(5, 5, WIDTH-30, HEIGHT-150);
         Font font = image.getFont();
         font = font.deriveFont(FONT_SIZE);
         image.setFont(font);
         image.setColor(Color.WHITE);
-        image.drawString(this.prefix + this.time/100 + "\nLives: " + Lives.getInstance().getLivesCount(), 60, 190);
+        image.drawString(this.prefix + this.time/100, 70, 170);
         setImage(image);
     }
     

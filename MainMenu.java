@@ -17,7 +17,6 @@ public class MainMenu extends World
      */
     public MainMenu()
     {    
-        // Create a new world with 600x840 cells with a cell size of 1x1 pixels.
         super(600, 840, 1);
         setBackground("menu.png");
         prepare();
@@ -55,6 +54,7 @@ public class MainMenu extends World
         addObject(enFlag, 390, 770);
         
         selectLastSelectedLang();
+        Sound.getInstance().playMenuMusic();
 
         try {
             Score.getInstance().getScoresFromFile();

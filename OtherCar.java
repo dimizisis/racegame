@@ -85,7 +85,7 @@ public class OtherCar extends SmoothMover
             if (!vertical)
                 move(-speed);
             else
-                setLocation(getExactX(), getExactY()+0.7);
+                setLocation(getExactX(), getExactY()+1);
         else
             stop();
     }

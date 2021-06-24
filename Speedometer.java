@@ -38,15 +38,15 @@ public class Speedometer extends Actor
     {
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
         image.setColor(new Color(255, 255, 255, 128));
-        image.fillRect(0, 0, WIDTH-30, HEIGHT-80);
+        image.fillRect(0, 0, WIDTH-30, HEIGHT-150);
         image.setColor(new Color(0, 0, 0, 128));
-        image.fillRect(5, 5, WIDTH-30, HEIGHT-80);
+        image.fillRect(5, 5, WIDTH-30, HEIGHT-150);
         Font font = image.getFont();
         font = font.deriveFont(FONT_SIZE);
         image.setFont(font);
         image.setColor(Color.WHITE);
         if (((MyWorld) getWorld()) != null)
-            image.drawString(this.prefix + new DecimalFormat("#0.00").format(this.car.getSpeed()*10) + " km/h\n ", 35, 190);
+            image.drawString(this.prefix + new DecimalFormat("#0.00").format(this.car.getSpeed()*10) + " km/h\n ", 35, 170);
         setImage(image);
     }
     

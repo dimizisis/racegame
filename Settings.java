@@ -1,6 +1,8 @@
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Class that holds the game's data about settings.
@@ -16,6 +18,7 @@ public class Settings
     private Map<String, Boolean> carsAvailable;
     
     private static final String DEFAULT_CAR = "Car_1_01";
+    private static final int SECONDS_PER_LEVEL = 20;
     
     /**
      * Constructor for object of class Settings.
@@ -37,7 +40,6 @@ public class Settings
     {
         if (Objects.isNull(settingsInstance))
             settingsInstance = new Settings();
-  
         return settingsInstance;
     }
     
@@ -72,6 +74,17 @@ public class Settings
     }
     
     /**
+     * Returns the integer representation of the number of seconds the user 
+     * has to complete a level.
+     * 
+     * @return  the integer representation of the number of seconds the user has to complete a level
+     */
+    public int getSecondsPerLevel()
+    {
+        return this.SECONDS_PER_LEVEL;
+    }
+    
+    /**
      * Sets the selected car.
      * 
      * @param  a string representation of the selected car's image. 
@@ -79,5 +92,23 @@ public class Settings
     public void setSelectedCar(String sc)
     {
         this.selectedCar = sc;
+    }
+    
+    /**
+     * Returns the integer representation of the number of cumulative maps available.
+     * 
+     * @return  the integer representation of the number of cumulative maps available
+     */
+    public int getCumulativeMapsCount()
+    {
+        int count;
+        try
+        {
+            count = new File("./cumulativemaps").list().length;
+        } catch (Exception e)
+        {
+            count = 0;
+        }
+        return count;
     }
 }

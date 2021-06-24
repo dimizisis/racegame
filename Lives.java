@@ -33,7 +33,6 @@ public class Lives
     {
         if (Objects.isNull(livesInstance))
             livesInstance = new Lives();
-  
         return livesInstance;
     }
     

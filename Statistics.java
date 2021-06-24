@@ -42,7 +42,6 @@ public class Statistics
     {
         if (Objects.isNull(statsInstance))
             statsInstance = new Statistics();
-            
         return statsInstance;
     }
     

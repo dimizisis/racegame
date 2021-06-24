@@ -16,6 +16,7 @@ public class Sound
     private GreenfootSound wrongMove = new GreenfootSound("wrong-move.wav");
     private GreenfootSound breaking = new GreenfootSound("break.wav");
     private GreenfootSound wellDone = new GreenfootSound("well_done.wav");
+    private GreenfootSound menuMusic = new GreenfootSound("background_music.wav");
     
     /**
      * Constructor for object of class Sound.
@@ -36,8 +37,24 @@ public class Sound
     {
         if (Objects.isNull(soundInstance))
             soundInstance = new Sound();
-  
         return soundInstance;
+    }
+    
+    /**
+     * Plays the menu music, if sound is set on.
+     */
+    public void playMenuMusic()
+    {
+        if (isSoundOn())
+            this.menuMusic.playLoop();
+    } 
+    
+    /**
+     * Pauses the menu music, if sound is set off.
+     */
+    public void pauseMenuMusic()
+    {
+        this.menuMusic.pause();
     }
     
     /**
@@ -83,5 +100,9 @@ public class Sound
     public void changeSoundSetting()
     {
         this.soundOn = 1 - this.soundOn;
+        if (isSoundOn())
+            playMenuMusic();
+        else
+            pauseMenuMusic();
     }
 }

@@ -1,10 +1,12 @@
-
 import greenfoot.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * World of every level.
@@ -55,6 +57,7 @@ public class MyWorld extends SWorld
      */
     private void prepare()
     {
+        Sound.getInstance().pauseMenuMusic();
         generateObjects();
         
         mainActor = new Car();
@@ -67,6 +70,8 @@ public class MyWorld extends SWorld
         
         addObject(new ScoreBoard("Score: ", level), 50, 20, false);
         addObject(new Speedometer(mainActor), 520, 20, false);
+        addObject(new TimeBoard(), 520, 60, false);
+        addObject(new LiveBoard(), 520, 240, false);
         
     }
     
@@ -83,9 +88,16 @@ public class MyWorld extends SWorld
             generateRoads(5);
         else if (level.equals("cumulative"))
         {
-            generateCrossings(new int[]{-1900, 1000, 2200});
-            generateSpeedLimitSigns(new int[]{-500, 400, 1000, 1850});
-            generateRoads(new int[]{-1000, 0, 1500});
+            try {
+                int randomMapNum = ThreadLocalRandom.current().nextInt(1, Settings.getInstance().getCumulativeMapsCount()+1);
+                generateCrossings(stringArrayToIntArray(getLine("map" + randomMapNum, 0), ","));
+                generateSpeedLimitSigns(stringArrayToIntArray(getLine("map" + randomMapNum, 1), ","));
+                generateRoads(stringArrayToIntArray(getLine("map" + randomMapNum, 2), ","));
+            } catch (Exception e) {
+                generateCrossings(new int[]{-1900, 1000, 2200});
+                generateSpeedLimitSigns(new int[]{-500, 400, 1000, 1850});
+                generateRoads(new int[]{-1000, 0, 1500});
+            }
         }
         generateOtherCars();
     }
@@ -205,7 +217,7 @@ public class MyWorld extends SWorld
             Road road = new Road();
             addObject(road, widths[i], 420);
             addObject(new StopSign(), widths[i]-210, 768);
-            generateOtherCars(widths[i], 600, true);
+            generateOtherCars(widths[i], 300, true);
         }
     }
     
@@ -284,4 +296,43 @@ public class MyWorld extends SWorld
         Greenfoot.delay(400);
         Greenfoot.setWorld(new MainMenu());
     }
+    
+    /**
+    * Given a string & a splitter character, returns the integer array representation.
+    *
+    * @param  str  the string provided
+    * @param  splitter  the splitter that will be used
+    * 
+    * @return  the integer array representation of string if there is one, null otherwise
+    */
+    private int[] stringArrayToIntArray(String str, String splitter) 
+    {
+        if (str.isBlank())
+            return null;
+        String[] intStringSplit = str.split(splitter);
+        int[] result = new int[intStringSplit.length];
+
+        for (int i = 0; i < intStringSplit.length; ++i)
+            result[i] = Integer.parseInt(intStringSplit[i]); 
+        return result;
+    }
+    
+    /**
+    * Reads a line from a text file. File name & line number are provided as parameters.
+    *
+    * @param  txtFileName  the filename of the text file
+    * @param  lineNum  the number of line that will be read
+    * 
+    * @return  the line if read successfully, empty string otherwise
+    */
+    private String getLine(String txtFileName, int lineNum) throws IOException 
+    {
+        BufferedReader br = new BufferedReader(new FileReader("./cumulativemaps/" + txtFileName + ".txt"));
+        String line = "";
+        for (int i=0; i <= lineNum; ++i)
+            line = br.readLine(); 
+            br.close();
+        return line;
+    }
+    
 }

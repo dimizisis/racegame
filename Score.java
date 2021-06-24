@@ -28,7 +28,7 @@ public class Score
         {
             levelScores = new ConcurrentHashMap<>();
             levelScores.put("crossings", 0);
-            levelScores.put("speed_limits", 0);
+            levelScores.put("speed_limits", 20);
             levelScores.put("stop_sign", 0);
             levelScores.put("cumulative", 0);
         }
@@ -51,7 +51,6 @@ public class Score
     {
         if (Objects.isNull(scoreInstance))
             scoreInstance = new Score();
-  
         return scoreInstance;
     }
     
@@ -75,6 +74,16 @@ public class Score
     public int getScore(String level)
     {
         return levelScores.get(level);
+    }
+    
+    /**
+     * Sets the score, given a specific level.
+     * 
+     * @param  the string representation of level's name
+     */
+    public void setScore(String level)
+    {
+        levelScores.put(level, 20);
     }
     
     /**
