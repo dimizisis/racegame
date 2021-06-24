@@ -1,6 +1,6 @@
 # Drive Thru The Highway Code
 
-![Alt text](https://imgur.com/a/QVkfKdO "Drive Thru The Highway Code")
+![Alt text](https://i.imgur.com/UXRanRw.png "Drive Thru The Highway Code")
 
 ## Objective
 Traffic code learning game (KOK) through virtual driving (2D). The gameplay of the game will include the basic rules and markings, which the player should take into account and behave according to them. Otherwise, there will be consequences in terms of score or even the continuation of the game itself (it loses and has to restart the test).
