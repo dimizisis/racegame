@@ -57,8 +57,10 @@ public class Car extends SmoothMover
         SpeedSign ss = speedViolationDetected();
         if (Objects.nonNull(ss)) 
         {
-            if (!passed.contains(ss))
+            if (!passed.contains(ss)) {
+                Score.getInstance().reduceLevelScore(((MyWorld) getWorld()).getLevel());
                 Statistics.getInstance().incrementSpeedViolations();
+            }
             passed.add(ss);
             ((MyWorld) getWorld()).showSpeedWarning();
         } 
